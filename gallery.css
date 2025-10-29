@@ -258,19 +258,4 @@
 		 position: relative !important;
 		 transform: none !important;
 	 }
-	 .contact {
-		 display: none;
-	 }
-	 footer.contact {
-		 display: none;
-	 }
-	 .social {
-		 display: none !important;
-	 }
-	 .email {
-		 display: none !important;
-	 }
-	 .email-icon {
-		 display: none !important;
-	 }
 }

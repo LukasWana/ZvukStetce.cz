@@ -526,7 +526,21 @@ footer.contact a.email:hover {
 .contact a.social {
   outline: none;
   text-decoration: none;
-  display: flexbox;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+footer.contact a.social {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+footer.contact a.email-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* ===== HAMBURGER MENU ===== */
