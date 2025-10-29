@@ -23,14 +23,15 @@
               var thumbsBox = elem.querySelector(".m-p-g__thumbs");
               var images = thumbsBox ? thumbsBox.querySelectorAll("img") : [];
 
-              // Zkontrolovat, zda mají obrázky načtené rozměry a jsou viditelné
+              // Zkontrolovat, zda mají obrázky načtené rozměry
+              // offsetWidth/Height může být 0 i když je obrázek načtený kvůli opacity: 0
               var validImages = Array.from(images).filter(function (img) {
                 return (
                   img.complete &&
                   img.naturalWidth > 0 &&
                   img.naturalHeight > 0 &&
-                  img.offsetWidth > 0 &&
-                  img.offsetHeight > 0
+                  (img.offsetWidth > 0 || img.getAttribute('data-width')) &&
+                  (img.offsetHeight > 0 || img.getAttribute('data-height'))
                 );
               });
 
@@ -281,7 +282,7 @@
           />
         </a>
         <a class="social email-icon" href="">
-          <img src="img/mail_white.svg" height="40" alt="Email" />
+          <img src="img/mail_black.svg" height="40" alt="Email" />
         </a>
       </div>
 
@@ -338,7 +339,7 @@
         </div>
         <div class="col-12 dhide">
           <figure>
-            <img src="gallery/petra.png" />
+            <img src="gallery/petra.jpg" />
           </figure>
         </div>
         <div class="col-12">

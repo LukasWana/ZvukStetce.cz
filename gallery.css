@@ -2,6 +2,7 @@
  .m-p-g {
 	 max-width: 100%;
 	 margin: 0 auto;
+	 display: block; /* Zajistit, že není flexbox */
 }
  .m-p-g__thumbs-img {
 	 margin: 0;
@@ -10,11 +11,11 @@
 	 cursor: pointer;
 	 z-index: 1;
 	 position: relative;
-	 opacity: 0;
+	 opacity: 0.01; /* Velmi nízká opacity - zajišťuje správné offsetHeight pro inicializaci */
 	 filter: brightness(100%);
 	 -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 	 will-change: opacity, transform;
-	 transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+	 transition: opacity 0.3s ease-in; /* Plynulý přechod při načtení - postupné zobrazování */
 	 max-height: 320px;
 	 width: auto;
 }
@@ -22,8 +23,10 @@
  .m-p-g__thumbs-img.active {
 	 z-index: 50;
 }
- .m-p-g__thumbs-img.layout-completed {
-	 opacity: 1;
+ .m-p-g__thumbs-img.layout-completed,
+ .m-p-g__thumbs-img[style*="opacity: 1"],
+ .m-p-g__thumbs-img[style*="opacity:1"] {
+	 opacity: 1 !important; /* Zobrazit když je načtený */
 }
  .m-p-g__thumbs-img.hide {
 	 opacity: 0;
@@ -61,8 +64,9 @@
 	 max-height: 100vh;
 	 max-width: 100%;
 	 visibility: hidden;
-	 will-change: visibility;
-	 transition: opacity 0.5s ease-out;
+	 opacity: 0;
+	 will-change: visibility, opacity;
+	 transition: opacity 0.5s ease-out, visibility 0.3s ease-out;
 }
 
 /* Tablet a desktop - větší obrázky pro fullscreen */
@@ -94,6 +98,18 @@
 }
  .m-p-g__fullscreen-img.almost-active {
 	 opacity: 0;
+}
+/* Zajistit skrytí fullscreen obrázků když není fullscreen aktivní */
+.m-p-g__fullscreen:not(.active) .m-p-g__fullscreen-img {
+	 visibility: hidden !important;
+	 opacity: 0 !important;
+}
+/* Zajistit skrytí obrázků když fullscreen není aktivní - i bez třídy active */
+.m-p-g__fullscreen:not(.active) .m-p-g__fullscreen-img.active,
+.m-p-g__fullscreen:not(.active) .m-p-g__fullscreen-img.almost-active {
+	 visibility: hidden !important;
+	 opacity: 0 !important;
+	 transform: none !important;
 }
  .m-p-g__controls {
 	 position: fixed;
@@ -240,17 +256,15 @@
 		 overflow: hidden !important;
 		 display: block !important;
 	 }
-	 .m-p-g__thumbs {
-		 text-align: left !important;
-		 width: 100% !important;
-		 overflow: hidden !important;
-		 display: block !important;
+ .m-p-g__thumbs {
+	 text-align: left !important;
+	 width: 100% !important;
+	 overflow: hidden !important;
+	 /* Odstranit flexbox - používat původní masonry layout s float */
 	 }
 	 .m-p-g__thumbs-img {
-		 height: 120px !important;
+		 max-height: 120px !important;
 		 width: auto !important;
-		 max-width: 30% !important;
-		 object-fit: cover !important;
 		 float: left !important;
 		 clear: none !important;
 		 margin-right: 2px !important;

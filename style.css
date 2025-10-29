@@ -228,7 +228,8 @@ p strong {
 }
 
 /* ===== OBRAZOVÉ GALERIE ===== */
-.m-p-g {
+/* Pouze pro kontakt sekci (.kontakt.m-p-g) - ne pro galerii stránku */
+.kontakt.m-p-g {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -238,7 +239,7 @@ p strong {
   overflow: hidden;
 }
 
-.m-p-g img {
+.kontakt.m-p-g img {
   display: block;
   height: clamp(80px, 20vw, 300px);
   width: auto;

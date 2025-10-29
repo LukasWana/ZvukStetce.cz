@@ -311,39 +311,7 @@
   }
 
   /* ===== GALERIE ===== */
-  .m-p-g {
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: 5px;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .m-p-g img {
-    width: auto;
-    max-width: calc((100% - 10px) / 2);
-    height: auto;
-    margin-bottom: 5px;
-    flex: 0 1 auto;
-  }
-
-  .kontakt {
-    flex-direction: row;
-    flex-wrap: nowrap;
-    gap: 3px;
-    align-items: center;
-    justify-content: space-between;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-  }
-
-  .kontakt img {
-    width: auto;
-    height: clamp(60px, 15vw, 150px);
-    flex: 0 0 auto;
-    max-width: calc((100% - 9px) / 4);
-    object-fit: cover;
-  }
+  /* Obrázky na stránce kontakt zůstávají jako na desktopu - žádné mobilní úpravy */
 
   /* ===== OBCHOD ===== */
   .row .galerie {
@@ -615,34 +583,5 @@
   }
 
   /* ===== GALERIE - DVA OBRÁZKY VEDLE SEBE ===== */
-  .m-p-g {
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: 5px;
-    justify-content: center;
-  }
-
-  .m-p-g img {
-    width: calc(50% - 3px);
-    max-width: calc(50% - 3px);
-    height: auto;
-    margin-bottom: 5px;
-  }
-
-  .kontakt {
-    flex-direction: row;
-    flex-wrap: nowrap;
-    gap: 2px;
-    justify-content: space-between;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-  }
-
-  .kontakt img {
-    width: auto;
-    height: clamp(50px, 12vw, 120px);
-    flex: 0 0 auto;
-    max-width: calc((100% - 6px) / 4);
-    object-fit: cover;
-  }
+  /* Obrázky na stránce kontakt zůstávají jako na desktopu - žádné mobilní úpravy */
 }

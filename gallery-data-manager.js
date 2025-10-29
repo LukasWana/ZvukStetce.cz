@@ -472,70 +472,70 @@ class GalleryDataManager {
 
                 // Obrázky ze složky gallery
                 {
-                    "src": "gallery/101A0096a.png",
+                    "src": "gallery/101A0096a.jpg",
                     "title": "Kaligrafické dílo",
                     "description": "Tradiční japonská kaligrafie.",
                     "year": "2024",
                     "technique": "Šodó"
                 },
                 {
-                    "src": "gallery/20231014_161450.png",
+                    "src": "gallery/20231014_161450.jpg",
                     "title": "Umělecká kaligrafie",
                     "description": "Umělecká kaligrafie jako forma výrazu.",
                     "year": "2023",
                     "technique": "Umělecká"
                 },
                 {
-                    "src": "gallery/67071542_2223611747758593_3295359420732538880_n.png",
+                    "src": "gallery/67071542_2223611747758593_3295359420732538880_n.jpg",
                     "title": "Kaligrafické cvičení",
                     "description": "Cvičení pro zlepšení techniky.",
                     "year": "2024",
                     "technique": "Cvičení"
                 },
                 {
-                    "src": "gallery/FB_IMG_1742308140423.png",
+                    "src": "gallery/FB_IMG_1742308140423.jpg",
                     "title": "Detailní práce",
                     "description": "Detailní pohled na kaligrafickou práci.",
                     "year": "2024",
                     "technique": "Detail"
                 },
                 {
-                    "src": "gallery/FB_IMG_1742308152536.png",
+                    "src": "gallery/FB_IMG_1742308152536.jpg",
                     "title": "Experimentální přístup",
                     "description": "Experimentální přístup k kaligrafii.",
                     "year": "2024",
                     "technique": "Experimentální"
                 },
                 {
-                    "src": "gallery/holky.png",
+                    "src": "gallery/holky.jpg",
                     "title": "Výstavní dílo",
                     "description": "Dílo připravené pro výstavu.",
                     "year": "2024",
                     "technique": "Výstavní"
                 },
                 {
-                    "src": "gallery/IMG_9641.png",
+                    "src": "gallery/IMG_9641.jpg",
                     "title": "Kaligrafické techniky",
                     "description": "Různé kaligrafické techniky.",
                     "year": "2024",
                     "technique": "Techniky"
                 },
                 {
-                    "src": "gallery/IMG-20241109-WA0024.png",
+                    "src": "gallery/IMG-20241109-WA0024.jpg",
                     "title": "Japonská kaligrafie",
                     "description": "Tradiční japonská kaligrafie.",
                     "year": "2024",
                     "technique": "Šodó"
                 },
                 {
-                    "src": "gallery/Lucerna2.png",
+                    "src": "gallery/Lucerna2.jpg",
                     "title": "Moderní kaligrafie",
                     "description": "Moderní přístup k kaligrafii.",
                     "year": "2024",
                     "technique": "Moderní"
                 },
                 {
-                    "src": "gallery/petra.png",
+                    "src": "gallery/petra.jpg",
                     "title": "Portrétní kaligrafie",
                     "description": "Portrétní kaligrafické dílo.",
                     "year": "2024",
@@ -561,12 +561,19 @@ class GalleryDataManager {
 
         console.log('GalleryDataManager: Setting up progressive loading for', this.galleryData.images.length, 'images');
 
-        // Načíst první batch okamžitě
+        // Načíst první batch okamžitě, pak postupně všechny ostatní
         this.loadNextBatch().then(() => {
-            console.log('GalleryDataManager: First batch loaded, setting up scroll loading');
-            this.setupScrollLoading();
+            console.log('GalleryDataManager: First batch loaded, starting progressive loading of all images');
+            // Spustit progresivní načítání všech obrázků po krátkém delay (aby první batch stihl vykreslit)
+            setTimeout(() => {
+                this.loadAllImagesProgressively();
+            }, 500);
         }).catch(error => {
             console.warn('GalleryDataManager: Error loading first batch:', error);
+            // I při chybě zkusit načíst postupně
+            setTimeout(() => {
+                this.loadAllImagesProgressively();
+            }, 1000);
         });
     }
 
@@ -619,7 +626,10 @@ class GalleryDataManager {
 
         console.log(`GalleryDataManager: Rendering batch ${this.currentBatch}, ${images.length} images, inEnFolder: ${isInEnFolder}`);
 
-        images.forEach(imageData => {
+        // Přidat obrázky postupně s malým delay pro lepší UX
+        images.forEach((imageData, index) => {
+            // Malý delay mezi jednotlivými obrázky (50ms) pro postupné zobrazení
+            setTimeout(() => {
             // Použít relativní cestu vůči aktuálnímu HTML souboru
             const imageSrc = getRelativeImagePath(imageData.src);
 
@@ -636,10 +646,21 @@ class GalleryDataManager {
             if (this.loadedImages.has(imageSrc)) return;
 
             const imgElement = document.createElement('img');
-            imgElement.src = imageSrc;
             imgElement.dataset.full = imageSrc;
             imgElement.className = 'm-p-g__thumbs-img lazy-image';
             imgElement.alt = imageData.title || 'Japonská kaligrafie';
+
+            // Zobrazit obrázek hned, jak se načte
+            imgElement.onload = () => {
+                imgElement.classList.add('layout-completed');
+                imgElement.style.opacity = '1';
+            };
+
+            // Při chybě také zobrazit (aby se nezobrazovalo nic)
+            imgElement.onerror = () => {
+                imgElement.style.opacity = '0.5'; // Poloprůhledný při chybě
+                console.warn('Chyba při načítání obrázku:', imageSrc);
+            };
 
             // Přidání metadata
             if (imageData.title) {
@@ -655,10 +676,22 @@ class GalleryDataManager {
                 imgElement.dataset.technique = imageData.technique;
             }
 
+            // Přidat do DOM hned - obrázek se začne načítat
             galleryContainer.appendChild(imgElement);
+
+            // Nastavit src až poté, co je element v DOM - zajistí postupné načítání
+            imgElement.src = imageSrc;
+
+            // Pokud je obrázek už načtený (cached), zobrazit hned
+            if (imgElement.complete && imgElement.naturalWidth > 0) {
+                imgElement.classList.add('layout-completed');
+                imgElement.style.opacity = '1';
+            }
+
             this.loadedImages.add(imageSrc);
 
             console.log(`GalleryDataManager: Loaded image ${this.loadedImages.size}/${this.galleryData.images.length}: ${imageSrc}`);
+            }, index * 50); // 50ms delay mezi jednotlivými obrázky
         });
 
         // Zobrazit informace o načítání
@@ -713,16 +746,20 @@ class GalleryDataManager {
 
         // Skrýt panel po dokončení načítání
         if (loadedImages >= totalImages) {
+            // Nastavit progress na 100%
+            progressBar.style.width = '100%';
+
             setTimeout(() => {
                 if (infoPanel) {
                     infoPanel.style.opacity = '0';
+                    infoPanel.style.transition = 'opacity 0.5s ease-out';
                     setTimeout(() => {
                         if (infoPanel && infoPanel.parentNode) {
                             infoPanel.parentNode.removeChild(infoPanel);
                         }
-                    }, 1000);
+                    }, 500);
                 }
-            }, 2000);
+            }, 500); // Zkrátit delay na 500ms
         }
     }
 
@@ -813,6 +850,11 @@ class GalleryDataManager {
         }
         this.progressiveLoadingActive = true;
 
+        // Spustit interval pro aktualizaci progress baru každých 300ms
+        const progressInterval = setInterval(() => {
+            this.showLoadingInfo();
+        }, 300);
+
         const loadNext = () => {
             const totalImages = this.galleryData.images.length;
             const loadedImages = this.loadedImages.size;
@@ -820,12 +862,17 @@ class GalleryDataManager {
             if (loadedImages >= totalImages) {
                 console.log('GalleryDataManager: All images loaded progressively');
                 this.progressiveLoadingActive = false;
+                clearInterval(progressInterval);
+                // Aktualizovat progress bar naposledy a pak ho skrýt
+                this.showLoadingInfo();
                 return;
             }
 
             console.log(`GalleryDataManager: Progressive loading ${loadedImages + 1}-${Math.min(loadedImages + this.batchSize, totalImages)} of ${totalImages}`);
 
             this.loadNextBatch().then(() => {
+                // Aktualizovat progress bar po každém batchi
+                this.showLoadingInfo();
                 // Načíst další batch za 200ms
                 setTimeout(loadNext, 200);
             }).catch(error => {
