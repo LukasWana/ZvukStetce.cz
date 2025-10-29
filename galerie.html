@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="simple-grid.min.css" />
+    <link rel="stylesheet" type="text/css" href="gallery.css" />
+    <link rel="stylesheet" href="style.css?v=47" />
+    <link rel="stylesheet" href="mobile-styles.css?v=2" />
+    <script type="text/javascript" src="photo-gallery.js"></script>
+    <script type="text/javascript" src="gallery-loader.js"></script>
+    <script type="text/javascript" src="gallery-data-manager.js"></script>
+    <script type="text/javascript" src="script.js?v=12"></script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Počkat na načtení obrázků přes gallery-data-manager
+        function initializeGallery() {
+          var galleries = Array.from(document.querySelectorAll(".m-p-g"));
+          if (galleries.length) {
+            galleries.forEach(function (elem) {
+              // Zkontrolovat, zda jsou obrázky načtené a mají správné rozměry
+              var thumbsBox = elem.querySelector(".m-p-g__thumbs");
+              var images = thumbsBox ? thumbsBox.querySelectorAll("img") : [];
+
+              // Zkontrolovat, zda mají obrázky načtené rozměry a jsou viditelné
+              var validImages = Array.from(images).filter(function (img) {
+                return (
+                  img.complete &&
+                  img.naturalWidth > 0 &&
+                  img.naturalHeight > 0 &&
+                  img.offsetWidth > 0 &&
+                  img.offsetHeight > 0
+                );
+              });
+
+              if (validImages.length > 5) {
+                // Počkat na více obrázků
+                console.log(
+                  "Initializing MaterialPhotoGallery with",
+                  validImages.length,
+                  "valid images"
+                );
+                try {
+                  // Počkat ještě déle, aby se obrázky správně vykreslily
+                  setTimeout(function () {
+                    try {
+                      // Zkontrolovat, zda galerie stále existuje
+                      if (
+                        elem &&
+                        elem.parentNode &&
+                        !elem.dataset.initialized
+                      ) {
+                        new MaterialPhotoGallery(elem);
+                        elem.dataset.initialized = "true";
+                        console.log(
+                          "MaterialPhotoGallery initialized successfully"
+                        );
+                      }
+                    } catch (initError) {
+                      console.error(
+                        "Chyba při inicializaci galerie:",
+                        initError
+                      );
+                    }
+                  }, 1000); // Zvýšeno na 1 sekundu
+                } catch (error) {
+                  console.warn("Chyba při inicializaci galerie:", error);
+                  // Zkusit znovu za 2 sekundy
+                  setTimeout(function () {
+                    try {
+                      if (
+                        elem &&
+                        elem.parentNode &&
+                        !elem.dataset.initialized
+                      ) {
+                        new MaterialPhotoGallery(elem);
+                        elem.dataset.initialized = "true";
+                      }
+                    } catch (retryError) {
+                      console.error(
+                        "Chyba při opakované inicializaci galerie:",
+                        retryError
+                      );
+                    }
+                  }, 2000);
+                }
+              } else {
+                console.log(
+                  "Not enough valid images found (" +
+                    validImages.length +
+                    "), retrying in 2000ms..."
+                );
+                setTimeout(initializeGallery, 2000);
+              }
+            });
+
+            // Ovládání klávesnicí (pro aktivní galerii)
+            document.addEventListener("keydown", function (e) {
+              var fullscreenActive = document.querySelector(
+                ".m-p-g__fullscreen.active"
+              );
+              if (fullscreenActive) {
+                var activeGallery = fullscreenActive.closest(".m-p-g");
+                // ESC - zavřít galerii
+                if (e.key === "Escape" || e.keyCode === 27) {
+                  var closeBtn =
+                    activeGallery &&
+                    activeGallery.querySelector(".m-p-g__controls-close");
+                  if (closeBtn) {
+                    closeBtn.click();
+                  }
+                }
+                // Šipka vlevo - předchozí fotka
+                if (e.key === "ArrowLeft" || e.keyCode === 37) {
+                  var prevBtn =
+                    activeGallery &&
+                    activeGallery.querySelector(".m-p-g__controls-arrow--prev");
+                  if (prevBtn) {
+                    prevBtn.click();
+                  }
+                }
+                // Šipka vpravo - další fotka
+                if (e.key === "ArrowRight" || e.keyCode === 39) {
+                  var nextBtn =
+                    activeGallery &&
+                    activeGallery.querySelector(".m-p-g__controls-arrow--next");
+                  if (nextBtn) {
+                    nextBtn.click();
+                  }
+                }
+              }
+            });
+
+            // Swipe funkce pro mobilní zařízení
+            var startX = 0;
+            var startY = 0;
+            var endX = 0;
+            var endY = 0;
+            var minSwipeDistance = 50;
+
+            document.addEventListener(
+              "touchstart",
+              function (e) {
+                var fullscreenActive = document.querySelector(
+                  ".m-p-g__fullscreen.active"
+                );
+                if (fullscreenActive) {
+                  startX = e.touches[0].clientX;
+                  startY = e.touches[0].clientY;
+                }
+              },
+              false
+            );
+
+            document.addEventListener(
+              "touchend",
+              function (e) {
+                var fullscreenActive = document.querySelector(
+                  ".m-p-g__fullscreen.active"
+                );
+                if (fullscreenActive) {
+                  endX = e.changedTouches[0].clientX;
+                  endY = e.changedTouches[0].clientY;
+
+                  var deltaX = endX - startX;
+                  var deltaY = endY - startY;
+
+                  // Zkontrolovat, zda je swipe horizontální
+                  if (
+                    Math.abs(deltaX) > Math.abs(deltaY) &&
+                    Math.abs(deltaX) > minSwipeDistance
+                  ) {
+                    var activeGallery = fullscreenActive.closest(".m-p-g");
+
+                    if (deltaX > 0) {
+                      // Swipe vpravo - předchozí fotka
+                      var prevBtn =
+                        activeGallery &&
+                        activeGallery.querySelector(
+                          ".m-p-g__controls-arrow--prev"
+                        );
+                      if (prevBtn) {
+                        prevBtn.click();
+                      }
+                    } else {
+                      // Swipe vlevo - další fotka
+                      var nextBtn =
+                        activeGallery &&
+                        activeGallery.querySelector(
+                          ".m-p-g__controls-arrow--next"
+                        );
+                      if (nextBtn) {
+                        nextBtn.click();
+                      }
+                    }
+                  }
+                }
+              },
+              false
+            );
+          }
+        }
+
+        // Počkat déle, aby se načetly obrázky
+        setTimeout(initializeGallery, 3000); // Zvýšeno na 3 sekundy
+      });
+    </script>
+  </head>
+  <body>
+    <div class="hamburger-menu">
+      <div class="language-switcher">
+        <a
+          href="en/galerie.html"
+          class="lang-flag"
+          data-lang="en"
+          title="Switch to English"
+        >
+          <img src="img/001-united-kingdom.svg" height="24" alt="English" />
+        </a>
+      </div>
+      <button class="hamburger" id="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <nav class="menu-overlay" id="menuOverlay">
+        <ul>
+          <li><a href="index.html">O mě</a></li>
+          <li><a href="obchod.html">Obchod</a></li>
+          <li><a href="vystavy.html">Výstavy</a></li>
+          <li><a href="galerie.html">Galerie</a></li>
+          <li><a href="skola.html">Škola Iroha</a></li>
+          <li><a href="kontakt.html">Kontakt</a></li>
+          <li class="menu-social">
+            <a class="social email-icon" href="">
+              <img src="img/mail_black.svg" height="30" alt="Email" />
+            </a>
+            <a
+              target="_blank"
+              class="social"
+              href="https://facebook.com/KurzyJaponskeKaligrafie"
+            >
+              <img src="img/fb_black.svg" height="30" alt="Facebook" />
+            </a>
+            <a
+              target="_blank"
+              class="social"
+              href="https://instagram.com/petra.vitaskova"
+            >
+              <img src="img/ig_black.svg" height="30" alt="Instagram" />
+            </a>
+          </li>
+          <li><a href="#" class="menu-close">×</a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <main>
+      <div class="contact">
+        <a
+          target="_blank"
+          class="social"
+          href="https://facebook.com/KurzyJaponskeKaligrafie"
+        >
+          <img
+            src="img/fb_black.svg"
+            height="40"
+            alt="Facebook Japonská kaligrafie Petra Vitásková"
+          />
+        </a>
+        <a
+          target="_blank"
+          class="social"
+          href="https://instagram.com/petra.vitaskova"
+        >
+          <img
+            src="img/ig_black.svg"
+            height="40"
+            alt="Instagram Japonská kaligrafie Petra Vitásková"
+          />
+        </a>
+        <a class="social email-icon" href="">
+          <img src="img/mail_black.svg" height="40" alt="Email" />
+        </a>
+      </div>
+
+      <div class="container">
+        <div class="row">
+          <div class="col-12 mt-4">
+            <h2>GALERIE</h2>
+          </div>
+        </div>
+      </div>
+
+      <div class="m-p-g">
+        <div
+          class="m-p-g__thumbs"
+          data-google-image-layout
+          data-max-height="320"
+        >
+          <!-- Obrázky budou načteny dynamicky pomocí gallery-data-manager.js -->
+        </div>
+        <div class="m-p-g__fullscreen"></div>
+      </div>
+
+      <div class="container" style="margin-top: 0px">
+        <div class="row">
+          <div class="col-3">
+            <video
+              src="newImages/VID-20200605-WA0010.mp4"
+              controls
+              style="width: auto; height: 320px"
+            ></video>
+          </div>
+          <div class="col-3">
+            <video
+              src="newImages/VID-20200618-WA0029.mp4"
+              controls
+              style="width: auto; height: 320px"
+            ></video>
+          </div>
+          <div class="col-3">
+            <video
+              src="newImages/VID-20220609-WA0019.mp4"
+              controls
+              style="width: auto; height: 320px"
+            ></video>
+          </div>
+        </div>
+      </div>
+
+      <div class="container foot_foto">
+        <div class="row">
+          <div class="col-12">
+            <div class="spacer height10">&nbsp;</div>
+          </div>
+        </div>
+        <div class="col-12 dhide">
+          <figure>
+            <img src="gallery/petra.png" />
+          </figure>
+        </div>
+        <div class="col-12">
+          <img src="img/kritiku.jpg" />
+        </div>
+      </div>
+    </main>
+    <footer class="contact">
+      <a class="social email-icon" href="">
+        <img src="img/mail_white.svg" height="40" alt="Email" />
+      </a>
+      <a
+        target="_blank"
+        class="social"
+        href="https://facebook.com/KurzyJaponskeKaligrafie"
+      >
+        <img
+          src="img/fb_white.svg"
+          height="40"
+          alt="Facebook Japonská kaligrafie Petra Vitásková"
+        />
+      </a>
+      <a
+        target="_blank"
+        class="social"
+        href="https://instagram.com/petra.vitaskova"
+      >
+        <img
+          src="img/ig_white.svg"
+          height="40"
+          alt="Instagram Japonská kaligrafie Petra Vitásková"
+        />
+      </a>
+    </footer>
+  </body>
+</html>

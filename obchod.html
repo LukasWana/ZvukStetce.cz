@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="simple-grid.min.css">
+        <link rel="stylesheet" href="style.css?v=47">
+        <link rel="stylesheet" href="mobile-styles.css?v=2">
+        <script type="text/javascript" src="script.js?v=11"></script>
+        <script type="text/javascript" src="qrcode.min.js"></script>
+        <script>
+            // Počkat, až se načte celá stránka
+            document.addEventListener('DOMContentLoaded', function() {
+                // QR kód 1 - Bankovní platba (SPD formát pro české banky)
+                const platba1 = "SPD*1.0*ACC:CZ6508000000001234567890*AM:5000.00*CC:CZK*MSG:Obraz Sunset*X-VS:001";
+                new QRCode(document.getElementById("qr1"), {
+                    text: platba1,
+                    width: 180,
+                    height: 180,
+                    colorDark: "#333333",
+                    colorLight: "#ffffff"
+                });
+
+                // QR kód 2
+                const platba2 = "SPD*1.0*ACC:CZ6508000000001234567890*AM:7500.00*CC:CZK*MSG:Obraz Ocean*X-VS:002";
+                new QRCode(document.getElementById("qr2"), {
+                    text: platba2,
+                    width: 180,
+                    height: 180,
+                    colorDark: "#333333",
+                    colorLight: "#ffffff"
+                });
+
+                // QR kód 3
+                const platba3 = "SPD*1.0*ACC:CZ6508000000001234567890*AM:6000.00*CC:CZK*MSG:Obraz Abstract*X-VS:003";
+                new QRCode(document.getElementById("qr3"), {
+                    text: platba3,
+                    width: 180,
+                    height: 180,
+                    colorDark: "#333333",
+                    colorLight: "#ffffff"
+                });
+            });
+        </script>
+    </head>
+    <body>
+
+        <div class="hamburger-menu">
+            <div class="language-switcher">
+                <a href="en/obchod.html" class="lang-flag" data-lang="en" title="Switch to English">
+                    <img src="img/001-united-kingdom.svg" height="24" alt="English">
+                </a>
+            </div>
+            <button class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <nav class="menu-overlay" id="menuOverlay">
+                <ul>
+                    <li><a href="index.html">O mě</a></li>
+                    <li><a href="obchod.html">Obchod</a></li>
+                    <li><a href="vystavy.html">Výstavy</a></li>
+                    <li><a href="galerie.html">Galerie</a></li>
+                    <li><a href="skola.html">Škola Iroha</a></li>
+                    <li><a href="kontakt.html">Kontakt</a></li>
+                    <li class="menu-social">
+                        <a class="social email-icon" href="">
+                            <img src="img/mail_black.svg" height="30" alt="Email">
+                        </a>
+                        <a target="_blank" class="social" href="https://facebook.com/KurzyJaponskeKaligrafie">
+                            <img src="img/fb_black.svg" height="30" alt="Facebook">
+                        </a>
+                        <a target="_blank" class="social" href="https://instagram.com/petra.vitaskova">
+                            <img src="img/ig_black.svg" height="30" alt="Instagram">
+                        </a>
+                    </li>
+                    <li><a href="#" class="menu-close">×</a></li>
+                </ul>
+            </nav>
+        </div>
+
+
+        <main>
+            <div class="contact">
+              <a
+                target="_blank"
+                class="social"
+                href="https://facebook.com/KurzyJaponskeKaligrafie"
+              >
+                <img
+                  src="img/fb_black.svg"
+                  height="40"
+                  alt="Facebook Japonská kaligrafie Petra Vitásková"
+                />
+              </a>
+              <a
+                target="_blank"
+                class="social"
+                href="https://instagram.com/petra.vitaskova"
+              >
+                <img
+                  src="img/ig_black.svg"
+                  height="40"
+                  alt="Instagram Japonská kaligrafie Petra Vitásková"
+                />
+              </a>
+              <a class="social email-icon" href="">
+                <img
+                  src="img/mail_black.svg"
+                  height="40"
+                  alt="Email"
+                />
+              </a>
+            </div>
+
+            <div class="container exhibition">
+                <div class="row">
+                    <div class="col-12">
+                        <h2>OBCHOD</h2>
+                    </div>
+
+
+                    <div class="row">
+                        <div class="galerie">
+                            <!-- Obraz 1 -->
+                            <div class="obraz">
+                                <div class="obraz-nahled">
+                                <img src="qr-codes/Frame.jpg" alt="Nad horami">
+                            </div>
+                            <h3>Nad horami</h3>
+                            <div class="cena">5 000 Kč</div>
+                            <div id="qr1" class="qr-container"></div>
+                            <p class="instrukce">Naskenuj QR kód pro platbu</p>
+                            <div class="platebni-info">
+                                <strong>Bankovní platba:</strong><br>
+                                Účet: 123456789/0800<br>
+                                VS: 001
+                            </div>
+                        </div>
+
+                        <!-- Obraz 2 -->
+                        <div class="obraz">
+                            <div class="obraz-nahled">
+                                <img src="qr-codes/Frame.jpg" alt="Oceánské vlny">
+                            </div>
+                            <h3>Oceánské vlny</h3>
+                            <div class="cena">7 500 Kč</div>
+                            <div id="qr2" class="qr-container"></div>
+                            <p class="instrukce">Naskenuj QR kód pro platbu</p>
+                            <div class="platebni-info">
+                                <strong>Bankovní platba:</strong><br>
+                                Účet: 123456789/0800<br>
+                                VS: 002
+                            </div>
+                        </div>
+
+                        <!-- Obraz 3 -->
+                        <div class="obraz">
+                            <div class="obraz-nahled">
+                                <img src="qr-codes/Frame.jpg" alt="Abstraktní sny">
+                            </div>
+                            <h3>Abstraktní sny</h3>
+                            <div class="cena">6 000 Kč</div>
+                            <div id="qr3" class="qr-container"></div>
+                            <p class="instrukce">Naskenuj QR kód pro platbu</p>
+                            <div class="platebni-info">
+                                <strong>Bankovní platba:</strong><br>
+                                Účet: 123456789/0800<br>
+                                VS: 003
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                </div>
+            </div>
+
+            <div class="jak-to-funguje">
+                <h2>Jak to funguje?</h2>
+                <div class="kroky">
+                    <div class="krok">
+                        <div class="cislo">1</div>
+                        <h3>Vyber si obraz</h3>
+                        <p>Prohlédni si galerii a najdi obraz, který se ti líbí</p>
+                    </div>
+                    <div class="krok">
+                        <div class="cislo">2</div>
+                        <h3>Naskenuj QR kód</h3>
+                        <p>Otevře se ti automaticky bankovní aplikace s předvyplněnou platbou. Stačí potvrdit.</p>
+                    </div>
+                    <div class="krok">
+                        <div class="cislo">3</div>
+                        <h3>Pošli email</h3>
+                        <p>Po platbě mi napiš na <span><a class="social email-icon" href=""><img src="img/mail_black.svg" height="20" alt="Email" /></a></span> s adresou pro doručení</p>
+                    </div>
+                    <div class="krok">
+                        <div class="cislo">4</div>
+                        <h3>Doručení do 3 dnů</h3>
+                        <p>Obraz ti bezpečně zabalím a pošlu kurýrem přímo domů </p>
+                    </div>
+                </div>
+                <div class="zaruka">
+                    <strong>Záruka:</strong> Pokud se ti obraz nebude líbit, vrátíš ho do 14 dnů a peníze ti vrátím zpět!
+                </div>
+            </div>
+
+
+
+            <div class="container foot_foto">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="spacer height10">
+                            &nbsp;
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 dhide">
+                    <figure>
+                        <img src="gallery/petra.png">
+                    </figure>
+                </div>
+
+            </div>
+        </main>
+        <footer class="contact">
+                <a class="social email-icon" href="">
+                  <img
+                    src="img/mail_white.svg"
+                    height="40"
+                    alt="Email"
+                  />
+                </a>
+                <a target="_blank" class="social" href="https://facebook.com/KurzyJaponskeKaligrafie">
+                    <img src="img/fb_white.svg" height="40" alt="Facebook Japonská kaligrafie Petra Vitásková">
+                </a>
+                <a target="_blank" class="social" href="https://instagram.com/petra.vitaskova">
+                    <img src="img/ig_white.svg" height="40" alt="Instagram Japonská kaligrafie Petra Vitásková">
+                </a>
+        </footer>
+    </body>
+</html>
