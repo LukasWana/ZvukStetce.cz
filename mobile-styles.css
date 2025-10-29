@@ -17,6 +17,21 @@
     transform: none !important;
   }
 
+  /* Výjimka pro obrázky na stránce kontakt - nechat desktop styly (vedle sebe) */
+  .kontakt.m-p-g {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    gap: 0.25rem !important;
+  }
+
+  .kontakt.m-p-g img {
+    max-width: calc((100% - 0.75rem) / 4) !important;
+    width: auto !important;
+    height: clamp(80px, 20vw, 300px) !important;
+    flex: 0 1 auto !important;
+    display: block !important;
+  }
+
   html {
     overflow-x: hidden;
     width: 100%;
@@ -412,6 +427,11 @@
 
   /* ===== OBRÁZKY BEZ TRANSFORMACÍ ===== */
   img {
+    transform: none !important;
+  }
+
+  /* Výjimka pro obrázky na stránce kontakt - nechat desktop styly */
+  .kontakt.m-p-g img {
     transform: none !important;
   }
 
