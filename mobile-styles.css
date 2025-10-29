@@ -329,18 +329,20 @@
 
   .kontakt {
     flex-direction: row;
-    flex-wrap: wrap;
-    gap: 5px;
+    flex-wrap: nowrap;
+    gap: 3px;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
   }
 
   .kontakt img {
     width: auto;
-    max-width: calc((100% - 10px) / 2);
-    height: auto;
-    margin-bottom: 5px;
-    flex: 0 1 auto;
+    height: clamp(60px, 15vw, 150px);
+    flex: 0 0 auto;
+    max-width: calc((100% - 9px) / 4);
+    object-fit: cover;
   }
 
   /* ===== OBCHOD ===== */
@@ -629,15 +631,18 @@
 
   .kontakt {
     flex-direction: row;
-    flex-wrap: wrap;
-    gap: 5px;
-    justify-content: center;
+    flex-wrap: nowrap;
+    gap: 2px;
+    justify-content: space-between;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
   }
 
   .kontakt img {
-    width: calc(50% - 3px);
-    max-width: calc(50% - 3px);
-    height: auto;
-    margin-bottom: 5px;
+    width: auto;
+    height: clamp(50px, 12vw, 120px);
+    flex: 0 0 auto;
+    max-width: calc((100% - 6px) / 4);
+    object-fit: cover;
   }
 }
