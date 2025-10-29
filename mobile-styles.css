@@ -7,8 +7,14 @@
 
   /* ===== ZÁKLADNÍ RESET ===== */
   * {
-    max-width: 100% !important;
     box-sizing: border-box !important;
+  }
+
+  img {
+    max-width: 100% !important;
+    width: auto !important;
+    height: auto !important;
+    transform: none !important;
   }
 
   html {
@@ -306,29 +312,35 @@
 
   /* ===== GALERIE ===== */
   .m-p-g {
-    flex-direction: column;
-    gap: 10px;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 5px;
     align-items: center;
+    justify-content: center;
   }
 
   .m-p-g img {
-    width: 100%;
-    max-width: 100%;
+    width: auto;
+    max-width: calc((100% - 10px) / 2);
     height: auto;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
+    flex: 0 1 auto;
   }
 
   .kontakt {
-    flex-direction: column;
-    gap: 15px;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 5px;
     align-items: center;
+    justify-content: center;
   }
 
   .kontakt img {
-    width: 100%;
-    max-width: 100%;
+    width: auto;
+    max-width: calc((100% - 10px) / 2);
     height: auto;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
+    flex: 0 1 auto;
   }
 
   /* ===== OBCHOD ===== */
@@ -410,6 +422,34 @@
     display: flex !important;
     align-items: center;
     justify-content: center;
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+
+  footer.contact a.email-icon img {
+    display: block !important;
+    width: auto !important;
+    height: 40px !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+
+  footer.contact a.social img {
+    display: block !important;
+    width: auto !important;
+    height: 40px !important;
+  }
+
+  /* ===== OBRÁZKY BEZ TRANSFORMACÍ ===== */
+  img {
+    transform: none !important;
+  }
+
+  img.translate_right9,
+  img.translate_right20_5,
+  .translate_right9 img,
+  .translate_right20_5 img {
+    transform: none !important;
   }
 
   /* ===== POMOCNÉ TŘÍDY ===== */
@@ -427,14 +467,18 @@
   }
 
   .phototeachers {
-    width: auto;
-    transform: translateX(-22%);
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    transform: none;
   }
 
   img.basen {
     width: 100%;
-    transform: translateY(19%);
-    margin-bottom: 27%;
+    max-width: 100%;
+    height: auto;
+    transform: none;
+    margin-bottom: 20px;
   }
 
   .col-6.medals {

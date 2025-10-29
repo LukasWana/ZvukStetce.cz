@@ -541,6 +541,22 @@ footer.contact a.email-icon {
   display: flex;
   align-items: center;
   justify-content: center;
+  visibility: visible;
+  opacity: 1;
+}
+
+footer.contact a.email-icon img {
+  display: block;
+  width: auto;
+  height: 40px;
+  visibility: visible;
+  opacity: 1;
+}
+
+footer.contact a.social img {
+  display: block;
+  width: auto;
+  height: 40px;
 }
 
 /* ===== HAMBURGER MENU ===== */
