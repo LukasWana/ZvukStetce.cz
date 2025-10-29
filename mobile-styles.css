@@ -567,4 +567,33 @@
     width: 26px;
     height: 26px;
   }
+
+  /* ===== GALERIE - DVA OBRÁZKY VEDLE SEBE ===== */
+  .m-p-g {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 5px;
+    justify-content: center;
+  }
+
+  .m-p-g img {
+    width: calc(50% - 3px);
+    max-width: calc(50% - 3px);
+    height: auto;
+    margin-bottom: 5px;
+  }
+
+  .kontakt {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 5px;
+    justify-content: center;
+  }
+
+  .kontakt img {
+    width: calc(50% - 3px);
+    max-width: calc(50% - 3px);
+    height: auto;
+    margin-bottom: 5px;
+  }
 }

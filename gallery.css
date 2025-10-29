@@ -259,3 +259,12 @@
 		 transform: none !important;
 	 }
 }
+
+/* ===== NEJMENŠÍ OBRAZOVKY - DVA OBRÁZKY VEDLE SEBE ===== */
+@media (max-width: 320px) {
+	 .m-p-g__thumbs-img {
+		 max-width: calc(50% - 3px) !important;
+		 margin-right: 2px !important;
+		 margin-bottom: 2px !important;
+	 }
+}
