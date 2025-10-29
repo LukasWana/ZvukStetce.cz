@@ -10,7 +10,8 @@
     box-sizing: border-box !important;
   }
 
-  img {
+  /* Obecné styly pro obrázky - ale ne pro kontakt sekci */
+  img:not(.kontakt.m-p-g img) {
     max-width: 100% !important;
     width: auto !important;
     height: auto !important;
@@ -22,6 +23,8 @@
     display: flex !important;
     flex-wrap: nowrap !important;
     gap: 0.25rem !important;
+    align-items: center !important;
+    justify-content: space-between !important;
   }
 
   .kontakt.m-p-g img {
@@ -30,6 +33,7 @@
     height: clamp(80px, 20vw, 300px) !important;
     flex: 0 1 auto !important;
     display: block !important;
+    object-fit: cover !important;
   }
 
   html {
