@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="simple-grid.min.css" />
+    <link rel="stylesheet" href="style.css?v=47" />
+    <link rel="stylesheet" href="mobile-styles.css?v=2" />
+    <script type="text/javascript" src="script.js?v=11"></script>
+  </head>
+  <body>
+    <div class="hamburger-menu">
+      <div class="language-switcher">
+        <a
+          href="en/vystavy.html"
+          class="lang-flag"
+          data-lang="en"
+          title="Switch to English"
+        >
+          <img src="img/001-united-kingdom.svg" height="24" alt="English" />
+        </a>
+      </div>
+      <button class="hamburger" id="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <nav class="menu-overlay" id="menuOverlay">
+        <ul>
+          <li><a href="index.html">O mě</a></li>
+          <li><a href="obchod.html">Obchod</a></li>
+          <li><a href="vystavy.html">Výstavy</a></li>
+          <li><a href="galerie.html">Galerie</a></li>
+          <li><a href="skola.html">Škola Iroha</a></li>
+          <li><a href="kontakt.html">Kontakt</a></li>
+          <li class="menu-social">
+            <a class="social email-icon" href="">
+              <img src="img/mail_black.svg" height="30" alt="Email" />
+            </a>
+            <a
+              target="_blank"
+              class="social"
+              href="https://facebook.com/KurzyJaponskeKaligrafie"
+            >
+              <img src="img/fb_black.svg" height="30" alt="Facebook" />
+            </a>
+            <a
+              target="_blank"
+              class="social"
+              href="https://instagram.com/petra.vitaskova"
+            >
+              <img src="img/ig_black.svg" height="30" alt="Instagram" />
+            </a>
+          </li>
+          <li><a href="#" class="menu-close">×</a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <main>
+      <div class="contact">
+        <a
+          target="_blank"
+          class="social"
+          href="https://facebook.com/KurzyJaponskeKaligrafie"
+        >
+          <img
+            src="img/fb_black.svg"
+            height="40"
+            alt="Facebook Japonská kaligrafie Petra Vitásková"
+          />
+        </a>
+        <a
+          target="_blank"
+          class="social"
+          href="https://instagram.com/petra.vitaskova"
+        >
+          <img
+            src="img/ig_black.svg"
+            height="40"
+            alt="Instagram Japonská kaligrafie Petra Vitásková"
+          />
+        </a>
+        <a class="social email-icon" href="">
+          <img src="img/mail_black.svg" height="40" alt="Email" />
+        </a>
+      </div>
+
+      <div class="container exhibition">
+        <div class="row">
+          <div class="col-8 exhibition_list">
+            <h2>VÝSTAVY V POHYBU</h2>
+            <!-- image left, text right in a flex wrapper; reduced gap to bring them closer -->
+            <div
+              style="
+                display: flex;
+                align-items: flex-start;
+                gap: 0.5rem;
+                flex-wrap: wrap;
+              "
+            >
+              <div style="flex: 0 0 150px; max-width: 150px">
+                <img
+                  src="img/vystava2025_03.jpg"
+                  alt="vystava ICI 2025"
+                  style="width: 100%; height: auto; display: block"
+                />
+              </div>
+              <div style="flex: 1 1 auto; min-width: 150px">
+                <p style="margin: 0"; color: rgb(78, 74, 74)>
+                  <br />
+                  <b>1.11.- 31.1.2025</b>
+                  <br /><br />
+                  Výstava IČI v restauraci
+                  <br /><strong>Restaurant Miyabi Prague</strong>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12 mt-4"></div>
+          <div class="col-8 exhibition_list">
+            <div style="text-align: center; margin-bottom: 1rem">
+              <!-- razitko image moved into the exhibition_list column and centered -->
+              <img
+                src="img/razitko.jpg"
+                alt="razitko"
+                style="max-width: 160px; height: auto"
+              />
+            </div>
+            <h2>MINULÉ VÝSTAVY</h2>
+            <h3>2025</h3>
+            <p>
+              Česko, Praha, <strong>Kostel Pražského Jezulátka</strong><br />
+              Česko, Veselí nad Moravou,
+              <strong>Městská galerie Panský dvůr</strong>
+            </p>
+
+            <h3>2024</h3>
+            <p>
+              Česko, Praha, <strong>Budó Matsuri</strong><br />
+              Česko, Praha, <strong>Botanická zahrada</strong><br />
+              Česko, Praha, <strong>Miyabi</strong>
+            </p>
+
+            <h3>2023</h3>
+            <p>
+              Japonsko, Yokohama, <strong>Kanagawa Kenmin Hall</strong><br />
+              Japonsko, Tokio, <strong>Tokyo Metropolitan Art Museum</strong
+              ><br />
+              Japonsko, Tottori, <strong>Shikano Gallery</strong><br />
+              Česko, Praha, <strong>Divadlo X10</strong><br />
+              Česko, Praha, <strong>Miyabi</strong><br />
+              Česko, Praha, <strong>Galerie Kritiků</strong>
+            </p>
+
+            <h3>2022</h3>
+            <p>
+              Japonsko, Tokio, <strong>Tokyo Metropolitan Art Museum</strong
+              ><br />
+              Japonsko, Tokio, <strong>Kanagawa Kenmin Hall</strong><br />
+              Česko, Praha, <strong>Týnská kavárna</strong><br />
+              Česko, Praha, <strong>Antikvariát dva antikváři</strong>
+            </p>
+
+            <h3>2021</h3>
+            <p>
+              Japonsko, Yokohama, <strong>Kanagawa Kenmin Hall</strong><br />
+              Česko, Praha, <strong>Café Prostoru</strong><br />
+              Japonsko, Tokio, <strong>Metropolitní muzeum</strong><br />
+              Česko, Praha, <strong>Galerie Kritiků</strong>
+            </p>
+
+            <h3>2020</h3>
+            <p>
+              Japonsko, Tokio, <strong>České kulturní centrum</strong><br />
+              Česko, Praha, <strong>Modern Art Gallery</strong><br />
+              Česko, Praha, <strong>Galerie Kritiků</strong>
+            </p>
+
+            <h3>2019</h3>
+            <p>
+              Česko, Praha, <strong>Galerie Lucerna</strong><br />
+              Česko, Praha, <strong>Divadlo Na prádle</strong><br />
+              Japonsko, Tokio, <strong>Ueno Galery</strong><br />
+              Česko, Praha, <strong>Galerie Kritiků</strong>
+            </p>
+          </div>
+        </div>
+      </div>
+
+ 
+      <div class="col-6 kontakt m-p-g " >
+            <img src="img/vystava2025_01.jpg" alt="plakát výstava Zvuk štetce, 2025" />
+            <img src="img/vystava2025_02.jpg" alt="plakát výstava Brána Ticha, 2025" />
+            <img src="img/vystava2024_01.jpg" alt="plakát výstava Duše slov, 2024" />
+            <img src="img/vystava2024_02.jpg" alt="plakát výstava Budó, 2024" />
+            <img src="img/vystava2023_01.jpg" alt="plakát výstava Tottori, 2023" />
+      </div>
+      <div class="col-6 kontakt m-p-g "  >
+            <img src="img/vystava2023_02.jpg" alt="plakát výstava Miyabi, 2023" />
+            <img src="img/vystava2023_03.jpg" alt="plakát výstava Kjogen, 2023" />
+            <img src="img/vystava2022_01.jpg" alt="plakát výstava Sendžimon, 2022" />
+            <img src="img/vystava2021_01.jpg" alt="plakát výstava Prostor, 2021" />
+            <img src="img/vystava2020_01.jpg" alt="plakát výstava Iroha, 2020" />
+      </div>
+          
+        
+
+    </main>
+
+    <footer class="contact">
+      <a class="social email-icon" href="">
+        <img src="img/mail_white.svg" height="40" alt="Email" />
+      </a>
+      <a
+        target="_blank"
+        class="social"
+        href="https://facebook.com/KurzyJaponskeKaligrafie"
+      >
+        <img
+          src="img/fb_white.svg"
+          height="40"
+          alt="Facebook Japonská kaligrafie Petra Vitásková"
+        />
+      </a>
+      <a
+        target="_blank"
+        class="social"
+        href="https://instagram.com/petra.vitaskova"
+      >
+        <img
+          src="img/ig_white.svg"
+          height="40"
+          alt="Instagram Japonská kaligrafie Petra Vitásková"
+        />
+      </a>
+    </footer>
+  </body>
+</html>
