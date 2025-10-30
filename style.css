@@ -677,7 +677,7 @@ footer.contact a.social img {
   height: 100vh;
   background-color: var(--color-white);
   transition: right 0.3s ease;
-  z-index: 1000;
+  z-index: 10000;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -741,6 +741,23 @@ footer.contact a.social img {
 }
 
 .menu-overlay ul li a.menu-close:hover {
+  opacity: 1;
+  color: var(--color-primary);
+}
+
+/* Nové umístění křížku mimo list, do pravého horního rohu */
+.menu-overlay > a.menu-close {
+  position: absolute;
+  top: 12px;
+  right: 14px;
+  font-size: 36px;
+  color: var(--color-black);
+  text-decoration: none;
+  opacity: 0.7;
+  z-index: 10001;
+}
+
+.menu-overlay > a.menu-close:hover {
   opacity: 1;
   color: var(--color-primary);
 }

@@ -26,10 +26,6 @@ class GalleryDataManager {
         try {
             // Inline data místo fetch kvůli CORS problému
             this.galleryData = this.getInlineGalleryData();
-            console.log('GalleryDataManager: Data loaded inline, count:', this.galleryData.images.length);
-            console.log('GalleryDataManager: Total images to load:', this.galleryData.images.length);
-            console.log('GalleryDataManager: Images from newImages folder:', this.galleryData.images.filter(img => img.src.startsWith('newImages/')).length);
-            console.log('GalleryDataManager: Images from gallery folder:', this.galleryData.images.filter(img => img.src.startsWith('gallery/')).length);
             return this.galleryData;
         } catch (error) {
             console.error('Nepodařilo se načíst data galerie:', error);
@@ -559,11 +555,10 @@ class GalleryDataManager {
         const galleryContainer = document.querySelector('.m-p-g__thumbs');
         if (!galleryContainer) return;
 
-        console.log('GalleryDataManager: Setting up progressive loading for', this.galleryData.images.length, 'images');
+
 
         // Načíst první batch okamžitě, pak postupně všechny ostatní
         this.loadNextBatch().then(() => {
-            console.log('GalleryDataManager: First batch loaded, starting progressive loading of all images');
             // Spustit progresivní načítání všech obrázků po krátkém delay (aby první batch stihl vykreslit)
             setTimeout(() => {
                 this.loadAllImagesProgressively();
@@ -580,7 +575,6 @@ class GalleryDataManager {
     loadNextBatch() {
         return new Promise((resolve, reject) => {
             if (!this.galleryData || !this.galleryData.images) {
-                console.log('GalleryDataManager: No gallery data available');
                 resolve();
                 return;
             }
@@ -589,19 +583,17 @@ class GalleryDataManager {
             const endIndex = Math.min(startIndex + this.batchSize, this.galleryData.images.length);
 
             if (startIndex >= this.galleryData.images.length) {
-                console.log('GalleryDataManager: All batches loaded');
                 resolve();
                 return;
             }
 
-            console.log(`GalleryDataManager: Loading batch ${this.currentBatch + 1}, images ${startIndex + 1}-${endIndex}`);
+
 
             const batch = this.galleryData.images.slice(startIndex, endIndex);
 
             try {
                 this.renderImageBatch(batch);
                 this.currentBatch++;
-                console.log(`GalleryDataManager: Batch ${this.currentBatch} loaded successfully`);
                 resolve();
             } catch (error) {
                 console.error('GalleryDataManager: Error rendering batch:', error);
@@ -624,7 +616,7 @@ class GalleryDataManager {
         // Použít relativní cestu - pokud jsme v en/, přidat ../ prefix
         const getRelativeImagePath = (imagePath) => isInEnFolder ? '../' + imagePath : imagePath;
 
-        console.log(`GalleryDataManager: Rendering batch ${this.currentBatch}, ${images.length} images, inEnFolder: ${isInEnFolder}`);
+
 
         // Přidat obrázky postupně s malým delay pro lepší UX
         images.forEach((imageData, index) => {
@@ -689,8 +681,6 @@ class GalleryDataManager {
             }
 
             this.loadedImages.add(imageSrc);
-
-            console.log(`GalleryDataManager: Loaded image ${this.loadedImages.size}/${this.galleryData.images.length}: ${imageSrc}`);
             }, index * 50); // 50ms delay mezi jednotlivými obrázky
         });
 
@@ -774,7 +764,6 @@ class GalleryDataManager {
             const loadedImages = this.loadedImages.size;
 
             if (loadedImages >= totalImages) {
-                console.log('GalleryDataManager: All images loaded, stopping scroll loading');
                 return;
             }
 
@@ -790,7 +779,6 @@ class GalleryDataManager {
                 const shouldLoadMore = containerRect.bottom < viewportHeight + 500 || loadedImages < 100;
 
                 if (shouldLoadMore) {
-                    console.log(`GalleryDataManager: Loading more images. Loaded: ${loadedImages}/${totalImages}`);
                     isLoading = true;
                     this.loadNextBatch().then(() => {
                         isLoading = false;
@@ -823,7 +811,6 @@ class GalleryDataManager {
             const loadedImages = this.loadedImages.size;
 
             if (loadedImages < totalImages) {
-                console.log(`GalleryDataManager: Scroll loading seems stuck at ${loadedImages}/${totalImages}, loading all images progressively`);
                 this.loadAllImagesProgressively();
             }
         }, 5000);
@@ -834,18 +821,16 @@ class GalleryDataManager {
             const loadedImages = this.loadedImages.size;
 
             if (loadedImages < totalImages / 2) {
-                console.log(`GalleryDataManager: Only ${loadedImages}/${totalImages} loaded, forcing progressive loading`);
                 this.loadAllImagesProgressively();
             }
         }, 10000);
     }
 
     loadAllImagesProgressively() {
-        console.log('GalleryDataManager: Starting progressive loading of all images');
+
 
         // Zajistit, že se neinicializuje vícekrát současně
         if (this.progressiveLoadingActive) {
-            console.log('GalleryDataManager: Progressive loading already active');
             return;
         }
         this.progressiveLoadingActive = true;
@@ -860,7 +845,6 @@ class GalleryDataManager {
             const loadedImages = this.loadedImages.size;
 
             if (loadedImages >= totalImages) {
-                console.log('GalleryDataManager: All images loaded progressively');
                 this.progressiveLoadingActive = false;
                 clearInterval(progressInterval);
                 // Aktualizovat progress bar naposledy a pak ho skrýt
@@ -868,7 +852,7 @@ class GalleryDataManager {
                 return;
             }
 
-            console.log(`GalleryDataManager: Progressive loading ${loadedImages + 1}-${Math.min(loadedImages + this.batchSize, totalImages)} of ${totalImages}`);
+
 
             this.loadNextBatch().then(() => {
                 // Aktualizovat progress bar po každém batchi
@@ -908,21 +892,21 @@ class GalleryDataManager {
                         );
 
                         if (validImages.length > 5) { // Počkat na více obrázků
-                            console.log('Re-initializing MaterialPhotoGallery with', validImages.length, 'valid images');
+
                             // Počkat ještě déle, aby se obrázky správně vykreslily
                             setTimeout(() => {
                                 try {
                                     if (gallery && gallery.parentNode && !gallery.dataset.initialized) {
                                         new MaterialPhotoGallery(gallery);
                                         gallery.dataset.initialized = 'true';
-                                        console.log('MaterialPhotoGallery re-initialized successfully');
+
                                     }
                                 } catch (initError) {
                                     console.error('Chyba při re-inicializaci galerie:', initError);
                                 }
                             }, 1000); // Zvýšeno na 1 sekundu
                         } else {
-                            console.log('Not enough valid images found for re-initialization (' + validImages.length + '), skipping...');
+
                         }
                     } catch (error) {
                         console.warn('Chyba při re-inicializaci galerie:', error);
@@ -971,13 +955,11 @@ class GalleryDataManager {
 
 // Inicializace při načtení DOM
 document.addEventListener('DOMContentLoaded', function() {
-    console.log('GalleryDataManager: DOM loaded, checking for gallery...');
     // Inicializovat data manager pouze na stránkách s galerií
     if (document.querySelector('.m-p-g')) {
-        console.log('GalleryDataManager: Gallery found, initializing...');
         window.galleryDataManager = new GalleryDataManager();
     } else {
-        console.log('GalleryDataManager: No gallery found on this page');
+
     }
 });
 
