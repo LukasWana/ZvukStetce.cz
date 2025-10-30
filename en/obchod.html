@@ -41,6 +41,39 @@
                     colorDark: "#333333",
                     colorLight: "#ffffff"
                 });
+
+                // QR code 4
+                const payment4 = "SPD*1.0*ACC:CZ6508000000001234567890*AM:5000.00*CC:CZK*MSG:Obraz Sunset 2*X-VS:004";
+                var qr4El = document.getElementById("qr4");
+                if (qr4El) new QRCode(qr4El, {
+                    text: payment4,
+                    width: 180,
+                    height: 180,
+                    colorDark: "#333333",
+                    colorLight: "#ffffff"
+                });
+
+                // QR code 5
+                const payment5 = "SPD*1.0*ACC:CZ6508000000001234567890*AM:7500.00*CC:CZK*MSG:Obraz Ocean 2*X-VS:005";
+                var qr5El = document.getElementById("qr5");
+                if (qr5El) new QRCode(qr5El, {
+                    text: payment5,
+                    width: 180,
+                    height: 180,
+                    colorDark: "#333333",
+                    colorLight: "#ffffff"
+                });
+
+                // QR code 6
+                const payment6 = "SPD*1.0*ACC:CZ6508000000001234567890*AM:6000.00*CC:CZK*MSG:Obraz Abstract 2*X-VS:006";
+                var qr6El = document.getElementById("qr6");
+                if (qr6El) new QRCode(qr6El, {
+                    text: payment6,
+                    width: 180,
+                    height: 180,
+                    colorDark: "#333333",
+                    colorLight: "#ffffff"
+                });
             });
         </script>
 
@@ -127,7 +160,54 @@
                         <!-- Artwork 1 -->
                         <div class="obraz">
                             <div class="obraz-nahled">
-                                <img loading="lazy" src="../qr-codes/Frame.jpg" alt="Sunset Over Mountains">
+                                <img loading="lazy" src="../obchod/6f39ecd3-d386-473d-8e6c-34136b383979.jpg" alt="Sunset Over Mountains">
+                            </div>
+                            <h3>Sunset Over Mountains</h3>
+                            <div class="cena">5,000 CZK</div>
+                            <div id="qr4" class="qr-container"></div>
+                            <p class="instrukce">scan QR code for payment</p>
+                            <div class="platebni-info">
+                                <strong>Bank Payment:</strong><br>
+                                Account: 123456789/0800<br>
+                                VS: 001
+                            </div>
+                        </div>
+
+                        <!-- Artwork 2 -->
+                        <div class="obraz">
+                            <div class="obraz-nahled">
+                                <img loading="lazy" src="../obchod/cb600632-45ed-4ab1-9961-377612953176.jpg" alt="Ocean Waves">
+                            </div>
+                            <h3>Ocean Waves</h3>
+                            <div class="cena">7,500 CZK</div>
+                            <div id="qr5" class="qr-container"></div>
+                            <p class="instrukce">scan QR code for payment</p>
+                            <div class="platebni-info">
+                                <strong>Bank Payment:</strong><br>
+                                Account: 123456789/0800<br>
+                                VS: 002
+                            </div>
+                        </div>
+
+                        <!-- Artwork 3 -->
+                        <div class="obraz">
+                            <div class="obraz-nahled">
+                                <img loading="lazy" src="../obchod/8c90274f-bdb0-4036-9216-c25457cbce3f.jpg" alt="Abstract Dreams">
+                            </div>
+                            <h3>Abstract Dreams</h3>
+                            <div class="cena">6,000 CZK</div>
+                            <div id="qr6" class="qr-container"></div>
+                            <p class="instrukce">scan QR code for payment</p>
+                            <div class="platebni-info">
+                                <strong>Bank Payment:</strong><br>
+                                Account: 123456789/0800<br>
+                                VS: 003
+                            </div>
+                        </div>
+                        <!-- Artwork 4 -->
+                        <div class="obraz">
+                            <div class="obraz-nahled">
+                                <img loading="lazy" src="../obchod/8233bc90-689b-402a-812f-a83be669f785.jpg" alt="Sunset Over Mountains">
                             </div>
                             <h3>Sunset Over Mountains</h3>
                             <div class="cena">5,000 CZK</div>
@@ -140,10 +220,10 @@
                             </div>
                         </div>
 
-                        <!-- Artwork 2 -->
+                        <!-- Artwork 5 -->
                         <div class="obraz">
                             <div class="obraz-nahled">
-                                <img loading="lazy" src="../qr-codes/Frame.jpg" alt="Ocean Waves">
+                                <img loading="lazy" src="../obchod/59f9cbd6-13d4-45ac-af20-38476dd49c70.jpg" alt="Ocean Waves">
                             </div>
                             <h3>Ocean Waves</h3>
                             <div class="cena">7,500 CZK</div>
@@ -156,10 +236,10 @@
                             </div>
                         </div>
 
-                        <!-- Artwork 3 -->
+                        <!-- Artwork 6 -->
                         <div class="obraz">
                             <div class="obraz-nahled">
-                                <img loading="lazy" src="../qr-codes/Frame.jpg" alt="Abstract Dreams">
+                                <img loading="lazy" src="../obchod/1976dad2-9822-4a8f-b80f-7d26cea62566.jpg" alt="Abstract Dreams">
                             </div>
                             <h3>Abstract Dreams</h3>
                             <div class="cena">6,000 CZK</div>
@@ -171,6 +251,8 @@
                                 VS: 003
                             </div>
                         </div>
+
+
                     </div>
                 </div>
             </div>
