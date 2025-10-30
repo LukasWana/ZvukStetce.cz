@@ -18,7 +18,6 @@ class GalleryDataManager {
             await this.loadGalleryData();
             this.setupProgressiveLoading();
         } catch (error) {
-            console.error('Chyba při načítání dat galerie:', error);
         }
     }
 
@@ -28,7 +27,6 @@ class GalleryDataManager {
             this.galleryData = this.getInlineGalleryData();
             return this.galleryData;
         } catch (error) {
-            console.error('Nepodařilo se načíst data galerie:', error);
             return null;
         }
     }
@@ -564,7 +562,6 @@ class GalleryDataManager {
                 this.loadAllImagesProgressively();
             }, 500);
         }).catch(error => {
-            console.warn('GalleryDataManager: Error loading first batch:', error);
             // I při chybě zkusit načíst postupně
             setTimeout(() => {
                 this.loadAllImagesProgressively();
@@ -651,7 +648,6 @@ class GalleryDataManager {
             // Při chybě také zobrazit (aby se nezobrazovalo nic)
             imgElement.onerror = () => {
                 imgElement.style.opacity = '0.5'; // Poloprůhledný při chybě
-                console.warn('Chyba při načítání obrázku:', imageSrc);
             };
 
             // Přidání metadata
@@ -785,12 +781,10 @@ class GalleryDataManager {
                         // Zkusit načíst další batch okamžitě
                         setTimeout(loadMoreImages, 100);
                     }).catch(error => {
-                        console.warn('GalleryDataManager: Error loading batch:', error);
                         isLoading = false;
                     });
                 }
             } catch (error) {
-                console.warn('GalleryDataManager: Error getting container rect:', error);
                 return;
             }
         };
@@ -860,7 +854,6 @@ class GalleryDataManager {
                 // Načíst další batch za 200ms
                 setTimeout(loadNext, 200);
             }).catch(error => {
-                console.error('GalleryDataManager: Error in progressive loading:', error);
                 // Zkusit znovu za 1 sekundu
                 setTimeout(loadNext, 1000);
             });
@@ -902,14 +895,12 @@ class GalleryDataManager {
 
                                     }
                                 } catch (initError) {
-                                    console.error('Chyba při re-inicializaci galerie:', initError);
                                 }
                             }, 1000); // Zvýšeno na 1 sekundu
                         } else {
 
                         }
                     } catch (error) {
-                        console.warn('Chyba při re-inicializaci galerie:', error);
                     }
                 }
             });

@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="../style.css?v=47" />
     <link rel="stylesheet" href="../mobile-styles.css?v=2" />
     <script type="text/javascript" src="../photo-gallery.js"></script>
-    <script type="text/javascript" src="../gallery-loader.js"></script>
+
     <script type="text/javascript" src="../gallery-data-manager.js"></script>
     <script type="text/javascript" src="../script.js?v=12"></script>
     <script type="text/javascript" src="../menu.js?v=1"></script>
@@ -54,11 +54,9 @@
 
                       }
                     } catch (initError) {
-                      console.error("Error initializing gallery:", initError);
                     }
                   }, 1000); // Zvýšeno na 1 sekundu
                 } catch (error) {
-                  console.warn("Error initializing gallery:", error);
                   // Zkusit znovu za 2 sekundy
                   setTimeout(function () {
                     try {
@@ -71,10 +69,7 @@
                         elem.dataset.initialized = "true";
                       }
                     } catch (retryError) {
-                      console.error(
-                        "Error retrying gallery initialization:",
-                        retryError
-                      );
+
                     }
                   }, 2000);
                 }

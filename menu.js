@@ -13,20 +13,12 @@
 
   function defineGlobalToggle() {
     window.__toggleMenu = function() {
-      console.log('[menu] window.__toggleMenu called');
       var btn = document.getElementById('hamburger');
       var overlay = document.getElementById('menuOverlay');
-      if (!btn || !overlay) {
-        console.warn('[menu] elements missing', { btn: !!btn, overlay: !!overlay });
-        return;
-      }
+      if (!btn || !overlay) return;
       btn.classList.toggle('active');
       overlay.classList.toggle('active');
       overlay.style.right = overlay.classList.contains('active') ? '0' : getClosedRightValue(overlay);
-      console.log('[menu] toggled', {
-        active: overlay.classList.contains('active'),
-        right: overlay.style.right
-      });
     };
   }
   function isEnglish() {
@@ -146,7 +138,6 @@
   }
 
   function injectMenu() {
-    console.log('[menu] injectMenu start');
     var root = document.getElementById('menu-root');
     if (!root) {
       root = document.createElement('div');
@@ -158,7 +149,6 @@
     var hb = document.getElementById('hamburger');
     if (hb) {
       hb.addEventListener('click', window.__toggleMenu, { once: false });
-      console.log('[menu] hamburger bound (single handler)');
     }
     // Vždy navázat zavírání na křížek i odkazy (resetuje i inline right)
     var overlay = document.getElementById('menuOverlay');
@@ -187,15 +177,12 @@
     }
     // Inicializace hamburgeru (přes hlavní funkci, případně lokální fallback)
     if (typeof initHamburgerMenu === 'function') {
-      console.log('[menu] calling initHamburgerMenu from script.js');
       initHamburgerMenu();
     } else {
-      console.log('[menu] using setupLocalMenuHandlers fallback');
       setupLocalMenuHandlers();
       // Pro jistotu zkusit znovu po načtení window, kdyby se script.js teprve načetl
       window.addEventListener('load', function() {
         if (typeof initHamburgerMenu === 'function') {
-          console.log('[menu] calling initHamburgerMenu on window.load');
           initHamburgerMenu();
         }
       });
@@ -214,7 +201,6 @@
     hamburger.dataset.bound = 'true';
 
     var toggle = function() {
-      console.log('[menu] local toggle click');
       hamburger.classList.toggle('active');
       menuOverlay.classList.toggle('active');
       // Hard fallback i kdyby CSS selektor selhal
@@ -223,7 +209,6 @@
       menuOverlay.style.zIndex = '10000';
       menuOverlay.style.visibility = 'visible';
       menuOverlay.style.opacity = '1';
-      console.log('[menu] local toggled', { active: isActive, right: menuOverlay.style.right });
     };
 
     // Přímý onclick raději nepoužívat, aby nedocházelo k dvojkliku

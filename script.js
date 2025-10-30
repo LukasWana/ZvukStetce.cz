@@ -7,7 +7,7 @@ onload = (event) => {
     if (video) {
         video.load();
         video.play().catch(function(error) {
-            console.warn("Video autoplay failed:", error);
+            // silence autoplay errors in production
         });
     }
 
