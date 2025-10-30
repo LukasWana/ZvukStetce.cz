@@ -732,18 +732,7 @@ footer.contact a.social img {
   align-items: center;
 }
 
-.menu-overlay ul li a.menu-close {
-  font-size: 36px;
-  opacity: 0.6;
-  font-weight: 300;
-  line-height: 1;
-  transition: opacity 0.3s ease, color 0.3s ease;
-}
-
-.menu-overlay ul li a.menu-close:hover {
-  opacity: 1;
-  color: var(--color-primary);
-}
+/* staré umístění křížku uvnitř listu odstraněno */
 
 /* Nové umístění křížku mimo list, do pravého horního rohu */
 .menu-overlay > a.menu-close {
