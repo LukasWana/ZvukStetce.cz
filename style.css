@@ -162,6 +162,27 @@ p strong {
   width: 100vw;
 }
 
+/* Full-bleed school container on large screens */
+@media screen and (min-width: 1200px) {
+  .container.school {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    width: 100vw !important;
+    max-width: 100vw !important;
+    margin-left: calc(50% - 50vw) !important;
+    margin-right: calc(50% - 50vw) !important;
+    background-size: cover; /* vyplnit až k pravému okraji */
+    background-position: center center;
+  }
+  .container.school .row,
+  .container.school .col-12 {
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+}
+
 .container.exhibition {
   max-width: 100%;
   margin-left: 0;
@@ -847,6 +868,32 @@ img.iroha_kali {
   max-width: 100%;
   width: 100%;
 }
+
+/* Full-bleed hero image at the bottom of HP */
+.container.foot_foto {
+  padding-left: 0;
+  padding-right: 0;
+  width: 100vw;
+  max-width: 100vw !important;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+}
+
+.container.foot_foto .row,
+.container.foot_foto .col-12 {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  max-width: 100%;
+}
+
+.container.foot_foto .col-12 img {
+  display: block;
+  width: 100vw;
+  max-width: 100vw;
+  height: auto;
+}
+
 
 /* ===== SPECIFICKÉ OPRAVY PRO INDEX STRÁNKU ===== */
 body:has(header) .hamburger-menu {
