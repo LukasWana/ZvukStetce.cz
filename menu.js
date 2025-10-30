@@ -31,6 +31,14 @@
     return file && file.length ? file : 'index.html';
   }
 
+  function makeLink(href, label) {
+    var current = getCurrentPage();
+    var isActive = current === href;
+    var cls = isActive ? ' class="active"' : '';
+    var aria = isActive ? ' aria-current="page" tabindex="-1"' : '';
+    return '<a href="' + href + '"' + cls + aria + '>' + label + '</a>';
+  }
+
   function getMenuHtml() {
     var currentPage = getCurrentPage();
     if (isEnglish()) {
@@ -54,12 +62,12 @@
         '  <nav class="menu-overlay" id="menuOverlay">\n' +
         '    <a href="#" class="menu-close">×</a>\n' +
         '    <ul>\n' +
-        '      <li><a href="index.html">About Me</a></li>\n' +
-        '      <li><a href="obchod.html">Shop</a></li>\n' +
-        '      <li><a href="vystavy.html">Exhibitions</a></li>\n' +
-        '      <li><a href="galerie.html">Gallery</a></li>\n' +
-        '      <li><a href="skola.html">Iroha school</a></li>\n' +
-        '      <li><a href="kontakt.html">Contact</a></li>\n' +
+        '      <li>' + makeLink('index.html', 'About Me') + '</li>\n' +
+        '      <li>' + makeLink('obchod.html', 'Shop') + '</li>\n' +
+        '      <li>' + makeLink('vystavy.html', 'Exhibitions') + '</li>\n' +
+        '      <li>' + makeLink('galerie.html', 'Gallery') + '</li>\n' +
+        '      <li>' + makeLink('skola.html', 'Iroha school') + '</li>\n' +
+        '      <li>' + makeLink('kontakt.html', 'Contact') + '</li>\n' +
         '      <li class="menu-social">\n' +
         '        <a class="social email-icon" href="">\n' +
         '          <img src="../img/mail_black.svg" height="30" alt="Email" />\n' +
@@ -106,12 +114,12 @@
       '  <nav class="menu-overlay" id="menuOverlay">\n' +
       '    <a href="#" class="menu-close">×</a>\n' +
       '    <ul>\n' +
-      '      <li><a href="index.html">O mě</a></li>\n' +
-      '      <li><a href="obchod.html">Obchod</a></li>\n' +
-      '      <li><a href="vystavy.html">Výstavy</a></li>\n' +
-      '      <li><a href="galerie.html">Galerie</a></li>\n' +
-      '      <li><a href="skola.html">Škola Iroha</a></li>\n' +
-      '      <li><a href="kontakt.html">Kontakt</a></li>\n' +
+      '      <li>' + makeLink('index.html', 'O mě') + '</li>\n' +
+      '      <li>' + makeLink('obchod.html', 'Obchod') + '</li>\n' +
+      '      <li>' + makeLink('vystavy.html', 'Výstavy') + '</li>\n' +
+      '      <li>' + makeLink('galerie.html', 'Galerie') + '</li>\n' +
+      '      <li>' + makeLink('skola.html', 'Škola Iroha') + '</li>\n' +
+      '      <li>' + makeLink('kontakt.html', 'Kontakt') + '</li>\n' +
       '      <li class="menu-social">\n' +
       '        <a class="social email-icon" href="">\n' +
       '          <img src="img/mail_black.svg" height="30" alt="Email" />\n' +

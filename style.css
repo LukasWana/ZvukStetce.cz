@@ -735,6 +735,12 @@ footer.contact a.social img {
   transition: color 0.3s ease;
 }
 
+.menu-overlay ul li a.active {
+  color: var(--color-primary);
+  pointer-events: none;
+  cursor: default;
+}
+
 .menu-overlay ul li a:hover {
   color: var(--color-primary);
 }
