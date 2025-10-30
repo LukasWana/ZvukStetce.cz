@@ -204,11 +204,16 @@ function detectLanguageAndRedirect() {
     // Kontrola, zda jsme na české verzi (ne v /en/ složce)
     var isEnglishVersion = window.location.pathname.includes('/en/');
 
-    // Pokud uživatel už někdy klikl na přepínač jazyka, respektovat jeho volbu
-    var userLanguageChoice = localStorage.getItem('userLanguageChoice');
-
-    // Pokud už si uživatel vybral jazyk, neděláme nic
-    if (userLanguageChoice) {
+    // Pokud uživatel už někdy klikl na přepínač jazyka, respektovat jeho volbu (ukládáme 'cs' nebo 'en')
+    var userLanguage = localStorage.getItem('userLanguage');
+    if (userLanguage === 'cs' && isEnglishVersion) {
+        var currentPage = window.location.pathname.split('/').pop() || 'index.html';
+        window.location.href = '../' + currentPage;
+        return;
+    }
+    if (userLanguage === 'en' && !isEnglishVersion) {
+        var currentPage = window.location.pathname.split('/').pop() || 'index.html';
+        window.location.href = 'en/' + currentPage;
         return;
     }
 
@@ -216,11 +221,7 @@ function detectLanguageAndRedirect() {
     var browserLanguage = navigator.language || navigator.userLanguage;
     var isCzech = browserLanguage.startsWith('cs');
 
-    // Pokud jsme na české verzi a jazyk prohlížeče není čeština, přesměrovat na EN
-    if (!isEnglishVersion && !isCzech) {
-        var currentPage = window.location.pathname.split('/').pop() || 'index.html';
-        window.location.href = 'en/' + currentPage;
-    }
+    // Výchozí chování: nechat CZ jako default; pouze pokud je prohlížeč česky a jsme na EN, vrať na CZ
 
     // Pokud jsme na anglické verzi a jazyk prohlížeče je čeština, přesměrovat na CS
     if (isEnglishVersion && isCzech) {
@@ -234,8 +235,9 @@ document.addEventListener('DOMContentLoaded', function() {
     var langFlags = document.querySelectorAll('.lang-flag');
     langFlags.forEach(function(flag) {
         flag.addEventListener('click', function() {
-            // Uložit, že uživatel si aktivně vybral jazyk
-            localStorage.setItem('userLanguageChoice', 'true');
+            // Uložit preferovaný jazyk uživatele ('cs' nebo 'en')
+            var lang = flag.dataset.lang || 'cs';
+            localStorage.setItem('userLanguage', lang);
         });
     });
 });
