@@ -5,12 +5,8 @@
 
   function getFooterHtml() {
     if (isEnglish()) {
-      // EN footer with centered image at 360px height
       return (
         '<footer class="contact">\n' +
-        '  <div style="width:100%;text-align:left;margin:0 0 12px 12px;">\n' +
-        '    <img src="../img/petra.jpg" alt="Petra" style="display:block;margin:0;height:200px;width:auto;" />\n' +
-        '  </div>\n' +
         '  <a class="social email-icon" href="">\n' +
         '    <img src="../img/mail_white.svg" height="40" alt="Email" />\n' +
         '  </a>\n' +
@@ -25,9 +21,6 @@
     }
     return (
       '<footer class="contact">\n' +
-      '  <div style="width:100%;text-align:left;margin:0 0 12px 12px;">\n' +
-      '    <img src="img/petra.jpg" alt="Petra" style="display:block;margin:0;height:200px;width:auto;" />\n' +
-      '  </div>\n' +
       '  <a class="social email-icon" href="">\n' +
       '    <img src="img/mail_white.svg" height="40" alt="Email" />\n' +
       '  </a>\n' +
