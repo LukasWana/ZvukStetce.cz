@@ -1027,8 +1027,13 @@ figure.drops img {
 
 .phototeachers {
   margin-top: 19em;
-  width: 100%;
+  display: block; /* aby sa to spravilo pod seba - zabera cely riadok */
+  width: 100vw; /* roztiahne obrázok cez celú šírku okna prehliadača, bez ohľadu na šírku rodičovského kontajnera */
+  max-width: 100vw;
   height: auto;
+  object-fit: cover; /* Vycentrujte obrázok s okrajom odsadením polovice výrezu od stredového toku kontajnera.  */
+  margin-left: calc(50% - 50vw); /* od kraja po kraj -„full-bleed“ efekt, ak máš stránku s obsahom, ktorý je zarovnaný na stred */
+  margin-right: calc(50% - 50vw); /* t.j posunie obrázok doprava a doľava o polovicu rozdielu medzi stredom stránky a šírkou viewportu. */
 }
 
 img.basen {
