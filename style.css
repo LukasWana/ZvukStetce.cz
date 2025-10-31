@@ -1027,7 +1027,7 @@ figure.drops img {
 
 .phototeachers {
   margin-top: 19em;
-  display: block; /* aby sa to spravilo pod seba - zabera cely riadok */
+  display: block; /* -aby sa to spravilo pod seba - zabera cely riadok */
   width: 100vw; /* roztiahne obrázok cez celú šírku okna prehliadača, bez ohľadu na šírku rodičovského kontajnera */
   max-width: 100vw;
   height: auto;
