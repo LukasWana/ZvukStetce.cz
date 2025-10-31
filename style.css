@@ -14,10 +14,10 @@
   --font-family: var(--font-primary), var(--font-fallback);
 
   /* Řádkování */
-  --line-height-base: 1.8;
-  --line-height-headings: 1.4;
+  --line-height-base: 1.4;
+  --line-height-headings: 1.6;
   --line-height-large: 1.7;
-  --line-height-paragraphs: 1.7;
+  --line-height-paragraphs: 1.3;
 
   /* Barvy */
   --color-primary: #ff1e00;
@@ -134,7 +134,7 @@ body {
   box-sizing: inherit;
 }
 
-/* ===== HLAVIČKA A VIDEO ===== */
+/* ===== POVODNE >> HLAVIČKA A VIDEO ===== */
 header {
   overflow: hidden;
   position: relative;
@@ -172,15 +172,6 @@ header h1 {
   z-index: 2;
 }
 
-header h1 strong {
-  font-size: 48px;
-  line-height: var(--line-height-large);
-  letter-spacing: 21px;
-  font-weight: normal;
-  font-family: var(--font-family);
-}
-
-
 header h1 {
   position: relative;
   top: 41vh;
@@ -193,9 +184,15 @@ header h1 {
   font-size: 40px;
 }
 header h1 strong {
-  font-size: 28px;
-  letter-spacing: 15px;
+  font-size: 48px;
+  line-height: var(--line-height-headings); /*--line-height-large);*/
+  letter-spacing: 21px;
+  font-weight: normal;
+  font-family: var(--font-family);
 }
+
+
+
 
 /* Zabrání uříznutí nadpisu na HP na menších šířkách */
 @media screen and (max-width: 800px) {
@@ -214,7 +211,9 @@ header h1 strong {
   font-size: 28px;
   letter-spacing: 15px;
 }
-}
+} 
+
+
 
 /* ===== NADPISY ===== */
 .h2,
@@ -359,7 +358,7 @@ p strong {
 .continue {
   padding-top: 5em;
   max-width: 28rem;
-  width: 150%;
+  width: 100%;
   transform: none;
   margin: 0 auto; /* vycentruje text, keď je v úzkom stĺpci */
   position: relative;       /* aby bol nad pozadím */
@@ -369,7 +368,7 @@ p strong {
 /* 🟢 na väčších obrazovkách sa zachova pôvodné zarovnanie: */
 @media (min-width: 992px) {
   .continue {
-    width: 150%;
+    width: 100%;
     transform: translateX(-27%) translateY(-5em); /* jemný posun doľava a nahor */
   }
 }
@@ -971,10 +970,11 @@ figure {
 }
 
 figure figcaption {
-  font-size: 1.8em;
+  font-size: 1.2em;
   font-weight: 200;
   text-align: center;
   margin-top: 1em;
+  margin-bottom: 2em;
 }
 
 figure img {
