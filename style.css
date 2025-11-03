@@ -134,7 +134,7 @@ body {
   box-sizing: inherit;
 }
 
-/* ===== POVODNE >> HLAVIČKA A VIDEO ===== */
+/* ===== HLAVIČKA A VIDEO ===== */
 header {
   overflow: hidden;
   position: relative;
@@ -234,6 +234,8 @@ h3 {
   text-align: left;
 }
 
+
+
 h2 {
   font-size: 32px;
 }
@@ -268,7 +270,7 @@ p strong {
   margin-right: 0;
   padding-left: 20%;
   padding-right: 20%;
-  min-height: 640px;
+  min-height: 450px;
   background-image: url(img/101A0089aBW.jpg);
   background-position: -10% -13px;
   background-size: contain;
@@ -298,6 +300,8 @@ p strong {
   }
 }
 
+/* ===== Sekcia info o vystavach ===== */
+
 .container.exhibition {
   max-width: 100%;
   margin-left: 0;
@@ -314,6 +318,37 @@ p strong {
   width: 100vw;
 }
 
+
+/* 🔄 ale keď sa stránka zúži (napr. tablet, mobil) 
+sekcia ma menšie vnútorné okraje */
+
+@media (max-width: 768px) {
+  .container.exhibition {
+ padding-left: 5%;
+  padding-right: 5%;
+    background-position: right;
+    background-size: 30%;
+  }
+
+  .exhibition_list h2 {
+    font-size: 2.2em;
+    letter-spacing: 2px;
+    text-align: left;
+  }
+  .exhibition_list h3 {
+    font-size: 1.8em;
+    letter-spacing: 2px;
+    text-align: left;
+  }
+
+  .exhibition_list p {
+    font-size: 1.1rem;
+    text-align: left;
+  }
+}
+/* ===== END Sekcia info o vystavach ===== */
+
+/* ===== Sekcia s obrazkom vlavo na pozadi a textom vpravo ===== */
 .container.interspace {
   max-width: 100%;
   margin-left: 0;
@@ -327,7 +362,6 @@ p strong {
   position: relative;        /* potrebné pre vrstvy */
 }
 
-/* ===== Sekcia s obrazkom vlavo na pozadi a textom vpravo ===== */
 .interspace {
   background-image: url(img/meziprostor.png);
   background-position: -10% -13px;
@@ -665,7 +699,7 @@ footer {
   padding-top: var(--space-4);
   display: flex;
   align-items: center;
-  gap: 0;
+  gap: 1em;
 }
 
 footer.contact {

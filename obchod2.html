@@ -6,6 +6,7 @@
         <link rel="stylesheet" type="text/css" href="simple-grid.min.css">
         <link rel="stylesheet" href="style.css?v=47">
         <link rel="stylesheet" href="mobile-styles.css?v=2">
+        <link rel="stylesheet" href="obchod.css" />
         <script type="text/javascript" src="script.js?v=11"></script>
         <script type="text/javascript" src="menu.js?v=1"></script>
         <script type="text/javascript" src="qrcode.min.js"></script>
@@ -16,8 +17,8 @@
                 const platba1 = "SPD*1.0*ACC:CZ6508000000001234567890*AM:5000.00*CC:CZK*MSG:Obraz Sunset*X-VS:001";
                 new QRCode(document.getElementById("qr1"), {
                     text: platba1,
-                    width: 180,
-                    height: 180,
+                    width: 100,
+                    height: 100,
                     colorDark: "#333333",
                     colorLight: "#ffffff"
                 });
@@ -79,10 +80,9 @@
     </head>
 
     <body>
-        <div id="menu-root"></div>
 
-        <main>
-            <div class="contact">
+  <main>
+      <div class="contact-obchod"  >
               <a
                 target="_blank"
                 class="social"
@@ -112,15 +112,38 @@
                   alt="Email"
                 />
               </a>
-            </div>
+      </div>
 
-            <div class="container exhibition">
-                <div class="row">
-                    <div class="col-12">
-                        <h2>OBCHOD</h2>
-                    </div>
+<!--  Menu typy produktov -->
+<nav class="menu-obchod">
+  <ul>
+    <li><a href="#stojankove">Stojánky</a></li>
+    <li><a href="#modrotisk">Modrotisk</a></li>
+    <li><a href="#svitky">Svitky</a></li>
+    <li><a href="#tasky">Tašky</a></li>
+    <li><a href="#tricka">Trička</a></li>
+    <li><a href="#vejire">Vejeře</a></li>
+    <li><a href="#namieru">Kaligrafie na míru</a></li>
+    <li><a href="#kurzy">Workshopy</a></li>
+    <li><a href="#eventy">Firemní akce</a></li>
+  </ul>
+</nav>
+<!--  END Menu typy produktov -->
 
 
+
+  <div class="row">
+    <div class="col-12">
+      <h2>OBCHOD</h2>
+    </div>
+
+    <!-- 1. Kaligrafie stojankové -->
+    <section id="stojankove" class="obchod-styling">
+    <h2>Kaligrafie stojankové</h2>
+            <p> Jednotný rozmer 20×30 cm, drevený stojan, čierny atrament.
+                </p>
+                <p class="price">Cena: 650 Kč</p>
+            <div class="product">
                     <div class="row">
                         <div class="galerie">
                             <!-- Obraz 1 -->
@@ -128,7 +151,7 @@
                                 <div class="obraz-nahled">
                                 <img loading="lazy" src="obchod/6f39ecd3-d386-473d-8e6c-34136b383979.jpg" alt="Nad horami">
                             </div>
-                            <h3>Nad horami</h3>
+                            <h3>Pohyb</h3>
                             <div class="cena">5 000 Kč</div>
                             <div id="qr1" class="qr-container"></div>
                             <p class="instrukce">Naskenuj QR kód pro platbu</p>
@@ -137,9 +160,14 @@
                                 Účet: 123456789/0800<br>
                                 VS: 001
                             </div>
-                        </div>
-
-                        <!-- Obraz 2 -->
+                            <p> Jednotný rozmer 20×30 cm, drevený stojan, čierny atrament.
+                </p>
+                <p class="price">Cena: 650 Kč</p>
+                <button class="order-btn" data-product="Kaligrafie stojanková">
+                  Objednať
+                </button>
+             </div>
+              <!-- Obraz 2 -->
                         <div class="obraz">
                             <div class="obraz-nahled">
                                 <img loading="lazy" src="obchod/cb600632-45ed-4ab1-9961-377612953176.jpg" alt="Oceánské vlny">
@@ -171,6 +199,11 @@
                             </div>
                         </div>
 
+          </div>
+          
+    </section>
+  
+                       
                         <!-- Obraz 4 -->
                         <div class="obraz">
                             <div class="obraz-nahled">
@@ -254,7 +287,89 @@
                 </div>
             </div>
 
-        </main>
+     
+        <div id="menu-root"></div>
+      
+            
+       <div style="margin: 0"; color: rgb(78, 74, 74)></span>>
+       
+          <!-- 2. Modrotisk -->
+          <section id="modrotisk" class="category">
+            <h2>Kaligrafia modrotisk</h2>
+            <div class="product">
+              <img src="modrotisk.jpg" alt="Kaligrafia modrotisk" />
+              <div class="info">
+                <p>Originálny kúsok na tradičnej látke, ručne maľovaný.</p>
+                <p class="price">Cena: 850 Kč</p>
+                <button class="order-btn" data-product="Kaligrafia modrotisk">
+                  Objednať
+                </button>
+              </div>
+            </div>
+          </section>
+        </div>
+
+
+      <div class="contact">
+              <a
+                target="_blank"
+                class="social"
+                href="https://facebook.com/KurzyJaponskeKaligrafie"
+              >
+                <img loading="lazy"
+                  src="img/fb_black.svg"
+                  height="40"
+                  alt="Facebook Japonská kaligrafie Petra Vitásková"
+                />
+              </a>
+              <a
+                target="_blank"
+                class="social"
+                href="https://instagram.com/petra.vitaskova"
+              >
+                <img loading="lazy"
+                  src="img/ig_black.svg"
+                  height="40"
+                  alt="Instagram Japonská kaligrafie Petra Vitásková"
+                />
+              </a>
+              <a class="social email-icon" href="">
+                <img loading="lazy"
+                  src="img/mail_black.svg"
+                  height="40"
+                  alt="Email"
+                />
+              </a>
+            </div>
+             </main>
+
+
+        
+     <!-- Jednoduché modálne okno pre objednávku -->
+    <div id="order-modal" class="modal">
+      <div class="modal-content">
+        <span id="close-modal">&times;</span>
+        <h3>Objednávka</h3>
+        <form id="order-form">
+          <label for="product">Produkt:</label>
+          <input type="text" id="product" name="product" readonly />
+
+          <label for="name">Meno a priezvisko:</label>
+          <input type="text" id="name" name="name" required />
+
+          <label for="email">E-mail:</label>
+          <input type="email" id="email" name="email" required />
+
+          <label for="message">Poznámka / text na mieru:</label>
+          <textarea id="message" name="message" rows="3"></textarea>
+
+          <button type="submit">Odoslať objednávku</button>
+        </form>
+      </div>
+    </div>
+
+    <script src="obchod.js"></script>
+
 
       <div class="container foot_foto">
         <div class="row">
