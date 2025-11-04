@@ -97,51 +97,65 @@
     return (
       '<div class="hamburger-menu">\n' +
       '  <div class="language-switcher">\n' +
-      '    <a\n' +
-      '      href="en/' + currentPage + '"\n' +
+      "    <a\n" +
+      '      href="en/' +
+      currentPage +
+      '"\n' +
       '      class="lang-flag"\n' +
       '      data-lang="en"\n' +
       '      title="Switch to English"\n' +
-      '    >\n' +
+      "    >\n" +
       '      <img src="img/001-united-kingdom.svg" height="24" alt="English" />\n' +
-      '    </a>\n' +
-      '  </div>\n' +
+      "    </a>\n" +
+      "  </div>\n" +
       '  <button class="hamburger" id="hamburger">\n' +
-      '    <span></span>\n' +
-      '    <span></span>\n' +
-      '    <span></span>\n' +
-      '  </button>\n' +
+      "    <span></span>\n" +
+      "    <span></span>\n" +
+      "    <span></span>\n" +
+      "  </button>\n" +
       '  <nav class="menu-overlay" id="menuOverlay">\n' +
       '    <a href="#" class="menu-close">×</a>\n' +
-      '    <ul>\n' +
-      '      <li>' + makeLink('index.html', 'O mě') + '</li>\n' +
-      '      <li>' + makeLink('obchod.html', 'Obchod') + '</li>\n' +
-      '      <li>' + makeLink('vystavy.html', 'Výstavy') + '</li>\n' +
-      '      <li>' + makeLink('galerie.html', 'Galerie') + '</li>\n' +
-      '      <li>' + makeLink('skola.html', 'Škola Iroha') + '</li>\n' +
-      '      <li>' + makeLink('kontakt.html', 'Kontakt') + '</li>\n' +
+      "    <ul>\n" +
+      "      <li>" +
+      makeLink("index.html", "O mně") +
+      "</li>\n" +
+      "      <li>" +
+      makeLink("obchod.html", "Obchod") +
+      "</li>\n" +
+      "      <li>" +
+      makeLink("vystavy.html", "Výstavy") +
+      "</li>\n" +
+      "      <li>" +
+      makeLink("galerie.html", "Galerie") +
+      "</li>\n" +
+      "      <li>" +
+      makeLink("skola.html", "Škola Iroha") +
+      "</li>\n" +
+      "      <li>" +
+      makeLink("kontakt.html", "Kontakt") +
+      "</li>\n" +
       '      <li class="menu-social">\n' +
       '        <a class="social email-icon" href="">\n' +
       '          <img src="img/mail_black.svg" height="30" alt="Email" />\n' +
-      '        </a>\n' +
-      '        <a\n' +
+      "        </a>\n" +
+      "        <a\n" +
       '          target="_blank"\n' +
       '          class="social"\n' +
       '          href="https://facebook.com/KurzyJaponskeKaligrafie"\n' +
-      '        >\n' +
+      "        >\n" +
       '          <img src="img/fb_black.svg" height="30" alt="Facebook" />\n' +
-      '        </a>\n' +
-      '        <a\n' +
+      "        </a>\n" +
+      "        <a\n" +
       '          target="_blank"\n' +
       '          class="social"\n' +
       '          href="https://instagram.com/petra.vitaskova"\n' +
-      '        >\n' +
+      "        >\n" +
       '          <img src="img/ig_black.svg" height="30" alt="Instagram" />\n' +
-      '        </a>\n' +
-      '      </li>\n' +
-      '    </ul>\n' +
-      '  </nav>\n' +
-      '</div>'
+      "        </a>\n" +
+      "      </li>\n" +
+      "    </ul>\n" +
+      "  </nav>\n" +
+      "</div>"
     );
   }
 

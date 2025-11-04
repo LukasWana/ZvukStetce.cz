@@ -15,7 +15,7 @@
 
   /* Řádkování */
   --line-height-base: 1.4;
-  --line-height-headings: 1.6;
+  --line-height-headings: 1.5;
   --line-height-large: 1.7;
   --line-height-paragraphs: 1.3;
 
@@ -139,52 +139,52 @@ header {
   overflow: hidden;
   position: relative;
   width: 100%;
-  height: 100vh;
+  height: auto;
   background-color: var(--color-black);
   background-position: center;
   background-repeat: no-repeat;
+  display: block;
+  unicode-bidi: isolate;
 }
 
+
 header video {
-  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
+  height: auto;
   object-fit: cover;
+  display: block;
+  position: relative;
   z-index: 1;
   /* Zajištění, že video neovlivní pozici hamburger menu */
   pointer-events: none;
+  overflow-clip-margin: content-box;
 }
 
 header h1 {
-  position: absolute;
-  top: calc(30vw / 2);
+  top: 25%;
   right: 19vw;
   text-align: left;
+  right: auto;;
+  left: 20vw;
+  width: 100%;
   font-weight: normal;
-  font-size: 36px;
+  font-size: 48px;
   color: var(--color-primary);
   letter-spacing: 11px;
   text-transform: uppercase;
   line-height: var(--line-height-headings);
   font-family: var(--font-family);
   z-index: 2;
-}
-
-header h1 {
-  position: relative;
-  top: 41vh;
-  right: auto;;
-  left: 19vw;
-  width: 100%;
-  text-align: center;
+  position: absolute;
   padding: 0 var(--space-2);
   margin-right: var(--space-8);
-  font-size: 40px;
 }
+
+
 header h1 strong {
-  font-size: 48px;
+  font-size: 36px;
   line-height: var(--line-height-headings); /*--line-height-large);*/
   letter-spacing: 21px;
   font-weight: normal;
@@ -196,12 +196,27 @@ header h1 strong {
 
 /* Zabrání uříznutí nadpisu na HP na menších šířkách */
 @media screen and (max-width: 800px) {
+header {
+  height: 100vh;
+  overflow: hidden;
+  display: block;
+  unicode-bidi: isolate;
+}
+header video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  object-fit: cover;
+}
 header h1 {
   position: relative;
   top: 31vh;
   right: auto;;
   left: auto;
   width: 100%;
+  height: 100%;
   text-align: center;
   padding: 0 var(--space-2);
   margin-right: var(--space-8);
@@ -399,7 +414,7 @@ sekcia ma menšie vnútorné okraje */
   z-index: 2; /* aby bol text vždy nad pozadím - obrazok z interspace*/
  ;}
 
-/* 🟢 na väčších obrazovkách sa zachova pôvodné zarovnanie: */
+/* na väčších obrazovkách sa zachova pôvodné zarovnanie: */
 @media (min-width: 992px) {
   .continue {
     width: 100%;
@@ -407,7 +422,7 @@ sekcia ma menšie vnútorné okraje */
   }
 }
 
-/* 🔄 ale keď sa stránka zúži (napr. tablet, mobil) *//
+/* ale keď sa stránka zúži (napr. tablet, mobil) */
 @media (max-width: 768px) {
   .continue {
     transform: none;
@@ -440,52 +455,7 @@ sekcia ma menšie vnútorné okraje */
 }
 
 /* ===== OBRAZOVÉ GALERIE ===== */
-/* Pouze pro kontakt sekci (.kontakt.m-p-g) - ne pro galerii stránku */
-.kontakt.m-p-g {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 0.5rem;
-  width: 100%;
-  box-sizing: border-box;
-  overflow: hidden;
-}
-
-.kontakt.m-p-g img {
-  display: block;
-  height: clamp(80px, 20vw, 300px);
-  width: auto;
-  object-fit: cover;
-  flex: 0 1 auto;
-  max-width: calc((100% - 1.5rem) / 4);
-}
-
-.kontakt.m-p-g {
-  gap: 0.25rem;
-}
-
-.kontakt.m-p-g img {
-  max-width: calc((100% - 0.75rem) / 4);
-}
-
-.kontakt {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 0.75rem;
-  width: 100%;
-  box-sizing: border-box;
-  overflow: hidden;
-}
-
-.kontakt img {
-  display: block;
-  height: clamp(80px, 20vw, 300px);
-  width: auto;
-  object-fit: cover;
-  flex: 0 1 auto;
-  max-width: calc((100% - 2.25rem) / 4);
-}
+/
 
 /* ===== GALERIE STRÁNKA ===== */
 .container.gallery {
@@ -1209,6 +1179,24 @@ body:has(header) .hamburger-menu {
 }
 
 
+
+/* ===== KONTAKT FOTO ===== */
+.kontakt-foto {
+  width: 100vw;
+  max-width: 100vw !important;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  height: 450px;
+  overflow: hidden;
+}
+
+.kontakt-foto img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: center;
+}
 
 /* ===== obycajne linky nechcem aby boli modre ale nenapadne ===== */
 /* bude to platit len pre odkaz s triedou "special-link" */
