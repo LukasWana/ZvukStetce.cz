@@ -1,219 +1,383 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" type="text/css" href="../simple-grid.min.css">
-        <link rel="stylesheet" href="../style.css?v=47">
-        <script type="text/javascript" src="../script.js?v=11"></script>
-        <script type="text/javascript" src="../menu.js?v=1"></script>
-        <script type="text/javascript" src="../qrcode.min.js"></script>
-        <script>
-            // QR kód se nyní generuje dynamicky v obchod.js
-        </script>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="../simple-grid.min.css" />
+    <link rel="stylesheet" href="../style.css?v=47" />
+    <link rel="stylesheet" href="../obchod.css" />
+    <script type="text/javascript" src="../script.js?v=11"></script>
+    <script type="text/javascript" src="../menu.js?v=1"></script>
+    <script type="text/javascript" src="../qrcode.min.js"></script>
+    <script>
+      // QR code is now generated dynamically in obchod.js
+    </script>
+  </head>
 
-    </head>
+  <body>
+    <div id="menu-root"></div>
 
-    <body>
-        <div id="menu-root"></div>
-
-
-        <main>
-            <div class="contact">
-              <a
-                target="_blank"
-                class="social"
-                href="https://facebook.com/KurzyJaponskeKaligrafie"
-              >
-                <img loading="lazy"
-                  src="../img/fb_black.svg"
-                  height="40"
-                  alt="Facebook Japanese Calligraphy Petra Vitásková"
-                />
-              </a>
-              <a
-                target="_blank"
-                class="social"
-                href="https://instagram.com/petra.vitaskova"
-              >
-                <img loading="lazy"
-                  src="../img/ig_black.svg"
-                  height="40"
-                  alt="Instagram Japanese Calligraphy Petra Vitásková"
-                />
-              </a>
-              <a class="social email-icon" href="">
-                <img loading="lazy"
-                  src="../img/mail_black.svg"
-                  height="40"
-                  alt="Email"
-                />
-              </a>
-            </div>
-
-
-            <div class="obchod-styling">
-                <h2>SHOP</h2>
-            </div>
-
-                <div class="container exhibition">
-                    <div class="row">
-                        <div class="col-12">
-                            <h2>SHOP</h2>
-                        </div>
-
-                        <div class="jak-to-funguje">
-                            <h2>✨ How it works?</h2>
-                            <div class="kroky">
-                                <div class="krok">
-                                    <div class="cislo">1</div>
-                                    <h3>Choose your artwork</h3>
-                                    <p>Browse the gallery and find the artwork you love</p>
-                                </div>
-                                <div class="krok">
-                                    <div class="cislo">2</div>
-                                    <h3>Scan QR code</h3>
-                                    <p>Your banking app will open automatically with pre-filled payment. Just confirm.</p>
-                                </div>
-                                <div class="krok">
-                                    <div class="cislo">3</div>
-                                    <p>After payment, write to <strong>petra@zvukstetce.cz</strong> with your delivery address</p>
-                                </div>
-                                <div class="krok">
-                                    <div class="cislo">4</div>
-                                    <h3>Delivery within 3 days</h3>
-                                    <p>I'll securely pack the artwork and send it by courier directly to your home 📦</p>
-                                </div>
-                            </div>
-                            <div class="zaruka">
-                                <strong>💯 Guarantee:</strong> If you don't like the artwork, return it within 14 days and get your money back!
-                            </div>
-                        </div>
-
-                    <div class="row">
-
-                        <div class="galerie">
-                            <!-- Artwork 1 -->
-                            <div class="obraz">
-                                <div class="obraz-nahled">
-                                    <img loading="lazy" src="../obchod/6f39ecd3-d386-473d-8e6c-34136b383979.jpg" alt="Sunset Over Mountains">
-                                </div>
-                                <h3>Sunset Over Mountains</h3>
-                                <div class="cena">5,000 CZK</div>
-                                <div id="qr4" class="qr-container"></div>
-                                <p class="instrukce">scan QR code for payment</p>
-                                <div class="platebni-info">
-                                    <strong>Bank Payment:</strong><br>
-                                    Account: 123456789/0800<br>
-                                    VS: 001
-                                </div>
-                            </div>
-
-                            <!-- Artwork 2 -->
-                            <div class="obraz">
-                                <div class="obraz-nahled">
-                                    <img loading="lazy" src="../obchod/cb600632-45ed-4ab1-9961-377612953176.jpg" alt="Ocean Waves">
-                                </div>
-                                <h3>Ocean Waves</h3>
-                                <div class="cena">7,500 CZK</div>
-                                <div id="qr5" class="qr-container"></div>
-                                <p class="instrukce">scan QR code for payment</p>
-                                <div class="platebni-info">
-                                    <strong>Bank Payment:</strong><br>
-                                    Account: 123456789/0800<br>
-                                    VS: 002
-                                </div>
-                            </div>
-
-                            <!-- Artwork 3 -->
-                            <div class="obraz">
-                                <div class="obraz-nahled">
-                                    <img loading="lazy" src="../obchod/8c90274f-bdb0-4036-9216-c25457cbce3f.jpg" alt="Abstract Dreams">
-                                </div>
-                                <h3>Abstract Dreams</h3>
-                                <div class="cena">6,000 CZK</div>
-                                <div id="qr6" class="qr-container"></div>
-                                <p class="instrukce">scan QR code for payment</p>
-                                <div class="platebni-info">
-                                    <strong>Bank Payment:</strong><br>
-                                    Account: 123456789/0800<br>
-                                    VS: 003
-                                </div>
-                            </div>
-                            <!-- Artwork 4 -->
-                            <div class="obraz">
-                                <div class="obraz-nahled">
-                                    <img loading="lazy" src="../obchod/8233bc90-689b-402a-812f-a83be669f785.jpg" alt="Sunset Over Mountains">
-                                </div>
-                                <h3>Sunset Over Mountains</h3>
-                                <div class="cena">5,000 CZK</div>
-                                <div id="qr1" class="qr-container"></div>
-                                <p class="instrukce">scan QR code for payment</p>
-                                <div class="platebni-info">
-                                    <strong>Bank Payment:</strong><br>
-                                    Account: 123456789/0800<br>
-                                    VS: 001
-                                </div>
-                            </div>
-
-                            <!-- Artwork 5 -->
-                            <div class="obraz">
-                                <div class="obraz-nahled">
-                                    <img loading="lazy" src="../obchod/59f9cbd6-13d4-45ac-af20-38476dd49c70.jpg" alt="Ocean Waves">
-                                </div>
-                                <h3>Ocean Waves</h3>
-                                <div class="cena">7,500 CZK</div>
-                                <div id="qr2" class="qr-container"></div>
-                                <p class="instrukce">scan QR code for payment</p>
-                                <div class="platebni-info">
-                                    <strong>Bank Payment:</strong><br>
-                                    Account: 123456789/0800<br>
-                                    VS: 002
-                                </div>
-                            </div>
-
-                            <!-- Artwork 6 -->
-                            <div class="obraz">
-                                <div class="obraz-nahled">
-                                    <img loading="lazy" src="../obchod/1976dad2-9822-4a8f-b80f-7d26cea62566.jpg" alt="Abstract Dreams">
-                                </div>
-                                <h3>Abstract Dreams</h3>
-                                <div class="cena">6,000 CZK</div>
-                                <div id="qr3" class="qr-container"></div>
-                                <p class="instrukce">scan QR code for payment</p>
-                                <div class="platebni-info">
-                                    <strong>Bank Payment:</strong><br>
-                                    Account: 123456789/0800<br>
-                                    VS: 003
-                                </div>
-                            </div>
-
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </main>
-        
-      <div class="container foot_foto">
-        <div class="row">
-          <div class="col-12">
-            <div class="spacer height10">&nbsp;</div>
-          </div>
-        </div>
-        <div class="col-12 dhide">
-          <figure>
-            <img loading="lazy" src="../gallery/petra.jpg" />
-          </figure>
-        </div>
-        <div class="col-12">
-          <img loading="lazy" src="../img/kritiku.jpg" />
-        </div>
+    <main>
+      <div class="contact">
+        <a
+          target="_blank"
+          class="social"
+          href="https://facebook.com/KurzyJaponskeKaligrafie"
+        >
+          <img
+            loading="lazy"
+            src="../img/fb_black.svg"
+            height="40"
+            alt="Facebook Japanese Calligraphy Petra Vitásková"
+          />
+        </a>
+        <a
+          target="_blank"
+          class="social"
+          href="https://instagram.com/petra.vitaskova"
+        >
+          <img
+            loading="lazy"
+            src="../img/ig_black.svg"
+            height="40"
+            alt="Instagram Japanese Calligraphy Petra Vitásková"
+          />
+        </a>
+        <a class="social email-icon" href="">
+          <img loading="lazy" src="../img/mail_black.svg" height="40" alt="Email" />
+        </a>
       </div>
 
-    <div id="footer-root">
-    </div>
-    <script type="text/javascript" src="../footer.js?v=1"></script>
+      <div class="obchod-styling">
+        <h2>SHOP</h2>
+      </div>
+      <!--  Product types menu -->
+      <nav class="menu-obchod">
+        <ul>
+          <li><a href="#stojankove">Stands</a></li>
+          <li><a href="#modrotisk">Blueprint</a></li>
+          <li><a href="#naobjednavku">Custom Order</a></li>
+          <li><a href="#eventy">Corporate Events</a></li>
+        </ul>
+      </nav>
+      <!--  END Product types menu -->
 
-    </body>
+      <div class="row">
+        <div class="obchod-styling">
+          <p>
+            Here, Petra could write something general... about the quality of
+            the ink or that she collects water from a spring at midnight during
+            a full moon :)
+          </p>
+        </div>
+
+        <!-- 1. Stand-up Calligraphy -->
+        <section id="stojankove" class="obchod-styling">
+          <h3>Stand-up Calligraphy</h3>
+          <p>
+            Uniform size 20×30 cm, wooden stand, black calligraphy ink on white
+            canvas or gold ink on black canvas. The pictures can be changed in
+            the stand. The stands are wooden, handmade by a super cool
+            carpenter.
+          </p>
+          <p class="price">
+            Uniform price for calligraphy in a stand: 5000 CZK
+          </p>
+          <div class="product">
+            <div class="row">
+              <div class="galerie">
+                <!-- Image 1 -->
+                <div class="obraz">
+                  <div class="obraz-nahled">
+                    <img loading="lazy" src="../obchod/mir.jpg" alt="Peace" />
+                    <button
+                      class="order-btn"
+                      data-product="Calligraphy PEACE on stand"
+                      data-vs="001"
+                      data-price="5000"
+                    >
+                      <img src="../img/basket.jpg" alt="Order" loading="lazy" />
+                    </button>
+                  </div>
+                  <p class="popis">
+                    <strong class="latin">Peace</strong>
+                    <span class="kanji">平和</span>
+                    <i class="romaji">[Hei Wa]</i>
+                  </p>
+                </div>
+                <!-- END Image 1 -->
+
+                <!-- Image 2 -->
+                <div class="obraz">
+                  <div class="obraz-nahled">
+                    <img
+                      loading="lazy"
+                      src="../obchod/pohyb.jpg"
+                      alt="Movement"
+                    />
+                    <button
+                      class="order-btn"
+                      data-product="Calligraphy MOVEMENT on stand"
+                      data-vs="002"
+                      data-price="5000"
+                    >
+                      <img src="../img/basket.jpg" alt="Order" loading="lazy" />
+                    </button>
+                  </div>
+                  <p class="popis">
+                    <strong class="latin">Movement</strong>
+                    <span class="kanji">動</span>
+                    <i class="romaji">[Do]</i>
+                  </p>
+                </div>
+                <!-- END Image 2 -->
+
+                <!-- Image 3 -->
+                <div class="obraz">
+                  <div class="obraz-nahled">
+                    <img loading="lazy" src="../obchod/cesta.jpg" alt="Way" />
+                    <button
+                      class="order-btn"
+                      data-product="Calligraphy WAY on stand"
+                      data-vs="003"
+                      data-price="5000"
+                    >
+                      <img src="../img/basket.jpg" alt="Order" loading="lazy" />
+                    </button>
+                  </div>
+                  <p class="popis">
+                    <strong class="latin">Way</strong>
+                    <span class="kanji">道</span>
+                    <i class="romaji">[Michi]</i>
+                  </p>
+                </div>
+                <!-- END Image 3 -->
+
+                <!-- Image 4 -->
+                <div class="obraz">
+                  <div class="obraz-nahled">
+                    <img loading="lazy" src="../obchod/laska.jpg" alt="Love" />
+                    <button
+                      class="order-btn"
+                      data-product="Calligraphy LOVE on stand"
+                      data-vs="004"
+                      data-price="5000"
+                    >
+                      <img src="../img/basket.jpg" alt="Order" loading="lazy" />
+                    </button>
+                  </div>
+                  <p class="popis">
+                    <strong class="latin">Love</strong>
+                    <span class="kanji">愛</span>
+                    <i class="romaji">[Ai]</i>
+                  </p>
+                </div>
+                <!-- END Image 4 -->
+
+                <!-- Image 5 -->
+                <div class="obraz">
+                  <div class="obraz-nahled">
+                    <img loading="lazy" src="../obchod/zdravi.jpg" alt="Health" />
+                    <button
+                      class="order-btn"
+                      data-product="Calligraphy HEALTH on stand"
+                      data-vs="005"
+                      data-price="5000"
+                    >
+                      <img src="../img/basket.jpg" alt="Order" loading="lazy" />
+                    </button>
+                  </div>
+                  <p class="popis">
+                    <strong class="latin">Health</strong>
+                    <span class="kanji">健</span>
+                    <i class="romaji">[Ken]</i>
+                  </p>
+                </div>
+                <!-- END Image 5 -->
+
+                <!-- Image 6 -->
+                <div class="obraz">
+                  <div class="obraz-nahled">
+                    <img
+                      loading="lazy"
+                      src="../obchod/stesti.jpg"
+                      alt="Happiness"
+                    />
+                    <button
+                      class="order-btn"
+                      data-product="Calligraphy HAPPINESS on stand"
+                      data-vs="006"
+                      data-price="5000"
+                    >
+                      <img src="../img/basket.jpg" alt="Order" loading="lazy" />
+                    </button>
+                  </div>
+                  <p class="popis">
+                    <strong class="latin">Happiness</strong>
+                    <span class="kanji">福</span>
+                    <i class="romaji">[Fuku]</i>
+                  </p>
+                </div>
+              </div>
+              <!-- END Image 6 -->
+            </div>
+          </div>
+        </section>
+      </div>
+      <!-- END 1. Stand-up Calligraphy -->
+
+      <!-- 2. Blueprint -->
+      <section id="modrotisk" class="obchod-styling">
+        <h3>Blueprint</h3>
+        <p>
+          An original piece of calligraphy on traditional fabric, hand-painted.
+        </p>
+        <p class="price">Uniform price for blueprint calligraphy: 6000 CZK</p>
+        <div class="product">
+          <div class="row">
+            <div class="galerie">
+              <!-- Blueprint 1 -->
+              <div class="obraz">
+                <div class="obraz-nahled">
+                  <img
+                    loading="lazy"
+                    src="../obchod/mir_modrotisk.jpg"
+                    alt="Peace"
+                  />
+                  <button
+                    class="order-btn"
+                    data-product="Blueprint Peace"
+                    data-vs="101"
+                    data-price="6000"
+                  >
+                    <img src="../img/basket.jpg" alt="Order" loading="lazy" />
+                  </button>
+                </div>
+                <p class="popis">
+                  <strong class="latin">Peace</strong>
+                  <span class="kanji">平和</span>
+                  <i class="romaji">[Hei Wa]</i>
+                </p>
+              </div>
+            </div>
+            <!-- END Blueprint 1 -->
+          </div>
+        </div>
+      </section>
+      <!-- END 2. Blueprint -->
+
+      <!-- 3. Custom Calligraphy -->
+      <section id="naobjednavku" class="obchod-styling">
+        <h3>Custom Calligraphy</h3>
+        <p>An original piece of calligraphy according to your requirements.</p>
+        <p class="price with-button">
+          Price upon agreement
+          <button
+            class="order-btn"
+            data-product="Custom Calligraphy"
+            data-vs="900"
+            data-price="0"
+          >
+            <img src="../img/basket.jpg" alt="Order" loading="lazy" />
+          </button>
+        </p>
+      </section>
+      <!-- END 3. Custom Calligraphy -->
+
+      <!-- 4. Corporate Events -->
+      <section id="eventy" class="obchod-styling">
+        <h3>Calligraphy for Corporate Events</h3>
+        <p>
+          I offer live calligraphy writing directly at your corporate events,
+          which can also be combined with teaching the basics of writing.
+        </p>
+        <p class="price with-button">
+          Price upon agreement
+          <button
+            class="order-btn"
+            data-product="Live Calligraphy - Corporate Event"
+            data-vs="901"
+            data-price="0"
+          >
+            <img src="../img/basket.jpg" alt="Order" loading="lazy" />
+          </button>
+        </p>
+      </section>
+      <!-- END 4. Corporate Events -->
+    </main>
+
+    <!-- Simple modal window for ordering -->
+    <div id="order-modal" class="modal">
+      <div class="modal-content">
+        <span id="close-modal">&times;</span>
+        <h3 class="modal-title">Order</h3>
+        <p class="modal-small-text" id="delivery-info-text">
+          I deliver orders within the Czech Republic. Shipping is included in
+          the price. I will process the order within 14 days.
+        </p>
+
+        <form id="order-form" action="https://formspree.io/f/xrbonjrz" method="POST">
+          <!--  QR -->
+
+          <div id="qr1" class="qr-container modal-qr-container"></div>
+          <p class="instrukce modal-small-text" id="payment-instructions-text">
+            Scan the QR code for payment <br />
+            <br />
+            <strong>Or make a bank transfer:</strong><br />
+            Account: 5335114002/5500<br />
+            VS: <span id="vs-display"></span>
+          </p>
+          <!-- New element for special message -->
+          <p
+            class="modal-small-text"
+            id="custom-order-message"
+            style="display: none"
+          >
+            <!-- Text will be inserted by JavaScript -->
+          </p>
+          <label for="product">Product:</label>
+          <input type="text" id="product" name="product" readonly />
+          <label for="name">Full Name:</label>
+          <input type="text" id="name" name="name" required />
+          <label for="email">E-mail:</label>
+          <input type="email" id="email" name="email" required />
+          <label for="adresa"
+            >Address in the format - street, house number, city, postal
+            code:</label
+          >
+          <textarea
+            type="message"
+            id="adresa"
+            name="message"
+            required
+            rows="2"
+          ></textarea>
+          <label for="message">Note:</label>
+          <textarea id="message" name="message" rows="3"></textarea>
+          <button type="submit">Submit Order</button>
+        </form>
+      </div>
+    </div>
+
+    <script src="../obchod.js"></script>
+
+    <div class="container foot_foto">
+      <div class="row">
+        <div class="col-12">
+          <div class="spacer height10">&nbsp;</div>
+        </div>
+      </div>
+      <div class="col-12 dhide">
+        <figure>
+          <img loading="lazy" src="../gallery/petra.jpg" />
+        </figure>
+      </div>
+      <div class="col-12">
+        <img loading="lazy" src="../img/kritiku.jpg" />
+      </div>
+    </div>
+
+    <div id="footer-root"></div>
+    <script type="text/javascript" src="../footer.js?v=1"></script>
+  </body>
 </html>
