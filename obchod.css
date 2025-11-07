@@ -1,20 +1,28 @@
-/* ===== Menu sticky, ale až pod social ikonami ===== */
+html {
+  scroll-padding-top: 120px; /* adjust if sticky menu height changes */
+}
 
-/* ===== END Menu sticky, ale až pod social ikonami ===== */
+/* Ensure anchor targets appear fully below the sticky menu */
+.obchod-styling,
+.category {
+  scroll-margin-top: 120px; /* matches sticky menu total height */
+}
 
 /* ===== MENU obchod ===== */
 .menu-obchod {
   background: #fafafa;
   width: 100%;
-  padding: 0.5em 0;
+  padding: 0.5em 0 0 0;
   margin: 0 auto;
-  position: sticky; /* aby zostalo hore pri scrollovaní */
-  z-index: 100;
   border-bottom: 1px solid #ddd;
-  top: 60px; /* menu sa „lepí“ až 60 px pod vrch (teda pod ikony) */
   z-index: 100;
+  position: sticky;
+  top: 0;
+  min-height: 60px;
+  padding-top: 60px;
+  background: var(--color-bg);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
 }
-
 .menu-obchod ul {
   display: flex;
   justify-content: center; /* zarovnanie na stred */
@@ -47,66 +55,17 @@
   border-radius: 4px;
 }
 
-/* Nadpisy sekcií - rovnaký font ako .krok h3 */
-.category h2,
-.obchod-styling h2 {
-  font-family: "Raleway", sans-serif;
-  font-weight: 700;
-  font-size: 24px;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  text-align: left;
-  margin-bottom: 0.5em;
-}
-
-/* Text pod nadpisom - rovnaký font ako .krok p */
-.category p,
-.obchod-styling p {
-  font-family: "Open Sans", sans-serif;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 1.6;
-  text-align: left;
-  color: #333;
-}
-
-<!--
-  menu
-  namalýchobrazovkách(napr. pod 600 px)sa
-  „zlomi“do
-  viacerých
-  riadkov
-  --
-  > @media
-  (max-width: 600px) {
+@media (max-width: 600px) {
   .menu-obchod ul {
-    justify-content: flex-start;
+    justify-content: center;
     padding: 0.5em 1em;
   }
-
   .menu-obchod ul li a {
     font-size: 12px;
   }
 }
 /* ===== END MENU obchod ===== */
 
-/* ===== Socialne kontakty maju v obchode sticky mod ===== */
-.contact-obchod {
-  position: sticky;
-  padding-right: var(--space-7);
-  padding-left: var(--space-4);
-  padding-top: var(--space-4);
-  display: flex;
-  align-items: center;
-  gap: 1em;
-  z-index: 300;
-  top: 0;
-  background: #fafafa;
-  justify-content: left;
-  padding: 0.5em 1em;
-  border-bottom: 1px solid #ddd;
-}
-/* ===== END Socialne kontakty maju v obchode sticky mod ===== */
 
 /* ===== OBCHOD STYLING ===== */
 .obchod-styling {
@@ -115,8 +74,8 @@
   margin-right: 0;
   padding-left: 20%;
   padding-right: 20%;
-  padding-bottom: 2em;
-  min-height: 120vh;
+  padding-bottom: 0.05em;
+  min-height: 5vh;
   width: 100vw;
 }
 
@@ -128,13 +87,23 @@ sekcia ma menšie vnútorné okraje */
     padding-left: 5%;
     padding-right: 5%;
     background-position: right;
-    background-size: 30%;
+  }
+
+  .obchod-styling h2 {
+    font-size: 25px;
+    letter-spacing: 2px;
   }
 
   .obchod-styling h3 {
-    font-size: 5px;
+    font-size: 16px;
     letter-spacing: 2px;
-    text-align: left;
+    text-align: center;
+  }
+
+   .obchod-styling h4 {
+    font-size: 16px;
+    letter-spacing: 2px;
+    text-align: center;
   }
 }
 /* ===== END OBCHOD STYLING  ===== */
@@ -156,22 +125,129 @@ sekcia ma menšie vnútorné okraje */
   border-radius: 8px;
 }
 
+/* Thumbnails inside .obraz should fill the container width and keep original image height */
+.obraz .obraz-nahled {
+  width: 100%;
+  overflow: visible; /* allow original image height to show */
+  display: block;
+  position: relative; /* container for absolute-positioned order button */
+  border-radius: 8px;
+}
+
+.obraz .obraz-nahled img {
+  width: 100% !important;
+  height: auto !important; /* preserve original image height */
+  object-fit: contain !important;
+  display: block;
+}
+
+/* Fallback for images placed directly inside .obraz */
+.obraz > img {
+  width: 100% !important;
+  height: auto !important;
+  max-height: none;
+  object-fit: contain;
+}
+
 .info {
   flex: 1;
 }
 
-button.order-btn {
-  background: #2b6cb0;
-  color: white;
-  padding: 0.6em 1em;
+.order-btn {
+  background: none;
   border: none;
-  border-radius: 6px;
+  padding: 0;
+  margin: 0;
   cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease, opacity 0.2s ease;
 }
 
-button.order-btn:hover {
-  background: #224c80;
+.order-btn img {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+  filter: grayscale(100%);
+  opacity: 0.8;
+  transition: filter 0.2s ease, opacity 0.2s ease, transform 0.2s ease;
 }
+
+.order-btn:hover img {
+  filter: grayscale(0%);
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+/* place the order icon as a small circular button inside the bottom-right of the thumbnail */
+.obraz .obraz-nahled .order-btn {
+  position: absolute;
+  right: calc(var(--space-2));
+  bottom: calc(var(--space-2));
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.95);
+  /* match the .obraz border so the button visually aligns with the card style */
+  border: 0.05px solid #fcecec;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+  padding: 6px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.obraz .obraz-nahled .order-btn img {
+  width: 24px;
+  height: 24px;
+}
+
+@media (max-width: 600px) {
+  .obraz .obraz-nahled .order-btn {
+    width: 40px;
+    height: 40px;
+    right: calc(var(--space-2));
+    bottom: calc(var(--space-2));
+    padding: 5px;
+  }
+  .obraz .obraz-nahled .order-btn img {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+/* Ensure on small devices the .obraz card keeps enough vertical space so the .popis text sits below the thumbnail */
+@media (max-width: 600px) {
+  .obraz {
+    min-height: 320px; /* enough room for the image + description */
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: var(--space-1);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .obraz .obraz-nahled {
+    /* reserve vertical space for the thumbnail itself */
+    min-height: 220px;
+    margin-bottom: var(--space-2);
+    width: 100%;
+  }
+
+  .obraz .obraz-nahled img {
+    width: 100% !important;
+    height: 220px;
+    object-fit: cover ;
+  }
+
+  .obraz .popis {
+    white-space: normal; /* allow wrapping so the text fits under the image */
+    margin-top: var(--space-1);
+  }
+}
+
 
 /* Modálne okno */
 .modal {
@@ -181,6 +257,7 @@ button.order-btn:hover {
   inset: 0; /* skratka pre top:0; left:0; right:0; bottom:0; */
   background-color: rgba(0, 0, 0, 0.6);
   overflow-y: auto;
+  font-size: 1rem;
 }
 
 /* Obsah modálu */
@@ -223,7 +300,16 @@ button.order-btn:hover {
   border: 1px solid #ccc;
   border-radius: 5px;
   box-sizing: border-box;
+  resize: vertical; /* Umožní zmenu veľkosti len vertikálne */
 }
+/* Nastavenie minimálnej výšky pre textové polia, aby sa nedali zmenšiť pod počiatočnú veľkosť */
+#order-form #adresa {
+  min-height: 5em; /* Približne 2 riadky + padding */
+}
+#order-form #message {
+  min-height: 6.5em; /* Približne 3 riadky + padding */
+}
+
 #order-form button {
   margin-top: 1.5em;
   width: 100%;
@@ -241,10 +327,11 @@ button.order-btn:hover {
 /* Menšie zariadenia – nech je to trochu širšie, ale stále decentné */
 @media (max-width: 600px) {
   .modal-content {
-    margin: 10% auto;
+    margin: 20px auto; /* Zmenený horný okraj pre mobilné zariadenia */
     width: 95%;
     max-width: none;
     border-radius: 0;
+    padding: 2em;
   }
 }
 
@@ -268,4 +355,73 @@ form button {
 
 form button:hover {
   background: #224c80;
+}
+
+/* popis pod obrazkami */
+.popis {
+  display: flex;
+  justify-content: center; /* stredové zarovnanie */
+  align-items: baseline;
+  gap: 0.4em;
+  white-space: nowrap;
+  font-size: 1.4rem;
+  margin-top: 0.5em;
+}
+
+/* Latinský text */
+.popis .latin {
+  font-weight: bold;
+  color: #222;
+}
+
+/* Kanji */
+.popis .kanji {
+  font-family: "Noto Serif JP", serif;
+  font-size: 1em;
+  color: #c00;
+}
+
+/* Romaji */
+.popis .romaji {
+  font-style: italic;
+  font-size: 0.9em;
+  color: #555;
+}
+
+/* When a price has an inline order button, keep them on one line and aligned */
+.price.with-button {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+/* make the inline order button (next to .price) look like the circular overlay button */
+.price.with-button .order-btn {
+  width: 44px;
+  height: 44px;
+  padding: 6px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.95);
+  border: 0.05px solid #fcecec;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: var(--space-2);
+}
+.price.with-button .order-btn img {
+  width: 24px;
+  height: 24px;
+}
+
+@media (max-width: 600px) {
+  .price.with-button .order-btn {
+    width: 40px;
+    height: 40px;
+    padding: 5px;
+  }
+  .price.with-button .order-btn img {
+    width: 20px;
+    height: 20px;
+  }
 }

@@ -1,14 +1,13 @@
 /*------------------------------------*\ MATERIAL PHOTO GALLERY \*------------------------------------*/
  .m-p-g {
 	 max-width: 100%;
-	 margin: 0 auto;
-	 display: block; /* Zajistit, že není flexbox */
+	 margin: 0 auto; /* Centrování galerie */
+	 display: block;
 }
  .m-p-g__thumbs-img {
 	 margin: 0;
 	 float: left;
 	 vertical-align: bottom;
-	 cursor: pointer;
 	 z-index: 1;
 	 position: relative;
 	 opacity: 0.01; /* Velmi nízká opacity - zajišťuje správné offsetHeight pro inicializaci */
@@ -16,8 +15,8 @@
 	 -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 	 will-change: opacity, transform;
 	 transition: opacity 0.3s ease-in; /* Plynulý přechod při načtení - postupné zobrazování */
-	 max-height: 320px;
-	 width: auto;
+	 width: auto; /* Ponechat auto, výšku nastaví GoogleImageLayout */
+	 cursor: pointer; /* Kurzor pro kliknutí */
 }
 
  .m-p-g__thumbs-img.active {

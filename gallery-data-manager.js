@@ -34,516 +34,86 @@ class GalleryDataManager {
     // Inline gallery data - řešení CORS problému
     getInlineGalleryData() {
         return {
-            "images": [
-                // Obrázky ze složky newImages
-                {
-                    "src": "newImages/IMG-20190710-WA0016.jpg",
-                    "title": "Kaligrafické dílo",
-                    "description": "Tradiční japonská kaligrafie.",
-                    "year": "2019",
-                    "technique": "Šodó"
-                },
-                {
-                    "src": "newImages/IMG-20200610-WA0013.jpg",
-                    "title": "Umělecká kaligrafie",
-                    "description": "Umělecká kaligrafie jako forma výrazu.",
-                    "year": "2020",
-                    "technique": "Umělecká"
-                },
-                {
-                    "src": "newImages/IMG-20200618-WA0003.jpg",
-                    "title": "Kaligrafické cvičení",
-                    "description": "Cvičení pro zlepšení techniky.",
-                    "year": "2020",
-                    "technique": "Cvičení"
-                },
-                {
-                    "src": "newImages/IMG-20200618-WA0020.jpg",
-                    "title": "Detailní práce",
-                    "description": "Detailní pohled na kaligrafickou práci.",
-                    "year": "2020",
-                    "technique": "Detail"
-                },
-                {
-                    "src": "newImages/IMG-20200629-WA0005.jpg",
-                    "title": "Experimentální přístup",
-                    "description": "Experimentální přístup k kaligrafii.",
-                    "year": "2020",
-                    "technique": "Experimentální"
-                },
-                {
-                    "src": "newImages/IMG-20200629-WA0007.jpg",
-                    "title": "Výstavní dílo",
-                    "description": "Dílo připravené pro výstavu.",
-                    "year": "2020",
-                    "technique": "Výstavní"
-                },
-                {
-                    "src": "newImages/IMG-20200629-WA0008.jpg",
-                    "title": "Kaligrafické techniky",
-                    "description": "Různé kaligrafické techniky.",
-                    "year": "2020",
-                    "technique": "Techniky"
-                },
-                {
-                    "src": "newImages/IMG-20200629-WA0009.jpg",
-                    "title": "Japonská kaligrafie",
-                    "description": "Tradiční japonská kaligrafie.",
-                    "year": "2020",
-                    "technique": "Šodó"
-                },
-                {
-                    "src": "newImages/IMG-20200629-WA0010.jpg",
-                    "title": "Výstavní práce",
-                    "description": "Práce připravené pro výstavu.",
-                    "year": "2020",
-                    "technique": "Výstavní"
-                },
-                {
-                    "src": "newImages/IMG-20200629-WA0011.jpg",
-                    "title": "Kaligrafické techniky",
-                    "description": "Ukázka různých kaligrafických technik.",
-                    "year": "2020",
-                    "technique": "Techniky"
-                },
-                {
-                    "src": "newImages/IMG-20200703-WA0019.jpg",
-                    "title": "Japonská kaligrafie",
-                    "description": "Tradiční japonská kaligrafie.",
-                    "year": "2020",
-                    "technique": "Šodó"
-                },
-                {
-                    "src": "newImages/IMG-20200703-WA0021.jpg",
-                    "title": "Moderní interpretace",
-                    "description": "Moderní interpretace tradičních znaků.",
-                    "year": "2020",
-                    "technique": "Moderní"
-                },
-                {
-                    "src": "newImages/IMG-20210623-WA0007.jpg",
-                    "title": "Kaligrafické dílo",
-                    "description": "Kaligrafické dílo z roku 2021.",
-                    "year": "2021",
-                    "technique": "Kaligrafie"
-                },
-                {
-                    "src": "newImages/IMG-20210623-WA0017.jpg",
-                    "title": "Tradiční styl",
-                    "description": "Tradiční styl japonské kaligrafie.",
-                    "year": "2021",
-                    "technique": "Tradiční"
-                },
-                {
-                    "src": "newImages/IMG-20210623-WA0019.jpg",
-                    "title": "Umělecká kaligrafie",
-                    "description": "Umělecká kaligrafie jako forma výrazu.",
-                    "year": "2021",
-                    "technique": "Umělecká"
-                },
-                {
-                    "src": "newImages/IMG-20210623-WA0033.jpg",
-                    "title": "Kaligrafické cvičení",
-                    "description": "Cvičení pro zlepšení techniky.",
-                    "year": "2021",
-                    "technique": "Cvičení"
-                },
-                {
-                    "src": "newImages/IMG-20210623-WA0034.jpg",
-                    "title": "Detailní práce",
-                    "description": "Detailní pohled na kaligrafickou práci.",
-                    "year": "2021",
-                    "technique": "Detail"
-                },
-                {
-                    "src": "newImages/IMG-20210623-WA0035.jpg",
-                    "title": "Experimentální přístup",
-                    "description": "Experimentální přístup k kaligrafii.",
-                    "year": "2021",
-                    "technique": "Experimentální"
-                },
-                {
-                    "src": "newImages/IMG-20210623-WA0036.jpg",
-                    "title": "Výstavní dílo",
-                    "description": "Dílo připravené pro výstavu.",
-                    "year": "2021",
-                    "technique": "Výstavní"
-                },
-                {
-                    "src": "newImages/IMG-20210623-WA0037.jpg",
-                    "title": "Kaligrafické techniky",
-                    "description": "Různé kaligrafické techniky.",
-                    "year": "2021",
-                    "technique": "Techniky"
-                },
-                {
-                    "src": "newImages/IMG-20210623-WA0038.jpg",
-                    "title": "Japonská kaligrafie",
-                    "description": "Tradiční japonská kaligrafie.",
-                    "year": "2021",
-                    "technique": "Šodó"
-                },
-                {
-                    "src": "newImages/IMG-20220630-WA0001.jpg",
-                    "title": "Moderní kaligrafie",
-                    "description": "Moderní přístup k kaligrafii.",
-                    "year": "2022",
-                    "technique": "Moderní"
-                },
-                {
-                    "src": "newImages/IMG-20220630-WA0004.jpg",
-                    "title": "Tradiční znaky",
-                    "description": "Klasické japonské znaky.",
-                    "year": "2022",
-                    "technique": "Tradiční"
-                },
-                {
-                    "src": "newImages/IMG-20220630-WA0005.jpg",
-                    "title": "Kaligrafické umění",
-                    "description": "Umělecké dílo vytvořené kaligrafií.",
-                    "year": "2022",
-                    "technique": "Umělecké"
-                },
-                {
-                    "src": "newImages/IMG-20220630-WA0006.jpg",
-                    "title": "Detailní práce",
-                    "description": "Detailní pohled na kaligrafickou práci.",
-                    "year": "2022",
-                    "technique": "Detail"
-                },
-                {
-                    "src": "newImages/IMG-20220701-WA0001.jpg",
-                    "title": "Experimentální kaligrafie",
-                    "description": "Experimentální přístup k kaligrafii.",
-                    "year": "2022",
-                    "technique": "Experimentální"
-                },
-                {
-                    "src": "newImages/IMG-20220701-WA0002.jpg",
-                    "title": "Výstavní práce",
-                    "description": "Práce připravené pro výstavu.",
-                    "year": "2022",
-                    "technique": "Výstavní"
-                },
-                {
-                    "src": "newImages/IMG-20220701-WA0012.jpg",
-                    "title": "Kaligrafické techniky",
-                    "description": "Různé kaligrafické techniky.",
-                    "year": "2022",
-                    "technique": "Techniky"
-                },
-                {
-                    "src": "newImages/IMG-20220821-WA0019.jpg",
-                    "title": "Japonská kaligrafie",
-                    "description": "Tradiční japonská kaligrafie.",
-                    "year": "2022",
-                    "technique": "Šodó"
-                },
-                {
-                    "src": "newImages/IMG-20221201-WA0022.jpg",
-                    "title": "Moderní interpretace",
-                    "description": "Moderní interpretace tradičních znaků.",
-                    "year": "2022",
-                    "technique": "Moderní"
-                },
-                {
-                    "src": "newImages/IMG-20221221-WA0003.jpg",
-                    "title": "Tradiční styl",
-                    "description": "Tradiční styl japonské kaligrafie.",
-                    "year": "2022",
-                    "technique": "Tradiční"
-                },
-                {
-                    "src": "newImages/IMG-20221221-WA0005.jpg",
-                    "title": "Umělecká kaligrafie",
-                    "description": "Umělecká kaligrafie jako forma výrazu.",
-                    "year": "2022",
-                    "technique": "Umělecká"
-                },
-                {
-                    "src": "newImages/IMG-20230107-WA0016.jpg",
-                    "title": "Kaligrafické cvičení",
-                    "description": "Cvičení pro zlepšení techniky.",
-                    "year": "2023",
-                    "technique": "Cvičení"
-                },
-                {
-                    "src": "newImages/IMG-20230114-WA0009.jpg",
-                    "title": "Detailní práce",
-                    "description": "Detailní pohled na kaligrafickou práci.",
-                    "year": "2023",
-                    "technique": "Detail"
-                },
-                {
-                    "src": "newImages/IMG-20230322-WA0003.jpg",
-                    "title": "Experimentální přístup",
-                    "description": "Experimentální přístup k kaligrafii.",
-                    "year": "2023",
-                    "technique": "Experimentální"
-                },
-                {
-                    "src": "newImages/IMG-20230331-WA0025.jpg",
-                    "title": "Výstavní dílo",
-                    "description": "Dílo připravené pro výstavu.",
-                    "year": "2023",
-                    "technique": "Výstavní"
-                },
-                {
-                    "src": "newImages/IMG-20230331-WA0026.jpg",
-                    "title": "Kaligrafické techniky",
-                    "description": "Různé kaligrafické techniky.",
-                    "year": "2023",
-                    "technique": "Techniky"
-                },
-                {
-                    "src": "newImages/IMG-20230425-WA0014.jpg",
-                    "title": "Japonská kaligrafie",
-                    "description": "Tradiční japonská kaligrafie.",
-                    "year": "2023",
-                    "technique": "Šodó"
-                },
-                {
-                    "src": "newImages/IMG-20230425-WA0019.jpg",
-                    "title": "Moderní kaligrafie",
-                    "description": "Moderní přístup k kaligrafii.",
-                    "year": "2023",
-                    "technique": "Moderní"
-                },
-                {
-                    "src": "newImages/IMG-20230425-WA0020.jpg",
-                    "title": "Tradiční znaky",
-                    "description": "Klasické japonské znaky.",
-                    "year": "2023",
-                    "technique": "Tradiční"
-                },
-                {
-                    "src": "newImages/IMG-20230425-WA0025.jpg",
-                    "title": "Kaligrafické umění",
-                    "description": "Umělecké dílo vytvořené kaligrafií.",
-                    "year": "2023",
-                    "technique": "Umělecké"
-                },
-                {
-                    "src": "newImages/IMG-20230425-WA0046.jpg",
-                    "title": "Detailní práce",
-                    "description": "Detailní pohled na kaligrafickou práci.",
-                    "year": "2023",
-                    "technique": "Detail"
-                },
-                {
-                    "src": "newImages/IMG-20230425-WA0048.jpg",
-                    "title": "Experimentální kaligrafie",
-                    "description": "Experimentální přístup k kaligrafii.",
-                    "year": "2023",
-                    "technique": "Experimentální"
-                },
-                {
-                    "src": "newImages/IMG-20230425-WA0066.jpg",
-                    "title": "Výstavní práce",
-                    "description": "Práce připravené pro výstavu.",
-                    "year": "2023",
-                    "technique": "Výstavní"
-                },
-                {
-                    "src": "newImages/IMG-20230425-WA0068.jpg",
-                    "title": "Kaligrafické techniky",
-                    "description": "Různé kaligrafické techniky.",
-                    "year": "2023",
-                    "technique": "Techniky"
-                },
-                {
-                    "src": "newImages/IMG-20230427-WA0008.jpg",
-                    "title": "Japonská kaligrafie",
-                    "description": "Tradiční japonská kaligrafie.",
-                    "year": "2023",
-                    "technique": "Šodó"
-                },
-                {
-                    "src": "newImages/IMG-20230427-WA0023.jpg",
-                    "title": "Moderní interpretace",
-                    "description": "Moderní interpretace tradičních znaků.",
-                    "year": "2023",
-                    "technique": "Moderní"
-                },
-                {
-                    "src": "newImages/IMG-20230427-WA0027.jpg",
-                    "title": "Tradiční styl",
-                    "description": "Tradiční styl japonské kaligrafie.",
-                    "year": "2023",
-                    "technique": "Tradiční"
-                },
-                {
-                    "src": "newImages/IMG-20230427-WA0028.jpg",
-                    "title": "Umělecká kaligrafie",
-                    "description": "Umělecká kaligrafie jako forma výrazu.",
-                    "year": "2023",
-                    "technique": "Umělecká"
-                },
-                {
-                    "src": "newImages/IMG-20230428-WA0011.jpg",
-                    "title": "Kaligrafické cvičení",
-                    "description": "Cvičení pro zlepšení techniky.",
-                    "year": "2023",
-                    "technique": "Cvičení"
-                },
-                {
-                    "src": "newImages/IMG-20230428-WA0015.jpg",
-                    "title": "Detailní práce",
-                    "description": "Detailní pohled na kaligrafickou práci.",
-                    "year": "2023",
-                    "technique": "Detail"
-                },
-                {
-                    "src": "newImages/IMG-20230428-WA0017.jpg",
-                    "title": "Experimentální přístup",
-                    "description": "Experimentální přístup k kaligrafii.",
-                    "year": "2023",
-                    "technique": "Experimentální"
-                },
-                {
-                    "src": "newImages/IMG-20230513-WA0014.jpg",
-                    "title": "Výstavní dílo",
-                    "description": "Dílo připravené pro výstavu.",
-                    "year": "2023",
-                    "technique": "Výstavní"
-                },
-                {
-                    "src": "newImages/IMG-20230513-WA0019.jpg",
-                    "title": "Kaligrafické techniky",
-                    "description": "Různé kaligrafické techniky.",
-                    "year": "2023",
-                    "technique": "Techniky"
-                },
-                {
-                    "src": "newImages/IMG-20231006-WA0018.jpg",
-                    "title": "Japonská kaligrafie",
-                    "description": "Tradiční japonská kaligrafie.",
-                    "year": "2023",
-                    "technique": "Šodó"
-                },
-                {
-                    "src": "newImages/IMG-20231007-WA0032.jpg",
-                    "title": "Moderní kaligrafie",
-                    "description": "Moderní přístup k kaligrafii.",
-                    "year": "2023",
-                    "technique": "Moderní"
-                },
-                {
-                    "src": "newImages/IMG-20231007-WA0054.jpg",
-                    "title": "Tradiční znaky",
-                    "description": "Klasické japonské znaky.",
-                    "year": "2023",
-                    "technique": "Tradiční"
-                },
-                {
-                    "src": "newImages/IMG-20231007-WA0058.jpg",
-                    "title": "Kaligrafické umění",
-                    "description": "Umělecké dílo vytvořené kaligrafií.",
-                    "year": "2023",
-                    "technique": "Umělecké"
-                },
-                {
-                    "src": "newImages/IMG-20231008-WA0033.jpg",
-                    "title": "Detailní práce",
-                    "description": "Detailní pohled na kaligrafickou práci.",
-                    "year": "2023",
-                    "technique": "Detail"
-                },
-                {
-                    "src": "newImages/IMG-20231008-WA0034.jpg",
-                    "title": "Experimentální kaligrafie",
-                    "description": "Experimentální přístup k kaligrafii.",
-                    "year": "2023",
-                    "technique": "Experimentální"
-                },
-                {
-                    "src": "newImages/IMG-20231008-WA0036.jpg",
-                    "title": "Výstavní práce",
-                    "description": "Práce připravené pro výstavu.",
-                    "year": "2023",
-                    "technique": "Výstavní"
-                },
-
-                // Obrázky ze složky gallery
-                {
-                    "src": "gallery/101A0096a.jpg",
-                    "title": "Kaligrafické dílo",
-                    "description": "Tradiční japonská kaligrafie.",
-                    "year": "2024",
-                    "technique": "Šodó"
-                },
-                {
-                    "src": "gallery/20231014_161450.jpg",
-                    "title": "Umělecká kaligrafie",
-                    "description": "Umělecká kaligrafie jako forma výrazu.",
-                    "year": "2023",
-                    "technique": "Umělecká"
-                },
-                {
-                    "src": "gallery/67071542_2223611747758593_3295359420732538880_n.jpg",
-                    "title": "Kaligrafické cvičení",
-                    "description": "Cvičení pro zlepšení techniky.",
-                    "year": "2024",
-                    "technique": "Cvičení"
-                },
-                {
-                    "src": "gallery/FB_IMG_1742308140423.jpg",
-                    "title": "Detailní práce",
-                    "description": "Detailní pohled na kaligrafickou práci.",
-                    "year": "2024",
-                    "technique": "Detail"
-                },
-                {
-                    "src": "gallery/FB_IMG_1742308152536.jpg",
-                    "title": "Experimentální přístup",
-                    "description": "Experimentální přístup k kaligrafii.",
-                    "year": "2024",
-                    "technique": "Experimentální"
-                },
-                {
-                    "src": "gallery/holky.jpg",
-                    "title": "Výstavní dílo",
-                    "description": "Dílo připravené pro výstavu.",
-                    "year": "2024",
-                    "technique": "Výstavní"
-                },
-                {
-                    "src": "gallery/IMG_9641.jpg",
-                    "title": "Kaligrafické techniky",
-                    "description": "Různé kaligrafické techniky.",
-                    "year": "2024",
-                    "technique": "Techniky"
-                },
-                {
-                    "src": "gallery/IMG-20241109-WA0024.jpg",
-                    "title": "Japonská kaligrafie",
-                    "description": "Tradiční japonská kaligrafie.",
-                    "year": "2024",
-                    "technique": "Šodó"
-                },
-                {
-                    "src": "gallery/Lucerna2.jpg",
-                    "title": "Moderní kaligrafie",
-                    "description": "Moderní přístup k kaligrafii.",
-                    "year": "2024",
-                    "technique": "Moderní"
-                },
-                {
-                    "src": "gallery/petra.jpg",
-                    "title": "Portrétní kaligrafie",
-                    "description": "Portrétní kaligrafické dílo.",
-                    "year": "2024",
-                    "technique": "Portrét"
-                },
-                {
-                    "src": "gallery/PHOTO-2025-03-15-12-11-39.png",
-                    "title": "Nejnovější dílo",
-                    "description": "Nejnovější kaligrafické dílo.",
-                    "year": "2025",
-                    "technique": "Nejnovější"
-                }
-
-            ]
+          images: [
+            // Obrázky ze složky Gallery
+            {
+              src: "gallery/teachers.jpg",
+              title: "Akiko Suzuki & Petra Vitaskova",
+              description: "Ucitelky japonske kaligrafie.",
+              year: "..",
+              technique: "..",
+            },
+            {
+              src: "gallery/Lucerna2.jpg",
+              title: "Výstavene dílo -Lucerna",
+              description: "..",
+              year: "..",
+              technique: "Výstavní",
+            },
+            {
+              src: "gallery/psani.jpg",
+              title: "Japonská kaligrafie",
+              description: "Tradiční japonská kaligrafie.",
+              year: "..",
+              technique: "..",
+            },
+            {
+              src: "gallery/FB_IMG_1742308140423.jpg",
+              title: "Japonska skola",
+              description: "Japonsko",
+              year: "...",
+              technique: "..",
+            },
+            {
+              src: "gallery/IMG_9641.jpg",
+              title: "Vystava kaligrafie",
+              description: "..",
+              year: "2025",
+              technique: "..",
+            },
+            {
+              src: "gallery/holky.jpg",
+              title: "Morava",
+              description: ".",
+              year: "2025",
+              technique: "..",
+            },
+            {
+              src: "gallery/velvyslanecJPN.jpg",
+              title: "..",
+              description: ".",
+              year: "..",
+              technique: "..",
+            },
+            {
+              src: "gallery/20231014_161450.jpg",
+              title: "..",
+              description: ".",
+              year: "..",
+              technique: "..",
+            },
+            {
+              src: "gallery/FB_IMG_1742308152536.jpg",
+              title: "..",
+              description: ".",
+              year: "..",
+              technique: "..",
+            },
+            {
+              src: "gallery/101A0096a.jpg",
+              title: "..",
+              description: ".",
+              year: "..",
+              technique: "..",
+            },
+            {
+              src: "gallery/petra.jpg",
+              title: "Petra Vitaskova",
+              description: "Dílo připravené pro výstavu.",
+              year: "..",
+              technique: "Výstavní",
+            },
+          ],
         };
     }
 

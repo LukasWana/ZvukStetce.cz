@@ -5,84 +5,20 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" type="text/css" href="simple-grid.min.css">
         <link rel="stylesheet" href="style.css?v=47">
-        <link rel="stylesheet" href="mobile-styles.css?v=2">
+        <link rel="stylesheet" href="obchod.css" />
         <script type="text/javascript" src="script.js?v=11"></script>
         <script type="text/javascript" src="menu.js?v=1"></script>
         <script type="text/javascript" src="qrcode.min.js"></script>
         <script>
-            // Počkat, až se načte celá stránka
-            document.addEventListener('DOMContentLoaded', function() {
-                // QR kód 1 - Bankovní platba (SPD formát pro české banky)
-                const platba1 = "SPD*1.0*ACC:CZ6508000000001234567890*AM:5000.00*CC:CZK*MSG:Obraz Sunset*X-VS:001";
-                new QRCode(document.getElementById("qr1"), {
-                    text: platba1,
-                    width: 180,
-                    height: 180,
-                    colorDark: "#333333",
-                    colorLight: "#ffffff"
-                });
-
-                // QR kód 2
-                const platba2 = "SPD*1.0*ACC:CZ6508000000001234567890*AM:7500.00*CC:CZK*MSG:Obraz Ocean*X-VS:002";
-                new QRCode(document.getElementById("qr2"), {
-                    text: platba2,
-                    width: 180,
-                    height: 180,
-                    colorDark: "#333333",
-                    colorLight: "#ffffff"
-                });
-
-                // QR kód 3
-                const platba3 = "SPD*1.0*ACC:CZ6508000000001234567890*AM:6000.00*CC:CZK*MSG:Obraz Abstract*X-VS:003";
-                new QRCode(document.getElementById("qr3"), {
-                    text: platba3,
-                    width: 180,
-                    height: 180,
-                    colorDark: "#333333",
-                    colorLight: "#ffffff"
-                });
-
-                // QR kód 4
-                const platba4 = "SPD*1.0*ACC:CZ6508000000001234567890*AM:5000.00*CC:CZK*MSG:Obraz Sunset 2*X-VS:004";
-                var qr4El = document.getElementById("qr4");
-                if (qr4El) new QRCode(qr4El, {
-                    text: platba4,
-                    width: 180,
-                    height: 180,
-                    colorDark: "#333333",
-                    colorLight: "#ffffff"
-                });
-
-                // QR kód 5
-                const platba5 = "SPD*1.0*ACC:CZ6508000000001234567890*AM:7500.00*CC:CZK*MSG:Obraz Ocean 2*X-VS:005";
-                var qr5El = document.getElementById("qr5");
-                if (qr5El) new QRCode(qr5El, {
-                    text: platba5,
-                    width: 180,
-                    height: 180,
-                    colorDark: "#333333",
-                    colorLight: "#ffffff"
-                });
-
-                // QR kód 6
-                const platba6 = "SPD*1.0*ACC:CZ6508000000001234567890*AM:6000.00*CC:CZK*MSG:Obraz Abstract 2*X-VS:006";
-                var qr6El = document.getElementById("qr6");
-                if (qr6El) new QRCode(qr6El, {
-                    text: platba6,
-                    width: 180,
-                    height: 180,
-                    colorDark: "#333333",
-                    colorLight: "#ffffff"
-                });
-            });
+            // QR kód se nyní generuje dynamicky v obchod.js
         </script>
     </head>
 
     <body>
-        <div id="menu-root"></div>
-
-        <main>
-            <div class="contact">
+      <div id="menu-root"></div>
+      
+      <main>
+    <div class="contact">
               <a
                 target="_blank"
                 class="social"
@@ -91,7 +27,7 @@
                 <img loading="lazy"
                   src="img/fb_black.svg"
                   height="40"
-                  alt="Facebook Japonská kaligrafie Petra Vitásková"
+                  alt="Facebook Japanese Calligraphy Petra Vitásková"
                 />
               </a>
               <a
@@ -102,7 +38,7 @@
                 <img loading="lazy"
                   src="img/ig_black.svg"
                   height="40"
-                  alt="Instagram Japonská kaligrafie Petra Vitásková"
+                  alt="Instagram Japanese Calligraphy Petra Vitásková"
                 />
               </a>
               <a class="social email-icon" href="">
@@ -112,149 +48,251 @@
                   alt="Email"
                 />
               </a>
-            </div>
-
-            <div class="container exhibition">
-                <div class="row">
-                    <div class="col-12">
-                        <h2>OBCHOD</h2>
-                    </div>
-
-
-                    <div class="row">
-                        <div class="galerie">
-                            <!-- Obraz 1 -->
-                            <div class="obraz">
-                                <div class="obraz-nahled">
-                                <img loading="lazy" src="obchod/6f39ecd3-d386-473d-8e6c-34136b383979.jpg" alt="Nad horami">
-                            </div>
-                            <h3>Nad horami</h3>
-                            <div class="cena">5 000 Kč</div>
-                            <div id="qr1" class="qr-container"></div>
-                            <p class="instrukce">Naskenuj QR kód pro platbu</p>
-                            <div class="platebni-info">
-                                <strong>Bankovní platba:</strong><br>
-                                Účet: 123456789/0800<br>
-                                VS: 001
-                            </div>
-                        </div>
-
-                        <!-- Obraz 2 -->
-                        <div class="obraz">
-                            <div class="obraz-nahled">
-                                <img loading="lazy" src="obchod/cb600632-45ed-4ab1-9961-377612953176.jpg" alt="Oceánské vlny">
-                            </div>
-                            <h3>Oceánské vlny</h3>
-                            <div class="cena">7 500 Kč</div>
-                            <div id="qr2" class="qr-container"></div>
-                            <p class="instrukce">Naskenuj QR kód pro platbu</p>
-                            <div class="platebni-info">
-                                <strong>Bankovní platba:</strong><br>
-                                Účet: 123456789/0800<br>
-                                VS: 002
-                            </div>
-                        </div>
-
-                        <!-- Obraz 3 -->
-                        <div class="obraz">
-                            <div class="obraz-nahled">
-                                <img loading="lazy" src="obchod/8c90274f-bdb0-4036-9216-c25457cbce3f.jpg" alt="Abstraktní sny">
-                            </div>
-                            <h3>Abstraktní sny</h3>
-                            <div class="cena">6 000 Kč</div>
-                            <div id="qr3" class="qr-container"></div>
-                            <p class="instrukce">Naskenuj QR kód pro platbu</p>
-                            <div class="platebni-info">
-                                <strong>Bankovní platba:</strong><br>
-                                Účet: 123456789/0800<br>
-                                VS: 003
-                            </div>
-                        </div>
-
-                        <!-- Obraz 4 -->
-                        <div class="obraz">
-                            <div class="obraz-nahled">
-                                <img loading="lazy" src="obchod/8233bc90-689b-402a-812f-a83be669f785.jpg" alt="Nad horami">
-                            </div>
-                            <h3>Nad horami</h3>
-                            <div class="cena">5 000 Kč</div>
-                            <div id="qr4" class="qr-container"></div>
-                            <p class="instrukce">Naskenuj QR kód pro platbu</p>
-                            <div class="platebni-info">
-                                <strong>Bankovní platba:</strong><br>
-                                Účet: 123456789/0800<br>
-                                VS: 004
-                            </div>
-                        </div>
-
-                        <!-- Obraz 5 -->
-                        <div class="obraz">
-                            <div class="obraz-nahled">
-                                <img loading="lazy" src="obchod/59f9cbd6-13d4-45ac-af20-38476dd49c70.jpg" alt="Oceánské vlny">
-                            </div>
-                            <h3>Oceánské vlny</h3>
-                            <div class="cena">7 500 Kč</div>
-                            <div id="qr5" class="qr-container"></div>
-                            <p class="instrukce">Naskenuj QR kód pro platbu</p>
-                            <div class="platebni-info">
-                                <strong>Bankovní platba:</strong><br>
-                                Účet: 123456789/0800<br>
-                                VS: 005
-                            </div>
-                        </div>
-
-                        <!-- Obraz 6 -->
-                        <div class="obraz">
-                            <div class="obraz-nahled">
-                                <img loading="lazy" src="obchod/1976dad2-9822-4a8f-b80f-7d26cea62566.jpg" alt="Abstraktní sny">
-                            </div>
-                            <h3>Abstraktní sny</h3>
-                            <div class="cena">6 000 Kč</div>
-                            <div id="qr6" class="qr-container"></div>
-                            <p class="instrukce">Naskenuj QR kód pro platbu</p>
-                            <div class="platebni-info">
-                                <strong>Bankovní platba:</strong><br>
-                                Účet: 123456789/0800<br>
-                                VS: 006
-                            </div>
-                        </div>
-                    </div>
+      </div>
+   
+      <div class="obchod-styling">
+          <h2>OBCHOD</h2>
+      </div>
+<!--  Menu typy produktov -->
+<nav class="menu-obchod">
+  <ul>
+    <li><a href="#stojankove">Stojánky</a></li>
+    <li><a href="#modrotisk">Modrotisk</a></li>
+ <!--   <li><a href="#svitky">Svitky</a></li>
+    <li><a href="#tasky">Tašky</a></li>
+    <li><a href="#tricka">Trička</a></li>
+    <li><a href="#vejire">Vejeře</a></li>
+    <li><a href="#kurzy">Workshopy</a></li>  -->
+    <li><a href="#naobjednavku">Na objednávku</a></li>
+    <li><a href="#eventy">Firemní akce</a></li>
+  </ul>
+</nav>
+<!--  END Menu typy produktov -->
 
 
 
+  <div class="row">
+    <div class="obchod-styling">
+     <p> Sem by mohla Peta napisat nieco vseobecne ... 
+      kvalita tusu alebo ze vodu nabera o polnoci pri uplnku zo studanky :) </p>      
+    </div>
+    
+    <!-- 1. Kaligrafie stojankové -->
+     <section id="stojankove" class="obchod-styling">
+      <h3>Kaligrafie stojankové</h3>
+      <p> Jednotný rozměr 20×30 cm, dřevěný stojan, černý kaligrafický tuš na bílém plátně nebo zlatý tuš na černém plátně. 
+          Do stojánku se obrazy dejí vyměňovat. Stojany jsou dřevěné, 
+          ručně vyrobené, super kul truhlarem.
+      </p>
+      <p class="price">Jednotna cena za kaligrafie v stojanku: 5000 Kč</p>
+      <div class="product">
+        <div class="row">
+          <div class="galerie">
+            <!-- Obraz 1 -->
+              <div class="obraz">
+                <div class="obraz-nahled">
+                  <img loading="lazy" src="obchod/mir.jpg" alt="Mír">
+                  <button class="order-btn" data-product="Kaligrafie MÍR stojanková" data-vs="001" data-price="5000">
+                    <img src="img/basket.jpg" alt="Objednať" loading="lazy" />
+                  </button>
                 </div>
-            </div>
-
-            <div class="jak-to-funguje">
-                <h2>Jak to funguje?</h2>
-                <div class="kroky">
-                    <div class="krok">
-                        <div class="cislo">1</div>
-                        <h3>Vyber si obraz</h3>
-                        <p>Prohlédni si galerii a najdi obraz, který se ti líbí</p>
-                    </div>
-                    <div class="krok">
-                        <div class="cislo">2</div>
-                        <h3>Naskenuj QR kód</h3>
-                        <p>Otevře se ti automaticky bankovní aplikace s předvyplněnou platbou. Stačí potvrdit.</p>
-                    </div>
-                    <div class="krok">
-                        <div class="cislo">3</div>
-                        <h3>Pošli email</h3>
-                        <p>Po platbě mi napiš na <span><a class="social email-icon" href=""><img src="img/mail_black.svg" height="20" alt="Email" /></a></span> s adresou pro doručení</p>
-                    </div>
-                    <div class="krok">
-                        <div class="cislo">4</div>
-                        <h3>Doručení do 3 dnů</h3>
-                        <p>Obraz ti bezpečně zabalím a pošlu kurýrem přímo domů </p>
-                    </div>
+                <p class="popis">
+                  <strong class="latin">Mír</strong>
+                  <span class="kanji">平和</span>
+                  <i class="romaji">[Hei Wa]</i>
+                </p>
+              </div>
+            <!-- END Obraz 1 -->
+              
+            <!-- Obraz 2 -->
+              <div class="obraz">
+                <div class="obraz-nahled">
+                  <img loading="lazy" src="obchod/pohyb.jpg" alt="Pohyb">
+                  <button class="order-btn" data-product="Kaligrafie POHYB stojanková" data-vs="002" data-price="5000">
+                    <img src="img/basket.jpg" alt="Objednať" loading="lazy" />
+                  </button>
                 </div>
-                <div class="zaruka">
-                    <strong>Záruka:</strong> Pokud se ti obraz nebude líbit, vrátíš ho do 14 dnů a peníze ti vrátím zpět!
-                </div>
-            </div>
+                <p class="popis">
+                  <strong class="latin">Pohyb</strong>
+                  <span class="kanji">動</span>
+                  <i class="romaji">[Do]</i>
+                </p>
+              </div>
+            <!-- END Obraz 2 -->
 
-        </main>
+            <!-- Obraz 3 -->
+              <div class="obraz">
+                  <div class="obraz-nahled">
+                      <img loading="lazy" src="obchod/cesta.jpg" alt="Cesta">
+                      <button class="order-btn" data-product="Kaligrafie CESTA stojanková" data-vs="003" data-price="5000">
+                        <img src="img/basket.jpg" alt="Objednať" loading="lazy" />
+                      </button>
+                    </div>
+                <p class="popis">
+                  <strong class="latin">Cesta</strong>
+                  <span class="kanji">道</span>
+                  <i class="romaji">[Michi]</i>
+                </p>
+              </div>
+            <!-- END Obraz 3 -->
+            
+            <!-- Obraz 4 -->
+              <div class="obraz">
+                    <div class="obraz-nahled">
+                      <img loading="lazy" src="obchod/laska.jpg" alt="Láska">
+                      <button class="order-btn" data-product="Kaligrafie LÁSKA stojanková" data-vs="004" data-price="5000">
+                        <img src="img/basket.jpg" alt="Objednať" loading="lazy" />
+                      </button>
+                    </div>
+                    <p class="popis">
+                      <strong class="latin">Láska</strong>
+                      <span class="kanji">愛</span>
+                      <i class="romaji">[Ai]</i>
+                    </p>
+              </div>
+            <!-- END Obraz 4 -->
+
+            <!-- Obraz 5 -->
+              <div class="obraz">
+                    <div class="obraz-nahled">
+                      <img loading="lazy" src="obchod/zdravi.jpg" alt="Zdraví">
+                      <button class="order-btn" data-product="Kaligrafie ZDRAVÍ stojanková" data-vs="005" data-price="5000">
+                        <img src="img/basket.jpg" alt="Objednať" loading="lazy" />
+                      </button>
+                    </div>
+                    <p class="popis">
+                      <strong class="latin">Zdraví</strong>
+                      <span class="kanji">健</span>
+                      <i class="romaji">[Ken]</i>
+                    </p>
+              </div>
+            <!-- END Obraz 5 -->
+              
+
+            <!-- Obraz 6 -->
+              <div class="obraz">
+                    <div class="obraz-nahled">
+                      <img loading="lazy" src="obchod/stesti.jpg" alt="Štěstí">
+                      <button class="order-btn" data-product="Kaligrafie ŠTĚSTÍ stojanková" data-vs="006" data-price="5000">
+                        <img src="img/basket.jpg" alt="Objednať" loading="lazy" />
+                      </button>
+                    </div>
+                    <p class="popis">
+                      <strong class="latin">Štěstí</strong>
+                      <span class="kanji">福</span>
+                      <i class="romaji">[Fuku]</i>
+                    </p>
+                  </div>
+              </div>
+            <!-- END Obraz 5 -->
+
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
+<!-- END 1. Kaligrafie stojankové -->
+
+<!-- 2. Modrotisk -->
+   <section id="modrotisk" class="obchod-styling">
+    <h3>Modrotisk</h3>
+    <p>Originální kousek kaligrafie na tradiční látce, ručně malovaný.</p>
+    <p class="price">Jednotna cena za modrotiskovou kaligrafii: 6000 Kč</p>
+    <div class="product">
+      <div class="row">
+        <div class="galerie">
+          
+          <!-- Modrotisk 1 -->
+              <div class="obraz">
+                    <div class="obraz-nahled">
+                      <img loading="lazy" src="obchod/mir_modrotisk.jpg" alt="Mír">
+                      <button class="order-btn" data-product="Modrotisk Mír" data-vs="101" data-price="6000">
+                        <img src="img/basket.jpg" alt="Objednať" loading="lazy" />
+                      </button>
+                    </div>
+                    <p class="popis">
+                       <strong class="latin">Mír</strong>
+                       <span class="kanji">平和</span>
+                       <i class="romaji">[Hei Wa]</i>
+                    </p>
+                  </div>
+              </div>
+          <!-- END Modrotisk 1 -->
+
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- END 2. Modrotisk -->
+  
+  <!-- 3. Kaligrafie na objednavku -->
+   <section id="naobjednavku" class="obchod-styling">
+    <h3>Kaligrafie na objednavku</h3>
+    <p>Originální kousek kaligrafie podle vašich požadavků.</p>
+    <p class="price with-button">Cena po dohodě
+      <button class="order-btn" data-product="Kaligrafie na objednavku" data-vs="900" data-price="0">
+        <img src="img/basket.jpg" alt="Objednať" loading="lazy" />
+      </button>
+    </p>
+  </section>
+  <!-- END 3. Kaligrafie na objednavku -->
+
+    <!-- 4. Firemni akce -->
+   <section id="eventy" class="obchod-styling">
+    <h3>Kaligrafie na firemní akci</h3>
+    <p>Nabízím možnost psaní kaligrafie na život přímo na vašich firemních akcích, je možné spojit i se učením základů psaní</p>
+    <p class="price with-button">Cena po dohodě
+      <button class="order-btn" data-product="Kaligrafie na živo - firemni akce" data-vs="901" data-price="0">
+        <img src="img/basket.jpg" alt="Objednať" loading="lazy" />
+      </button>
+    </p>
+  </section>
+  <!-- END 4. Firemni akce -->
+
+
+</main>
+
+
+        
+     <!-- Jednoduché modálne okno pre objednávku -->
+    <div id="order-modal" class="modal">
+      <div class="modal-content">
+        <span id="close-modal">&times;</span>
+        <h3 class="modal-title">Objednávka</h3>
+        <p class="modal-small-text" id="delivery-info-text">Doručuji objednávky v ramci České republiky. Poštovné je v ceně. Objednávku vyřídím do 14 dnů. </p>
+       
+        <form id="order-form" action="https://formspree.io/f/xrbonjrz" method="POST">
+           <!--  QR -->
+        
+          <div id="qr1" class="qr-container modal-qr-container"></div>
+          <p class="instrukce modal-small-text" id="payment-instructions-text">
+            Naskenuj QR kód pro platbu <br>
+            <br>
+            <strong>Nebo udelej bankovní převod:</strong><br>
+            Účet: 5335114002/5500<br>
+            VS: <span id="vs-display"></span>
+          </p>
+          <!-- Nový element pre špeciálnu správu -->
+          <p class="modal-small-text" id="custom-order-message" style="display: none;">
+            <!-- Text bude vložený JavaScriptom -->
+          </p>
+        <label for="product">Produkt:</label>
+          <input type="text" id="product" name="product" readonly />
+          <label for="name">Jméno a příjmení::</label>
+          <input type="text" id="name" name="name" required />
+          <label for="email">E-mail:</label>
+          <input type="email" id="email" name="email" required />
+          <label for="adresa">Adresa ve tvaru - ulice, číslo domu, město, směrovací číslo:</label>
+          <textarea type="message" id="adresa" name="message" required rows="2"></textarea>
+          <label for="message">Poznámka:</label>
+          <textarea id="message" name="message" rows="3"></textarea>
+          <button type="submit">Odoslať objednávku</button>
+        </form>
+      </div>
+    </div>
+
+    <script src="obchod.js"></script>
+
 
       <div class="container foot_foto">
         <div class="row">
