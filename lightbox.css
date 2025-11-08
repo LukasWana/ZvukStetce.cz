@@ -30,10 +30,10 @@
   }
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 576px) {
   .gallery-column {
-    flex: 100%;
-    max-width: 100%;
+    flex: 50%;
+    max-width: 50%;
   }
 }
 
@@ -75,7 +75,7 @@
   width: 100%;
   max-width: 90vw;
   text-align: center;
-  color: #ccc;
+  color: #ffffff;
   padding: 5px 0;
   min-height: 40px; /* Reserve space for caption */
 }
@@ -223,4 +223,13 @@
 .prev,
 .next {
   transition: background-color 0.2s ease;
+}
+
+/* Na menších obrazovkách (na výšku) posunieme šípky vyššie, aby neprekrývali náhľady */
+@media screen and (max-height: 700px) and (orientation: portrait) {
+  .prev,
+  .next {
+    top: 75vh; /* Posunúť šípky vyššie */
+  }
+}
 }

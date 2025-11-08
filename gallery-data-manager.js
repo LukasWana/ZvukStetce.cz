@@ -40,79 +40,81 @@ class GalleryDataManager {
             {
               src: "gallery/teachers.jpg",
               title: "Akiko Suzuki & Petra Vitaskova",
-              description: "Ucitelky japonske kaligrafie.",
-              year: "..",
+              description: "",
+              year: "2020",
               technique: "..",
             },
             {
               src: "gallery/Lucerna2.jpg",
-              title: "Výstavene dílo -Lucerna",
-              description: "..",
-              year: "..",
-              technique: "Výstavní",
+              title: "Výstavene dílo v Galerii Lucerna",
+              description: "",
+              year: "2019",
+              technique: "",
             },
             {
               src: "gallery/psani.jpg",
-              title: "Japonská kaligrafie",
-              description: "Tradiční japonská kaligrafie.",
-              year: "..",
-              technique: "..",
+              title:
+                "Proces psaní v tradiční japonské škole. Každý tah vzniká v tichu, s plnou pozorností a respektem ke znaku.",
+              description: "",
+              year: "",
+              technique: "",
             },
             {
               src: "gallery/FB_IMG_1742308140423.jpg",
               title: "Japonska skola",
               description: "Japonsko",
-              year: "...",
-              technique: "..",
+              year: "",
+              technique: "",
             },
             {
               src: "gallery/IMG_9641.jpg",
-              title: "Vystava kaligrafie",
+              title: "Vystava Praha, Kostel Pražského Jezulátka",
               description: "..",
               year: "2025",
               technique: "..",
             },
             {
               src: "gallery/holky.jpg",
-              title: "Morava",
+              title: "Vystava Veselí nad Moravou, Městská galerie Panský dvůr",
               description: ".",
               year: "2025",
               technique: "..",
             },
             {
               src: "gallery/velvyslanecJPN.jpg",
-              title: "..",
-              description: ".",
-              year: "..",
+              title:
+                "Petra Vitaskova & pan velvyslanec Japonska Nagaoka Kansuke",
+              description: "",
+              year: "2024",
               technique: "..",
             },
             {
               src: "gallery/20231014_161450.jpg",
-              title: "..",
-              description: ".",
-              year: "..",
-              technique: "..",
+              title: "Akiko Suzuki & Petra Vitaskova",
+              description: "",
+              year: "2023",
+              technique: "",
             },
             {
               src: "gallery/FB_IMG_1742308152536.jpg",
-              title: "..",
-              description: ".",
-              year: "..",
-              technique: "..",
+              title: "Tři generace uciletek kaligrafie",
+              description: "",
+              year: "2019",
+              technique: "",
             },
             {
               src: "gallery/101A0096a.jpg",
-              title: "..",
-              description: ".",
-              year: "..",
-              technique: "..",
+              title: "Ukázka psaní se žáky školy, Praha Budó Matsuri",
+              description: "",
+              year: "2024",
+              technique: "",
             },
             {
               src: "gallery/petra.jpg",
-              title: "Petra Vitaskova",
-              description: "Dílo připravené pro výstavu.",
-              year: "..",
-              technique: "Výstavní",
+              title: "Dílo připravené pro výstavu PÍSNĚ O KONCI PUTOVÁNÍ",
+              description: "",
+              year: "2025",
+              technique: "",
             },
           ],
         };
@@ -181,7 +183,7 @@ class GalleryDataManager {
                 const demoImg = document.createElement('img');
                 demoImg.className = 'demo cursor';
                 demoImg.src = imageSrc;
-                demoImg.alt = `${imageData.title || ''}\n${imageData.description || ''}`;
+                demoImg.alt = `${imageData.title || ''}\n${imageData.year || ''}`;
                 demoImg.setAttribute('onclick', `currentSlide(${imageIndex})`);
                 thumbnailRow.appendChild(demoImg);
             }
