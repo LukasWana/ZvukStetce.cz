@@ -2,189 +2,17 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />    
     <link rel="stylesheet" type="text/css" href="../simple-grid.min.css" />
-    <link rel="stylesheet" type="text/css" href="../gallery.css" />
     <link rel="stylesheet" href="../style.css?v=47" />
-    <script type="text/javascript" src="../photo-gallery.js"></script>
-
+    <link rel="stylesheet" href="../lightbox.css" />
+    
     <script type="text/javascript" src="../gallery-data-manager.js"></script>
     <script type="text/javascript" src="../script.js?v=12"></script>
     <script type="text/javascript" src="../menu.js?v=1"></script>
     <script>
       document.addEventListener("DOMContentLoaded", function () {
-        // Počkat na načtení obrázků přes gallery-data-manager
-        function initializeGallery() {
-          var galleries = Array.from(document.querySelectorAll(".m-p-g"));
-          if (galleries.length) {
-            galleries.forEach(function (elem) {
-              // Zkontrolovat, zda jsou obrázky načtené a mají správné rozměry
-              var thumbsBox = elem.querySelector(".m-p-g__thumbs");
-              var images = thumbsBox ? thumbsBox.querySelectorAll("img") : [];
-
-              // Zkontrolovat, zda mají obrázky načtené rozměry
-              // offsetWidth/Height může být 0 i když je obrázek načtený kvůli opacity: 0
-              var validImages = Array.from(images).filter(function (img) {
-                return (
-                  img.complete &&
-                  img.naturalWidth > 0 &&
-                  img.naturalHeight > 0 &&
-                  (img.offsetWidth > 0 || img.getAttribute('data-width')) &&
-                  (img.offsetHeight > 0 || img.getAttribute('data-height'))
-                );
-              });
-
-              if (validImages.length > 5) {
-                // Počkat na více obrázků
-
-                try {
-                  // Počkat ještě déle, aby se obrázky správně vykreslily
-                  setTimeout(function () {
-                    try {
-                      // Zkontrolovat, zda galerie stále existuje
-                      if (
-                        elem &&
-                        elem.parentNode &&
-                        !elem.dataset.initialized
-                      ) {
-                        new MaterialPhotoGallery(elem);
-                        elem.dataset.initialized = "true";
-
-                      }
-                    } catch (initError) {
-                    }
-                  }, 1000); // Zvýšeno na 1 sekundu
-                } catch (error) {
-                  // Zkusit znovu za 2 sekundy
-                  setTimeout(function () {
-                    try {
-                      if (
-                        elem &&
-                        elem.parentNode &&
-                        !elem.dataset.initialized
-                      ) {
-                        new MaterialPhotoGallery(elem);
-                        elem.dataset.initialized = "true";
-                      }
-                    } catch (retryError) {
-
-                    }
-                  }, 2000);
-                }
-              } else {
-                setTimeout(initializeGallery, 2000);
-              }
-            });
-
-            // Ovládání klávesnicí (pro aktivní galerii)
-            document.addEventListener("keydown", function (e) {
-              var fullscreenActive = document.querySelector(
-                ".m-p-g__fullscreen.active"
-              );
-              if (fullscreenActive) {
-                var activeGallery = fullscreenActive.closest(".m-p-g");
-                // ESC - zavřít galerii
-                if (e.key === "Escape" || e.keyCode === 27) {
-                  var closeBtn =
-                    activeGallery &&
-                    activeGallery.querySelector(".m-p-g__controls-close");
-                  if (closeBtn) {
-                    closeBtn.click();
-                  }
-                }
-                // Šipka vlevo - předchozí fotka
-                if (e.key === "ArrowLeft" || e.keyCode === 37) {
-                  var prevBtn =
-                    activeGallery &&
-                    activeGallery.querySelector(".m-p-g__controls-arrow--prev");
-                  if (prevBtn) {
-                    prevBtn.click();
-                  }
-                }
-                // Šipka vpravo - další fotka
-                if (e.key === "ArrowRight" || e.keyCode === 39) {
-                  var nextBtn =
-                    activeGallery &&
-                    activeGallery.querySelector(".m-p-g__controls-arrow--next");
-                  if (nextBtn) {
-                    nextBtn.click();
-                  }
-                }
-              }
-            });
-
-            // Swipe funkce pro mobilní zařízení
-            var startX = 0;
-            var startY = 0;
-            var endX = 0;
-            var endY = 0;
-            var minSwipeDistance = 50;
-
-            document.addEventListener(
-              "touchstart",
-              function (e) {
-                var fullscreenActive = document.querySelector(
-                  ".m-p-g__fullscreen.active"
-                );
-                if (fullscreenActive) {
-                  startX = e.touches[0].clientX;
-                  startY = e.touches[0].clientY;
-                }
-              },
-              false
-            );
-
-            document.addEventListener(
-              "touchend",
-              function (e) {
-                var fullscreenActive = document.querySelector(
-                  ".m-p-g__fullscreen.active"
-                );
-                if (fullscreenActive) {
-                  endX = e.changedTouches[0].clientX;
-                  endY = e.changedTouches[0].clientY;
-
-                  var deltaX = endX - startX;
-                  var deltaY = endY - startY;
-
-                  // Zkontrolovat, zda je swipe horizontální
-                  if (
-                    Math.abs(deltaX) > Math.abs(deltaY) &&
-                    Math.abs(deltaX) > minSwipeDistance
-                  ) {
-                    var activeGallery = fullscreenActive.closest(".m-p-g");
-
-                    if (deltaX > 0) {
-                      // Swipe vpravo - předchozí fotka
-                      var prevBtn =
-                        activeGallery &&
-                        activeGallery.querySelector(
-                          ".m-p-g__controls-arrow--prev"
-                        );
-                      if (prevBtn) {
-                        prevBtn.click();
-                      }
-                    } else {
-                      // Swipe vlevo - další fotka
-                      var nextBtn =
-                        activeGallery &&
-                        activeGallery.querySelector(
-                          ".m-p-g__controls-arrow--next"
-                        );
-                      if (nextBtn) {
-                        nextBtn.click();
-                      }
-                    }
-                  }
-                }
-              },
-              false
-            );
-          }
-        }
-
-        // Počkat déle, aby se načetly obrázky
-        setTimeout(initializeGallery, 3000); // Zvýšeno na 3 sekundy
+        // All gallery logic is now in lightbox.js and gallery-data-manager.js
       });
     </script>
   </head>
@@ -228,15 +56,27 @@
         </div>
       </div>
 
-      <div class="m-p-g">
-        <div
-          class="m-p-g__thumbs"
-          data-google-image-layout
-          data-max-height="320"
-        >
-          <!-- Images will be loaded dynamically using gallery-data-manager.js -->
+      <!-- The new gallery container -->
+      <div class="gallery-row" id="gallery-container">
+        <!-- Images will be loaded dynamically here -->
+      </div>
+
+      <!-- The Modal/Lightbox -->
+      <div id="myModal" class="modal-lightbox">
+        <span class="close-lightbox" onclick="closeModal()">&times;</span>
+        <div id="modal-content">
+          <!-- Full-size images will be loaded dynamically here -->
         </div>
-        <div class="m-p-g__fullscreen"></div>
+
+        <!-- Next/previous controls -->
+        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+        <a class="next" onclick="plusSlides(1)">&#10095;</a>
+
+        <!-- Caption text -->
+        <div id="caption"></div>
+
+        <!-- Thumbnail image controls -->
+        <div class="thumbnail-row" id="thumbnail-row"></div>
       </div>
 
     
@@ -258,5 +98,6 @@
     </main>
     <div id="footer-root"></div>
     <script type="text/javascript" src="../footer.js?v=1"></script>
+    <script type="text/javascript" src="../lightbox.js"></script>
   </body>
 </html>

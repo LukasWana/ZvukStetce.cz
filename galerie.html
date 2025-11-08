@@ -2,12 +2,11 @@
 <html>
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />    
     <link rel="stylesheet" type="text/css" href="simple-grid.min.css" />
-    <link rel="stylesheet" type="text/css" href="gallery.css" />
     <link rel="stylesheet" href="style.css?v=47" />
-    <script type="text/javascript" src="photo-gallery.js"></script>
-
+    <link rel="stylesheet" href="lightbox.css" />
+    
     <script type="text/javascript" src="gallery-data-manager.js"></script>
     <script type="text/javascript" src="script.js?v=12"></script>
     <script type="text/javascript" src="menu.js?v=1"></script>
@@ -15,112 +14,7 @@
     <script>
       // Gallery initialization is now handled by gallery-data-manager.js,
       // but keyboard and swipe controls for fullscreen mode remain here.
-      document.addEventListener("DOMContentLoaded", function () {
-        // Ovládání klávesnicí (pro aktivní galerii)
-        document.addEventListener("keydown", function (e) {
-          var fullscreenActive = document.querySelector(
-            ".m-p-g__fullscreen.active"
-          );
-          if (fullscreenActive) {
-            var activeGallery = fullscreenActive.closest(".m-p-g");
-            // ESC - zavřít galerii
-            if (e.key === "Escape" || e.keyCode === 27) {
-              var closeBtn =
-                activeGallery &&
-                activeGallery.querySelector(".m-p-g__controls-close");
-              if (closeBtn) {
-                closeBtn.click();
-              }
-            }
-            // Šipka vlevo - předchozí fotka
-            if (e.key === "ArrowLeft" || e.keyCode === 37) {
-              var prevBtn =
-                activeGallery &&
-                activeGallery.querySelector(".m-p-g__controls-arrow--prev");
-              if (prevBtn) {
-                prevBtn.click();
-              }
-            }
-            // Šipka vpravo - další fotka
-            if (e.key === "ArrowRight" || e.keyCode === 39) {
-              var nextBtn =
-                activeGallery &&
-                activeGallery.querySelector(".m-p-g__controls-arrow--next");
-              if (nextBtn) {
-                nextBtn.click();
-              }
-            }
-          }
-        });
-
-        // Swipe funkce pro mobilní zařízení
-        var startX = 0;
-        var startY = 0;
-        var endX = 0;
-        var endY = 0;
-        var minSwipeDistance = 50;
-
-        document.addEventListener(
-          "touchstart",
-          function (e) {
-            var fullscreenActive = document.querySelector(
-              ".m-p-g__fullscreen.active"
-            );
-            if (fullscreenActive) {
-              startX = e.touches[0].clientX;
-              startY = e.touches[0].clientY;
-            }
-          },
-          false
-        );
-
-        document.addEventListener(
-          "touchend",
-          function (e) {
-            var fullscreenActive = document.querySelector(
-              ".m-p-g__fullscreen.active"
-            );
-            if (fullscreenActive) {
-              endX = e.changedTouches[0].clientX;
-              endY = e.changedTouches[0].clientY;
-
-              var deltaX = endX - startX;
-              var deltaY = endY - startY;
-
-              // Zkontrolovat, zda je swipe horizontální
-              if (
-                Math.abs(deltaX) > Math.abs(deltaY) &&
-                Math.abs(deltaX) > minSwipeDistance
-              ) {
-                var activeGallery = fullscreenActive.closest(".m-p-g");
-
-                if (deltaX > 0) {
-                  // Swipe vpravo - předchozí fotka
-                  var prevBtn =
-                    activeGallery &&
-                    activeGallery.querySelector(
-                      ".m-p-g__controls-arrow--prev"
-                    );
-                  if (prevBtn) {
-                    prevBtn.click();
-                  }
-                } else {
-                  // Swipe vlevo - další fotka
-                  var nextBtn =
-                    activeGallery &&
-                    activeGallery.querySelector(
-                      ".m-p-g__controls-arrow--next"
-                    );
-                  if (nextBtn) {
-                    nextBtn.click();
-                  }
-                }
-              }
-            }
-          },
-          false
-        );
-      });
+      // All gallery logic is now in lightbox.js and gallery-data-manager.js
     </script>
   </head>
   <body>
@@ -163,16 +57,29 @@
         </div>
       </div>
 
-      <div class="m-p-g">
-        <div
-          class="m-p-g__thumbs"
-          data-google-image-layout
-          data-max-height="220"
-        >
-          <!-- Obrázky budou načteny dynamicky pomocí gallery-data-manager.js -->
-        </div>
-        <div class="m-p-g__fullscreen"></div>
+      <!-- The new gallery container -->
+      <div class="gallery-row" id="gallery-container">
+        <!-- Images will be loaded dynamically here -->
       </div>
+
+      <!-- The Modal/Lightbox -->
+      <div id="myModal" class="modal-lightbox">
+        <span class="close-lightbox" onclick="closeModal()">&times;</span>
+        <div id="modal-content">
+          <!-- Full-size images will be loaded dynamically here -->
+        </div>
+
+        <!-- Next/previous controls -->
+        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+        <a class="next" onclick="plusSlides(1)">&#10095;</a>
+
+        <!-- Caption text -->
+        <div id="caption"></div>
+
+        <!-- Thumbnail image controls -->
+        <div class="thumbnail-row" id="thumbnail-row"></div>
+      </div>
+
 
       <div class="container foot_foto">
         <div class="row">
@@ -192,5 +99,6 @@
     </main>
     <div id="footer-root"></div>
     <script type="text/javascript" src="footer.js?v=1"></script>
+    <script type="text/javascript" src="lightbox.js"></script>
   </body>
 </html>

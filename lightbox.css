@@ -1,0 +1,226 @@
+/* Style the gallery thumbnails */
+.gallery-row {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0 4px;
+}
+
+.gallery-column {
+  flex: 25%;
+  max-width: 25%;
+  padding: 0 4px;
+}
+
+.gallery-column img {
+  margin-top: 8px;
+  vertical-align: middle;
+  width: 100%;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.gallery-column img:hover {
+  opacity: 0.7;
+}
+
+@media screen and (max-width: 800px) {
+  .gallery-column {
+    flex: 50%;
+    max-width: 50%;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .gallery-column {
+    flex: 100%;
+    max-width: 100%;
+  }
+}
+
+/* The Modal (background) */
+.modal-lightbox {
+  display: none;
+  position: fixed;
+  z-index: 1001;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.9);
+}
+
+/* This is the container for the main image, make it relative for positioning arrows */
+.modal-lightbox-content {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Modal Content (image) */
+.modal-lightbox-content img {
+  margin: auto;
+  display: block;
+  height: 70vh; /* Set a consistent height for all large images */
+  width: auto; /* Allow width to adjust proportionally */
+  max-width: 90vw;
+  object-fit: contain; /* Ensures the image scales correctly within the dimensions */
+}
+
+/* Caption of Modal Image */
+#caption {
+  margin: auto;
+  display: block;
+  width: 100%;
+  max-width: 90vw;
+  text-align: center;
+  color: #ccc;
+  padding: 5px 0;
+  min-height: 40px; /* Reserve space for caption */
+}
+
+/* Add Animation */
+.modal-lightbox-content,
+#caption {
+  -webkit-animation-name: zoom;
+  -webkit-animation-duration: 0.6s;
+  animation-name: zoom;
+  animation-duration: 0.6s;
+}
+
+@-webkit-keyframes zoom {
+  from {
+    -webkit-transform: scale(0);
+  }
+  to {
+    -webkit-transform: scale(1);
+  }
+}
+
+@keyframes zoom {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+/* The Close Button */
+.close-lightbox {
+  position: fixed;
+  top: 15px; /* Keep vertical position */
+  left: 35px; /* Move to the left side */
+  color: #f1f1f1;
+  font-size: 40px;
+  font-weight: bold;
+  transition: 0.3s ease;
+  z-index: 1002; /* Ensure it's on top of all other modal content */
+  cursor: pointer; /* Explicitly make it clickable for mobile browsers */
+}
+
+.close-lightbox:hover,
+.close-lightbox:focus {
+  color: #bbb;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* Next & previous buttons */
+.prev,
+.next {
+  cursor: pointer;
+  position: fixed;
+  top: 85vh; /* Move arrows down to the level of the caption */
+  width: auto;
+  padding: 16px;
+  margin-top: -22px; /* Adjust vertical centering for the new position */
+  color: white;
+  font-weight: bold;
+  font-size: 20px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+  -webkit-user-select: none;
+  background-color: rgba(46, 9, 9, 0.8);
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 2.5vw; /* Position from the edge of the screen */
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover,
+.next:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Position the "previous button" to the left */
+.prev {
+  left: 2.5vw; /* Position from the edge of the screen */
+}
+
+/* pointerquery  hover PC myš */
+@media (hover: hover) and (pointer: fine) {
+  .prev:hover,
+  .next:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+  }
+}
+
+/* pointerquery  touch zariadenia */
+@media (hover: none) and (pointer: coarse) {
+  .prev:active,
+  .next:active {
+    background-color: rgba(0, 0, 0, 0.8);
+  }
+}
+
+/* Hide the slides by default */
+.mySlides {
+  display: none;
+  text-align: center; /* Center the image */
+}
+
+/* Add a pointer when hovering over the thumbnail images */
+.cursor {
+  cursor: pointer;
+}
+
+/* Thumbnail styles */
+.demo {
+  opacity: 0.6;
+  height: 60px; /* Set a consistent height for all thumbnails */
+  width: auto; /* Allow width to adjust proportionally */
+}
+
+.active,
+.demo:hover {
+  opacity: 1;
+}
+
+.thumbnail-row {
+  text-align: center;
+  margin-top: 10px; /* Space above thumbnails */
+  padding: 5px 0;
+  white-space: nowrap; /* Keep thumbnails in a single line */
+  overflow-x: auto; /* Allow horizontal scrolling */
+  max-width: 90vw; /* Limit width to match the image */
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+/* mobile browser hover ignoruje JS pridá class touch-active pri touchstart 
+  CSS to zachytí a zafarbí pozadie*/
+.prev.touch-active,
+.next.touch-active {
+  background-color: rgba(0, 0, 0, 0.8) !important;
+}
+
+/* sipky vizuálny „klik“ efekt*/
+.prev,
+.next {
+  transition: background-color 0.2s ease;
+}
