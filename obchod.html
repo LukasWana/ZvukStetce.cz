@@ -5,6 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" type="text/css" href="simple-grid.min.css">
         <link rel="stylesheet" href="style.css?v=47">
+        <link rel="stylesheet" href="obchod-lightbox.css" />
         <link rel="stylesheet" href="obchod.css" />
         <script type="text/javascript" src="script.js?v=11"></script>
         <script type="text/javascript" src="menu.js?v=1"></script>
@@ -72,10 +73,10 @@
 
 
   <div class="row">
-    <div class="obchod-styling">
+    <section id="jak-to-funguje" class="obchod-styling">
      <p> Sem by mohla Peta napisat nieco vseobecne ... 
       kvalita tusu alebo ze vodu nabera o polnoci pri uplnku zo studanky :) </p>      
-    </div>
+    </section>
     
     <!-- 1. Kaligrafie stojankové -->
      <section id="stojankove" class="obchod-styling">
@@ -291,7 +292,22 @@
       </div>
     </div>
 
+    <!-- Modal/Lightbox for Shop Images -->
+    <div id="obchod-modal" class="obchod-modal-lightbox">
+      <span class="obchod-close">&times;</span>
+      <div class="obchod-modal-content">
+        <img id="obchod-modal-img" src="" alt="Product Image" />
+      </div>
+      <a class="obchod-prev">&#10094;</a>
+      <a class="obchod-next">&#10095;</a>
+      <div id="obchod-caption"></div>
+    </div>
+    <!-- End Modal -->
+
     <script src="obchod.js"></script>
+    <!-- Add the new lightbox script for the shop -->
+    <script src="obchod-lightbox.js"></script>
+
 
 
       <div class="container foot_foto">
