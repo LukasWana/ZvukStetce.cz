@@ -10,6 +10,7 @@ const paymentInstructionsText = document.getElementById(
 ); // Nový odkaz na platobné inštrukcie
 const customOrderMessage = document.getElementById("custom-order-message"); // Nový odkaz na vlastnú správu
 const vsDisplay = document.getElementById("vs-display");
+const priceDisplay = document.getElementById("price-display");
 
 buttons.forEach((btn) => {
   btn.addEventListener("click", (e) => {
@@ -20,6 +21,9 @@ buttons.forEach((btn) => {
     productInput.value = productName;
     if (vsDisplay) {
       vsDisplay.textContent = ""; // Vyčistíme VS pre istotu
+    }
+    if (priceDisplay) {
+      priceDisplay.textContent = ""; // Vyčistíme cenu
     }
 
     // Resetovať viditeľnosť všetkých relevantných elementov
@@ -34,6 +38,14 @@ buttons.forEach((btn) => {
       // Toto je bežný produkt s cenou, zobrazíme QR kód a platobné inštrukcie
       deliveryInfoText.style.display = "block"; // Zobraziť text o doručení
       vsDisplay.textContent = productVS; // Zobrazíme VS
+
+      // Zobraziť cenu s menou podľa jazyka stránky
+      const isEnglish = window.location.pathname.includes("/en/");
+      const currency = isEnglish ? "CZK" : "Kč";
+      priceDisplay.textContent = `${parseFloat(productPrice).toLocaleString(
+        "cs-CZ"
+      )} ${currency}`;
+
       // MSG (message) skrátené na VS, aby sa predišlo pretečeniu dát v QR kóde
       const paymentString = `SPD*1.0*ACC:CZ6508000000001234567890*AM:${parseFloat(
         productPrice
