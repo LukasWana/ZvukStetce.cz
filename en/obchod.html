@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" type="text/css" href="../simple-grid.min.css" />
     <link rel="stylesheet" href="../style.css?v=47" />
+    <link rel="stylesheet" href="../obchod-lightbox.css" />
     <link rel="stylesheet" href="../obchod.css" />
     <script type="text/javascript" src="../script.js?v=11"></script>
     <script type="text/javascript" src="../menu.js?v=1"></script>
@@ -55,30 +56,36 @@
       <nav class="menu-obchod">
         <ul>
           <li><a href="#stojankove">Stands</a></li>
-          <li><a href="#modrotisk">Blueprint</a></li>
-          <li><a href="#naobjednavku">Custom Order</a></li>
-          <li><a href="#eventy">Corporate Events</a></li>
+          <li><a href="#modrotisk">Indigo Printed Cloth</a></li>
+          <li><a href="#naobjednavku">Custom Calligraphy</a></li>
+          <li><a href="#eventy">Live Calligraphy for Events</a></li>
         </ul>
       </nav>
       <!--  END Product types menu -->
 
       <div class="row">
         <div class="obchod-styling">
-          <p>
-            Here, Petra could write something general... about the quality of
-            the ink or that she collects water from a spring at midnight during
-            a full moon :)
-          </p>
+         <p>
+          I create my calligraphy using traditional Japanese technique, with respect for the quality of the materials and the energy of the moment in which the stroke is made.
+          I work with high-pigment inks and brushes made from natural fibres, which allow me to capture the breath of the moment. I take water for mixing ink from natural springs — not chemically treated — to keep each stroke as pure and honest as possible.<br><br>
+          My aim is not decoration, but truth. The character must carry the power of its meaning — not just the beauty of its shape.
+          <br><br>
+          Each piece is one of a kind, created in silence and full presence.
+          <br><br>
+          As the masters in Japan teach — one stroke, one thought.
+          One character, one universe.
+        </p> 
         </div>
 
         <!-- 1. Stand-up Calligraphy -->
         <section id="stojankove" class="obchod-styling">
-          <h3>Stand-up Calligraphy</h3>
+          <h3>Stand-mounted calligraphy</h3>
           <p>
-            Uniform size 20×30 cm, wooden stand, black calligraphy ink on white
-            canvas or gold ink on black canvas. The pictures can be changed in
-            the stand. The stands are wooden, handmade by a super cool
-            carpenter.
+            Standard size 20×30 cm, wooden stand, black calligraphy ink on white canvas
+            or gold ink on black canvas. You can freely exchange the artworks within the stand — by mood, by season, by energy.
+            <br><br>
+            The stands are wooden, hand-crafted by a carpenter in Moravia.
+            Each piece has passed through human hands — and you can see it, and feel it.
           </p>
           <p class="price">
             Uniform price for calligraphy in a stand: 5000 CZK
@@ -228,9 +235,13 @@
 
       <!-- 2. Blueprint -->
       <section id="modrotisk" class="obchod-styling">
-        <h3>Blueprint</h3>
+        <h3>Indigo Printed Cloth</h3>
         <p>
-          An original piece of calligraphy on traditional fabric, hand-painted.
+          An original piece of calligraphy on traditional Moravian indigo–dyed fabric.
+          <br><br>
+          Modrotisk is a ritual for me: a slow rhythm, a deep breath, a brush soaked in ink that meets the fabric exactly the way it wants to.
+          <br><br>
+          Every piece of calligraphy on modrotisk is a true one-of-a-kind — just like the exact moment in which it was created.
         </p>
         <p class="price">Uniform price for blueprint calligraphy: 6000 CZK</p>
         <div class="product">
@@ -246,7 +257,7 @@
                   />
                   <button
                     class="order-btn"
-                    data-product="Blueprint Peace"
+                    data-product="Indigo Printed Cloth PEACE"
                     data-vs="101"
                     data-price="6000"
                   >
@@ -286,7 +297,7 @@
 
       <!-- 4. Corporate Events -->
       <section id="eventy" class="obchod-styling">
-        <h3>Calligraphy for Corporate Events</h3>
+        <h3>Live Calligraphy for Events</h3>
         <p>
           I offer live calligraphy writing directly at your corporate events,
           which can also be combined with teaching the basics of writing.
@@ -295,7 +306,7 @@
           Price upon agreement
           <button
             class="order-btn"
-            data-product="Live Calligraphy - Corporate Event"
+            data-product="Live Calligraphy for Events"
             data-vs="901"
             data-price="0"
           >
@@ -359,7 +370,26 @@
       </div>
     </div>
 
+    <!-- Modal/Lightbox for Shop Images -->
+    <div id="obchod-modal" class="obchod-modal-lightbox">
+      <span class="obchod-close">&times;</span>
+      <div class="obchod-modal-content">
+        <img id="obchod-modal-img" src="" alt="Product Image" />
+      </div>
+      <a class="obchod-prev">&#10094;</a>
+      <a class="obchod-next">&#10095;</a>
+      <div id="obchod-caption"></div>
+      <div class="obchod-thumbnail-row" id="obchod-thumbnail-row">
+        <!-- Thumbnails will be injected here by JS -->
+      </div>
+      <button id="obchod-modal-order-btn" class="order-btn">
+        <img src="../img/basket.jpg" alt="Order" loading="lazy" />
+      </button>
+    </div>
+    <!-- End Modal -->
+
     <script src="../obchod.js"></script>
+    <script src="../obchod-lightbox.js"></script>
 
     <div class="container foot_foto">
       <div class="row">
