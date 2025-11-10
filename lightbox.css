@@ -132,10 +132,10 @@
 .next {
   cursor: pointer;
   position: fixed;
-  top: 85vh; /* Move arrows down to the level of the caption */
+  top: 50%; /* Center vertically */
   width: auto;
   padding: 16px;
-  margin-top: -22px; /* Adjust vertical centering for the new position */
+  transform: translateY(-50%); /* Perfect vertical centering */
   color: white;
   font-weight: bold;
   font-size: 20px;
@@ -219,17 +219,4 @@
   background-color: rgba(0, 0, 0, 0.8) !important;
 }
 
-/* sipky vizuálny „klik“ efekt*/
-.prev,
-.next {
-  transition: background-color 0.2s ease;
-}
-
-/* Na menších obrazovkách (na výšku) posunieme šípky vyššie, aby neprekrývali náhľady */
-@media screen and (max-height: 700px) and (orientation: portrait) {
-  .prev,
-  .next {
-    top: 75vh; /* Posunúť šípky vyššie */
-  }
-}
 }

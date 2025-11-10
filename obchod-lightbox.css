@@ -174,11 +174,11 @@
 .obchod-prev,
 .obchod-next {
   cursor: pointer;
-  position: absolute;
+  position: fixed; /* Changed to fixed to align with screen */
   top: 50%;
   width: auto;
   padding: 16px;
-  margin-top: -50px;
+  transform: translateY(-50%); /* Perfect vertical centering */
   color: white;
   font-weight: bold;
   font-size: 20px;
@@ -186,7 +186,7 @@
   border-radius: 0 3px 3px 0;
   user-select: none;
   -webkit-user-select: none;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(46, 9, 9, 0.8); /* Unified color */
 }
 
 /* Position the "next button" to the right */
@@ -196,7 +196,7 @@
 }
 
 .obchod-prev {
-  left: 0;
+  left: 2.5vw; /* Consistent spacing from edge */
   border-radius: 0 3px 3px 0;
 }
 
@@ -206,10 +206,8 @@
   background-color: rgba(0, 0, 0, 0.8);
 }
 
-/* On smaller screens, where height is less than 800px, and it's portrait, move arrows down */
-@media screen and (max-height: 800px) and (orientation: portrait) {
-  .obchod-prev,
-  .obchod-next {
-    top: 85vh;
-  }
+/* Mobile hover effect for touch devices */
+.obchod-prev:active,
+.obchod-next:active {
+  background-color: rgba(0, 0, 0, 0.8);
 }
