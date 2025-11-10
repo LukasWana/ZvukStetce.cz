@@ -18,7 +18,7 @@
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 100%;
+  height: calc(100% - 80px); /* Reserve 80px at the bottom for thumbnails */
 }
 
 /* Modal Content (image) */
@@ -34,7 +34,7 @@
 /* Caption of Modal Image */
 #obchod-caption {
   position: absolute;
-  bottom: 60px;
+  bottom: 13vh; /* Position relative to viewport height, above thumbnails */
   left: 50%;
   transform: translateX(-50%);
   margin: auto;
@@ -68,6 +68,60 @@
   font-size: 0.7rem;
   color: #aaa;
   margin-top: 8px;
+}
+
+/* Thumbnail styles */
+.obchod-thumbnail-row {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  padding: 5px 0;
+  white-space: nowrap; /* Keep thumbnails in a single line */
+  overflow-x: auto; /* Allow horizontal scrolling */
+  max-width: 90vw; /* Limit width to match the image */
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.obchod-demo {
+  opacity: 0.6;
+  height: 60px; /* Set a consistent height for all thumbnails */
+  width: auto; /* Allow width to adjust proportionally */
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+}
+
+.obchod-active,
+.obchod-demo:hover {
+  opacity: 1;
+}
+
+/* New styles for the correctly positioned order button */
+#obchod-modal-order-btn {
+  position: absolute;
+  bottom: 15vh; /* Align with the bottom of the caption */
+  left: 50%;
+  transform: translateX(-50%);
+  width: auto; /* Width will be set by JS */
+  height: auto;
+  display: flex;
+  justify-content: flex-end; /* Align button to the right */
+  pointer-events: none; /* The container is not clickable */
+  background: none;
+  border: none;
+  padding: 0;
+}
+
+#obchod-modal-order-btn img {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.95);
+  border: 0.05px solid #fcecec;
+  box-shadow: 0 4px 12px rgba(105, 23, 23, 0.12);
+  padding: 6px;
+  pointer-events: all; /* The icon itself is clickable */
 }
 
 /* Add Animation */

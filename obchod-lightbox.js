@@ -4,6 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   const modalImg = document.getElementById("obchod-modal-img");
   const captionText = document.getElementById("obchod-caption");
+  const thumbnailRow = document.getElementById("obchod-thumbnail-row");
   const closeBtn = document.querySelector(".obchod-close");
 
   let productImages = [];
@@ -17,15 +18,29 @@ document.addEventListener("DOMContentLoaded", function () {
     const obrazContainer = img.closest(".obraz");
     const orderBtn = obrazContainer.querySelector(".order-btn");
     const productTitle = orderBtn ? orderBtn.dataset.product : "";
+    const productVs = orderBtn ? orderBtn.dataset.vs : "";
+    const productPrice = orderBtn ? orderBtn.dataset.price : "";
     const kanjiEl = obrazContainer.querySelector(".popis .kanji");
     const romajiEl = obrazContainer.querySelector(".popis .romaji");
 
     productImages.push({
       src: img.src,
       productTitle: productTitle,
+      productVs: productVs,
+      productPrice: productPrice,
       kanji: kanjiEl ? kanjiEl.textContent.trim() : "",
       romaji: romajiEl ? romajiEl.textContent.trim() : "",
     });
+
+    // Create thumbnail 'demo' image for the modal
+    if (thumbnailRow) {
+      const demoImg = document.createElement("img");
+      demoImg.className = "obchod-demo";
+      demoImg.src = img.src;
+      demoImg.alt = productTitle;
+      demoImg.onclick = () => openShopModal(index);
+      thumbnailRow.appendChild(demoImg);
+    }
 
     // Add onclick attribute to open the modal
     const obrazNahled = img.parentElement;
@@ -60,10 +75,37 @@ document.addEventListener("DOMContentLoaded", function () {
       const imageData = productImages[index];
       modalImg.src = imageData.src;
 
+      // Update the order button in the modal
+      const modalOrderBtn = document.getElementById("obchod-modal-order-btn");
+      if (modalOrderBtn) {
+        modalOrderBtn.dataset.product = imageData.productTitle;
+        modalOrderBtn.dataset.vs = imageData.productVs;
+        modalOrderBtn.dataset.price = imageData.productPrice;
+      }
+
       // Set caption width after image loads to get its rendered width
       modalImg.onload = function () {
         const imageWidth = modalImg.offsetWidth;
+        const modalOrderBtnContainer = document.getElementById(
+          "obchod-modal-order-btn"
+        );
         captionText.style.width = `${imageWidth}px`;
+        if (modalOrderBtnContainer)
+          modalOrderBtnContainer.style.width = `${imageWidth}px`;
+
+        // Highlight the active thumbnail
+        const thumbnails = document.querySelectorAll(".obchod-demo");
+        thumbnails.forEach((thumb) => {
+          thumb.classList.remove("obchod-active");
+        });
+        if (thumbnails[index]) {
+          thumbnails[index].classList.add("obchod-active");
+          thumbnails[index].scrollIntoView({
+            behavior: "smooth",
+            block: "nearest",
+            inline: "center",
+          });
+        }
 
         // Build the multi-line caption
         let captionHTML = `<span class="caption-latin">${imageData.productTitle}</span>`;
@@ -135,5 +177,24 @@ document.addEventListener("DOMContentLoaded", function () {
     if (touchendX > touchstartX) {
       plusSlides(-1); // Swiped right
     }
+  }
+
+  // --- Custom logic for order button inside the modal ---
+  const modalOrderBtn = document.getElementById("obchod-modal-order-btn");
+  if (modalOrderBtn) {
+    modalOrderBtn.addEventListener("click", function () {
+      // 1. Close the lightbox modal
+      closeShopModal();
+
+      // 2. After a short delay, find and click the original button on the page
+      //    to trigger the order modal.
+      setTimeout(() => {
+        const originalButton = Array.from(
+          document.querySelectorAll(".obraz .order-btn")
+        )[currentImageIndex];
+
+        if (originalButton) originalButton.click();
+      }, 300); // 300ms delay to allow lightbox to close smoothly
+    });
   }
 });
